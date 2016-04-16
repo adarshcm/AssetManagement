@@ -1,0 +1,126 @@
+﻿<style>
+    div.item {
+    vertical-align: top;
+    display: inline-block;
+    text-align: center;
+    width: 120px;
+    cursor:pointer;
+}
+
+.caption {
+    display: block;
+    font-size:larger;
+    font-weight:bold;
+    margin-top: 10px;
+}
+
+</style>
+
+@{
+    ViewBag.Title = "OpenAccountPage";
+}
+
+
+
+<script type="text/javascript">
+
+    $(function () {
+        
+        if ("@ViewBag.login" != 'login') {
+            $('#loginLink').html("Log out")
+            $("a").attr("href", "/LoginReg/Logout")
+        }
+        
+    })
+
+</script>
+
+<br/><br/>
+@{
+    if (ViewBag.isAdmin == "admin")
+    {
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="item" id="addAsset">
+                    <img src="~/Images/addAsset.png" class="img-rounded" alt="Add asset">
+                    <span class="caption">Add asset</span>
+                </div>
+
+            </div>
+
+            <div class="col-lg-4">
+
+                <div class="item" id="editAsset">
+                    <img src="~/Images/editAsset.png" class="img-rounded" alt="Edit asset">
+                    <span class="caption">Edit asset</span>
+                </div>
+                
+            </div>
+
+            <div class="col-lg-4">
+                <div class="item" id="removeAsset">
+                    <img src="~/Images/removeAsset.png" class="img-rounded" alt="Remove asset">
+                    <span class="caption">Remove asset</span>
+                </div>
+                
+            </div>
+        </div>
+        <div class="row">
+            <br/>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="item">
+                    <img src="~/Images/addUser.jpg" class="img-rounded" alt="Add user">
+                    <span class="caption">Add user</span>
+                </div>
+                 
+            </div>
+
+            <div class="col-lg-4">
+                <div class="item">
+                    <img src="~/Images/removeUser.jpg" class="img-rounded" alt="Remove user">
+                    <span class="caption">Remove user</span>
+                </div>
+                
+            </div>
+
+            <div class="col-lg-4">
+                <div class="item">
+                    <img src="~/Images/editMaster.png" class="img-rounded" alt="Edit master">
+                    <span class="caption">Edit master</span>
+                </div>
+
+            </div>
+        </div>
+    }
+    else
+    {
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="item">
+                <img src="~/Images/addAsset.png" class="img-rounded" alt="Add asset">
+                <span class="caption">Add asset</span>
+            </div>
+
+        </div>
+
+        <div class="col-lg-4">
+
+            <div class="item">
+                <img src="~/Images/editAsset.png" class="img-rounded" alt="Add asset">
+                <span class="caption">Edit asset</span>
+            </div>
+
+        </div>
+
+        <div class="col-lg-4">
+            <div class="item">
+                <img src="~/Images/removeAsset.png" class="img-rounded" alt="Add asset">
+                <span class="caption">Remove asset</span>
+            </div>
+
+        </div>
+    </div>
+    }
+}
