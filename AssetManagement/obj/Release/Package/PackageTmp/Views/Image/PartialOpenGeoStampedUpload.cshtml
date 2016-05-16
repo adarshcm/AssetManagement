@@ -1,0 +1,75 @@
+﻿
+<div class="dropzone" id="geoStampedUploadDropzone"></div>
+
+
+<script>
+
+    $(document).ready(function () {
+
+        uploadFilesGeoStampedDropzone();
+
+    });
+
+    function uploadFilesGeoStampedDropzone() {
+
+        var myDropzone = new Dropzone("#geoStampedUploadDropzone", {
+            paramName: 'file',
+            method: 'post',
+            //maxFiles: 1,
+            url: '/Image/OpenGeoStampedUploadFileSave',
+            dictDefaultMessage: "Click or drag photos ",
+            clickable: true,
+            maxFilesize: 512,
+            uploadMultiple: true,
+            addRemoveLinks: true,
+            forceFallback: false,
+            init: function () {
+                this.on("addedfile", function (file) {
+
+                });
+                this.on("maxfilesexceeded", function (file) {
+                    alert("File limit 512");
+                });
+                this.on("complete", function (file) {
+                    geoStampedUploadImageArray.push(file);
+                    $('#geoStampedFileCount').html(geoStampedUploadImageArray.length + ' Files uploaded');
+
+                });
+                this.on("removedfile",function(file){
+
+                    var i = geoStampedUploadImageArray.indexOf(file);
+                    geoStampedUploadImageArray.splice(i, 1);
+                    $('#geoStampedFileCount').html(geoStampedUploadImageArray.length + ' Files uploaded');
+
+                    $.ajax({
+                        type: 'Post',
+                        url: '/Image/RemoveGeoStampedUploadedFile',
+                        data: { "fileName": file.name },
+                        success: function (data) {
+
+                        }
+                    });
+
+                });
+            }
+        });
+
+        if (geoStampedUploadImageArray != null) {
+            for (var i in geoStampedUploadImageArray) {
+
+                myDropzone.emit("addedfile", geoStampedUploadImageArray[i]);
+                $(".dz-progress").css("background-color", 'initial');
+            }
+        }
+
+        return myDropzone;
+    }
+
+
+
+</script>
+
+
+
+
+

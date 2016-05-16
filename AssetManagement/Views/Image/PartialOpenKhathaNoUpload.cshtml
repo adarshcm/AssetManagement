@@ -1,25 +1,25 @@
 ﻿
 
-<div class="dropzone" id="my-dropzone"></div>
+
+<div class="dropzone" id="khathaNoUploadDropzone"></div>
 
 
 <script>
 
     $(document).ready(function () {
-  
-        uploadFiles();
-  
+
+        uploadFilesKhathaNoDropzone();
+
     });
 
+    function uploadFilesKhathaNoDropzone() {
 
-    function uploadFiles() {
-
-        var myDropzone = new Dropzone("#my-dropzone", {
+        var myDropzone = new Dropzone("#khathaNoUploadDropzone", {
             paramName: 'file',
             method: 'post',
             //maxFiles: 1,
-            url: '/Image/OpenAssetStatusUploadFileSave',
-            dictDefaultMessage: "Drag your images for zone ",
+            url: '/Image/OpenKhathaNoUploadFileSave',
+            dictDefaultMessage: "Click or drag photos ",
             clickable: true,
             maxFilesize: 512,
             uploadMultiple: true,
@@ -27,38 +27,39 @@
             forceFallback: false,
             init: function () {
                 this.on("addedfile", function (file) {
-                    //alert("added file in zone.");
+
                 });
                 this.on("maxfilesexceeded", function (file) {
                     alert("File limit 512");
                 });
                 this.on("complete", function (file) {
-                    fileArray.push(file);
-                    console.log(file.name)
+                    khathaNoImageArray.push(file);
+                    $('#khathaNoFileCount').html(khathaNoImageArray.length + ' Files uploaded');
+
                 });
                 this.on("removedfile",function(file){
-                    
-                    var i = fileArray.indexOf(file);
-                    fileArray.splice(i,1);
+
+                    var i = khathaNoImageArray.indexOf(file);
+                    khathaNoImageArray.splice(i, 1);
+                    $('#khathaNoFileCount').html(khathaNoImageArray.length + ' Files uploaded');
 
                     $.ajax({
                         type: 'Post',
-                        url: '/Image/RemoveAssetStatusUploadedFile',
+                        url: '/Image/RemoveKhathaNoUploadedFile',
                         data: { "fileName": file.name },
                         success: function (data) {
 
                         }
                     });
 
-
                 });
             }
         });
 
-        if (fileArray != null) {
-            for (var i in fileArray) {
+        if (khathaNoImageArray != null) {
+            for (var i in khathaNoImageArray) {
 
-                myDropzone.emit("addedfile", fileArray[i]);
+                myDropzone.emit("addedfile", khathaNoImageArray[i]);
                 $(".dz-progress").css("background-color", 'initial');
             }
         }
@@ -67,5 +68,5 @@
     }
 
 
-    
+
 </script>

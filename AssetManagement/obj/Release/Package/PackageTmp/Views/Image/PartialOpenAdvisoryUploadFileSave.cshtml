@@ -1,0 +1,72 @@
+﻿
+
+
+
+<div class="dropzone" id="advisoryUploadDropzone"></div>
+
+
+<script>
+
+    $(document).ready(function () {
+
+        uploadFilesMunicipalNoDropzone();
+
+    });
+
+    function uploadFilesMunicipalNoDropzone() {
+
+        var myDropzone = new Dropzone("#advisoryUploadDropzone", {
+            paramName: 'file',
+            method: 'post',
+            //maxFiles: 1,
+            url: '/Image/AdvisoryUploadFileSave',
+            dictDefaultMessage: "Click or drag photos ",
+            clickable: true,
+            maxFilesize: 512,
+            uploadMultiple: true,
+            addRemoveLinks: true,
+            forceFallback: false,
+            init: function () {
+                this.on("addedfile", function (file) {
+
+                });
+                this.on("maxfilesexceeded", function (file) {
+                    alert("File limit 512");
+                });
+                this.on("complete", function (file) {
+                    advisoryImageArray.push(file);
+                    console.log(file.name)
+                });
+                this.on("removedfile",function(file){
+
+                    var i = advisoryImageArray.indexOf(file);
+                    advisoryImageArray.splice(i, 1);
+
+                    $.ajax({
+                        type: 'Post',
+                        url: '/Image/RemoveAdvisoryUploadFile',
+                        data: { "fileName": file.name },
+                        success: function (data) {
+
+                        }
+                    });
+
+                });
+            }
+        });
+
+        if (advisoryImageArray != null) {
+            for (var i in advisoryImageArray) {
+
+                myDropzone.emit("addedfile", advisoryImageArray[i]);
+                $(".dz-progress").css("background-color", 'initial');
+            }
+        }
+
+        return myDropzone;
+    }
+
+
+
+</script>
+

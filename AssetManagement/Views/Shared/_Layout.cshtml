@@ -13,6 +13,8 @@
     <link href="~/Content/jsgrid.min.css" rel="stylesheet" />
     <link href="~/Content/jsgrid-theme.min.css" rel="stylesheet" />
     <link href="~/Content/dropzone.css" rel="stylesheet" />
+    <link href="~/Content/chosen.min.css" rel="stylesheet" />
+
 </head>
 <body>
     @Scripts.Render("~/bundles/jquery")
@@ -29,9 +31,30 @@
     <script src="~/Scripts/jsgrid.min.js"></script>
     <script src="~/Scripts/dropzone-amd-module.js"></script>
     <script src="~/Scripts/dropzone.js"></script>
+    <script src="~/Scripts/chosen.jquery.min.js"></script>
+
     <script>
-        var fileArray = [];
+        var assetFlowStatus,institutionId, rowImageMG, rowImageAG, flagToCheckEditClickedMG = 'Novalue', flagToCheckEditClickedAG = 'Novalue';
+        var assetStatusImageArray = [];
+        var gnNumberImageArray = [];
+        var crNumberImageArray = [];
+        var courtOrderImageArray = [];
+        var surveyNoImageArray = [];
+        var khathaNoImageArray = [];
+        var municipalNoImageArray = [];
+        var northImageArray = [];
+        var eastImageArray = [];
+        var southImageArray = [];
+        var westImageArray = [];
+        var estimatedValueImageArray = [];
+        var litigationManagementUploadImageArray = [];
+        var litigationAssetUploadImageArray = [];
+        var geoStampedUploadImageArray = [];
+        var managementImageArray = [];
+        var advisoryImageArray = [];
+
     </script>
+
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -40,13 +63,26 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Asset Managemet Portal", "About", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Asset Managemet Portal", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     @*<li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
+
+                    @{
+
+
+                        if (ViewBag.login == "Login")
+                        {
+                            
+                        }
+                        else
+                        {
+                            <li id="homeBtn">@Html.ActionLink("Home", "OpenAccountPage", "AssetAccount")</li>
+                        }
+                    }
 
                 </ul>
 

@@ -10,5 +10,8 @@ namespace AssetManagement.Models
         public string fileName { get; set; }
         public string imageType { get; set; }
         public byte[] imageContent { get; set; }
+        public int imageSize { get; set; }
+
+       
     }
 }

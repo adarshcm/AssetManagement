@@ -1,0 +1,71 @@
+﻿
+
+<div class="dropzone" id="surveyNoUploadDropzone"></div>
+
+
+<script>
+
+    $(document).ready(function () {
+
+        uploadFilessurveyNoDropzone();
+
+    });
+
+    function uploadFilessurveyNoDropzone() {
+
+        var myDropzone = new Dropzone("#surveyNoUploadDropzone", {
+            paramName: 'file',
+            method: 'post',
+            //maxFiles: 1,
+            url: '/Image/OpenCourtOrderUploadFileSave',
+            dictDefaultMessage: "Click or drag photos ",
+            clickable: true,
+            maxFilesize: 512,
+            uploadMultiple: true,
+            addRemoveLinks: true,
+            forceFallback: false,
+            init: function () {
+                this.on("addedfile", function (file) {
+
+                });
+                this.on("maxfilesexceeded", function (file) {
+                    alert("File limit 512");
+                });
+                this.on("complete", function (file) {
+                    surveyNoImageArray.push(file);
+                    $('#surveyNoFileCount').html(surveyNoImageArray.length + ' Files uploaded');
+
+                });
+                this.on("removedfile",function(file){
+
+                    var i = surveyNoImageArray.indexOf(file);
+                    surveyNoImageArray.splice(i, 1);
+                    $('#surveyNoFileCount').html(surveyNoImageArray.length + ' Files uploaded');
+
+                    $.ajax({
+                        type: 'Post',
+                        url: '/Image/RemoveCourtOrderUploadedFile',
+                        data: { "fileName": file.name },
+                        success: function (data) {
+
+                        }
+                    });
+
+                });
+            }
+        });
+
+        if (surveyNoImageArray != null) {
+            for (var i in surveyNoImageArray) {
+
+                myDropzone.emit("addedfile", surveyNoImageArray[i]);
+                $(".dz-progress").css("background-color", 'initial');
+            }
+        }
+
+        return myDropzone;
+    }
+
+
+
+</script>

@@ -13,6 +13,7 @@ namespace AssetManagement.Controllers
         // GET: LoginReg
         public ActionResult OpenLogin()
         {
+            ViewBag.login = "Login";
             return View();
         }
 
@@ -26,14 +27,14 @@ namespace AssetManagement.Controllers
                 
                 if (status)
                 {
-                    ViewBag.login = "Log out";
+                    ViewBag.login = "Logout";
                     ViewBag.isAdmin = "admin";
                     Session["isAdmin"] = "admin";
                     return View("~/Views/LoginReg/OpenAccountPage.cshtml");
                 }
                 else
                 {
-                    ViewBag.message = "Login failed!! Please try again";
+                    ViewBag.message = "The email and password you entered don't match.";
                     return View("~/Views/LoginReg/OpenLogin.cshtml");
                 }
             }
@@ -46,6 +47,7 @@ namespace AssetManagement.Controllers
 
         public ActionResult Logout()
         {
+            ViewBag.login = "Login";
             Session["isAdmin"] = null;
             return View("~/Views/Home/Index.cshtml");
         }

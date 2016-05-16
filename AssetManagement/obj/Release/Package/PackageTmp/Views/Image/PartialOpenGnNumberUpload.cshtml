@@ -1,0 +1,69 @@
+﻿<div class="dropzone" id="gnNumberDropzone"></div>
+
+
+<script>
+
+    $(document).ready(function () {
+
+        uploadFilesgnNumberDropzone();
+
+    });
+
+    function uploadFilesgnNumberDropzone() {
+
+        var myDropzone = new Dropzone("#gnNumberDropzone", {
+            paramName: 'file',
+            method: 'post',
+            //maxFiles: 1,
+            url: '/Image/OpengnNumberUploadFileSave',
+            dictDefaultMessage: "Click or drag photos ",
+            clickable: true,
+            maxFilesize: 512,
+            uploadMultiple: true,
+            addRemoveLinks: true,
+            forceFallback: false,
+            init: function () {
+                this.on("addedfile", function (file) {
+
+                });
+                this.on("maxfilesexceeded", function (file) {
+                    alert("File limit 512");
+                });
+                this.on("complete", function (file) {
+                    gnNumberImageArray.push(file);
+                    $('#gnNumberFileCount').html(gnNumberImageArray.length + ' Files uploaded');
+                    console.log(gnNumberImageArray);
+                });
+                this.on("removedfile",function(file){
+
+                    var i = gnNumberImageArray.indexOf(file);
+                    gnNumberImageArray.splice(i, 1);
+                    $('#gnNumberFileCount').html(gnNumberImageArray.length + ' Files uploaded');
+
+                    $.ajax({
+                        type: 'Post',
+                        url: '/Image/RemovegnNumberUploadedFile',
+                        data: { "fileName": file.name },
+                        success: function (data) {
+
+                        }
+                    });
+
+                });
+            }
+        });
+
+        if (gnNumberImageArray != null) {
+            for (var i in gnNumberImageArray) {
+
+                myDropzone.emit("addedfile", gnNumberImageArray[i]);
+                $(".dz-progress").css("background-color", 'initial');
+            }
+        }
+
+        return myDropzone;
+    }
+
+
+
+</script>

@@ -1,0 +1,70 @@
+﻿
+<div class="dropzone" id="crNumberDropzone"></div>
+
+
+<script>
+
+    $(document).ready(function () {
+
+        uploadFilescrNumberDropzone();
+
+    });
+
+    function uploadFilescrNumberDropzone() {
+
+        var myDropzone = new Dropzone("#crNumberDropzone", {
+            paramName: 'file',
+            method: 'post',
+            //maxFiles: 1,
+            url: '/Image/OpenCrNumberUploadFileSave',
+            dictDefaultMessage: "Click or drag photos ",
+            clickable: true,
+            maxFilesize: 512,
+            uploadMultiple: true,
+            addRemoveLinks: true,
+            forceFallback: false,
+            init: function () {
+                this.on("addedfile", function (file) {
+
+                });
+                this.on("maxfilesexceeded", function (file) {
+                    alert("File limit 512");
+                });
+                this.on("complete", function (file) {
+                    crNumberImageArray.push(file);
+                    $('#crNumberFileCount').html(crNumberImageArray.length + ' Files uploaded');
+
+                });
+                this.on("removedfile",function(file){
+
+                    var i = crNumberImageArray.indexOf(file);
+                    crNumberImageArray.splice(i, 1);
+                    $('#crNumberFileCount').html(crNumberImageArray.length + ' Files uploaded');
+
+                    $.ajax({
+                        type: 'Post',
+                        url: '/Image/RemoveCrNumberUploadedFile',
+                        data: { "fileName": file.name },
+                        success: function (data) {
+
+                        }
+                    });
+
+                });
+            }
+        });
+
+        if (crNumberImageArray != null) {
+            for (var i in crNumberImageArray) {
+
+                myDropzone.emit("addedfile", crNumberImageArray[i]);
+                $(".dz-progress").css("background-color", 'initial');
+            }
+        }
+
+        return myDropzone;
+    }
+
+
+
+</script>

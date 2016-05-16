@@ -19,7 +19,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/25/2016 19:30:10</publishTime>
     </File>
     <File Include="bin/AssetManagement.dll">
-      <publishTime>04/02/2016 00:20:14</publishTime>
+      <publishTime>05/16/2016 20:17:58</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>03/25/2016 19:29:51</publishTime>
@@ -162,14 +162,179 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Content/bootstrap.min.css">
       <publishTime>03/25/2016 19:29:41</publishTime>
     </File>
+    <File Include="Content/chosen-sprite.png">
+      <publishTime>02/18/2016 13:37:50</publishTime>
+    </File>
+    <File Include="Content/chosen.min.css">
+      <publishTime>02/18/2016 13:37:50</publishTime>
+    </File>
     <File Include="Content/datepicker.min.css">
       <publishTime>04/01/2016 19:01:50</publishTime>
+    </File>
+    <File Include="Content/dropzone.css">
+      <publishTime>05/16/2016 20:17:22</publishTime>
+    </File>
+    <File Include="Content/images/animated-overlay.gif">
+      <publishTime>03/15/2013 00:46:59</publishTime>
+    </File>
+    <File Include="Content/images/ui-bg_flat_0_aaaaaa_40x100.png">
+      <publishTime>03/15/2013 00:46:59</publishTime>
+    </File>
+    <File Include="Content/images/ui-bg_flat_75_ffffff_40x100.png">
+      <publishTime>03/15/2013 00:46:59</publishTime>
+    </File>
+    <File Include="Content/images/ui-bg_glass_55_fbf9ee_1x400.png">
+      <publishTime>03/15/2013 00:46:59</publishTime>
+    </File>
+    <File Include="Content/images/ui-bg_glass_65_ffffff_1x400.png">
+      <publishTime>03/15/2013 00:46:59</publishTime>
+    </File>
+    <File Include="Content/images/ui-bg_glass_75_dadada_1x400.png">
+      <publishTime>03/15/2013 00:46:59</publishTime>
+    </File>
+    <File Include="Content/images/ui-bg_glass_75_e6e6e6_1x400.png">
+      <publishTime>03/15/2013 00:46:59</publishTime>
+    </File>
+    <File Include="Content/images/ui-bg_glass_95_fef1ec_1x400.png">
+      <publishTime>03/15/2013 00:46:59</publishTime>
+    </File>
+    <File Include="Content/images/ui-bg_highlight-soft_75_cccccc_1x100.png">
+      <publishTime>03/15/2013 00:46:59</publishTime>
+    </File>
+    <File Include="Content/images/ui-icons_222222_256x240.png">
+      <publishTime>03/15/2013 00:46:59</publishTime>
+    </File>
+    <File Include="Content/images/ui-icons_2e83ff_256x240.png">
+      <publishTime>03/15/2013 00:46:59</publishTime>
+    </File>
+    <File Include="Content/images/ui-icons_454545_256x240.png">
+      <publishTime>03/15/2013 00:46:59</publishTime>
+    </File>
+    <File Include="Content/images/ui-icons_888888_256x240.png">
+      <publishTime>03/15/2013 00:46:59</publishTime>
+    </File>
+    <File Include="Content/images/ui-icons_cd0a0a_256x240.png">
+      <publishTime>03/15/2013 00:46:59</publishTime>
+    </File>
+    <File Include="Content/jquery-ui.min.css">
+      <publishTime>03/15/2013 00:46:59</publishTime>
+    </File>
+    <File Include="Content/jsgrid-theme.min.css">
+      <publishTime>04/07/2016 20:45:49</publishTime>
+    </File>
+    <File Include="Content/jsgrid.min.css">
+      <publishTime>04/07/2016 20:45:03</publishTime>
     </File>
     <File Include="Content/Site.css">
       <publishTime>03/29/2016 22:01:18</publishTime>
     </File>
     <File Include="favicon.ico">
       <publishTime>03/25/2016 19:29:31</publishTime>
+    </File>
+    <File Include="font-awesome-4.5.0/css/font-awesome.css">
+      <publishTime>03/11/2016 00:17:38</publishTime>
+    </File>
+    <File Include="font-awesome-4.5.0/css/font-awesome.min.css">
+      <publishTime>03/11/2016 00:17:38</publishTime>
+    </File>
+    <File Include="font-awesome-4.5.0/fonts/fontawesome-webfont.eot">
+      <publishTime>03/11/2016 00:17:37</publishTime>
+    </File>
+    <File Include="font-awesome-4.5.0/fonts/fontawesome-webfont.svg">
+      <publishTime>03/11/2016 00:17:37</publishTime>
+    </File>
+    <File Include="font-awesome-4.5.0/fonts/fontawesome-webfont.ttf">
+      <publishTime>03/11/2016 00:17:37</publishTime>
+    </File>
+    <File Include="font-awesome-4.5.0/fonts/fontawesome-webfont.woff">
+      <publishTime>03/11/2016 00:17:37</publishTime>
+    </File>
+    <File Include="font-awesome-4.5.0/fonts/fontawesome-webfont.woff2">
+      <publishTime>03/11/2016 00:17:37</publishTime>
+    </File>
+    <File Include="font-awesome-4.5.0/fonts/FontAwesome.otf">
+      <publishTime>03/11/2016 00:17:37</publishTime>
+    </File>
+    <File Include="font-awesome-4.5.0/HELP-US-OUT.txt">
+      <publishTime>03/11/2016 00:17:37</publishTime>
+    </File>
+    <File Include="font-awesome-4.5.0/less/animated.less">
+      <publishTime>03/11/2016 00:17:37</publishTime>
+    </File>
+    <File Include="font-awesome-4.5.0/less/bordered-pulled.less">
+      <publishTime>03/11/2016 00:17:37</publishTime>
+    </File>
+    <File Include="font-awesome-4.5.0/less/core.less">
+      <publishTime>03/11/2016 00:17:37</publishTime>
+    </File>
+    <File Include="font-awesome-4.5.0/less/fixed-width.less">
+      <publishTime>03/11/2016 00:17:37</publishTime>
+    </File>
+    <File Include="font-awesome-4.5.0/less/font-awesome.less">
+      <publishTime>03/11/2016 00:17:37</publishTime>
+    </File>
+    <File Include="font-awesome-4.5.0/less/icons.less">
+      <publishTime>03/11/2016 00:17:37</publishTime>
+    </File>
+    <File Include="font-awesome-4.5.0/less/larger.less">
+      <publishTime>03/11/2016 00:17:37</publishTime>
+    </File>
+    <File Include="font-awesome-4.5.0/less/list.less">
+      <publishTime>03/11/2016 00:17:37</publishTime>
+    </File>
+    <File Include="font-awesome-4.5.0/less/mixins.less">
+      <publishTime>03/11/2016 00:17:37</publishTime>
+    </File>
+    <File Include="font-awesome-4.5.0/less/path.less">
+      <publishTime>03/11/2016 00:17:37</publishTime>
+    </File>
+    <File Include="font-awesome-4.5.0/less/rotated-flipped.less">
+      <publishTime>03/11/2016 00:17:37</publishTime>
+    </File>
+    <File Include="font-awesome-4.5.0/less/stacked.less">
+      <publishTime>03/11/2016 00:17:37</publishTime>
+    </File>
+    <File Include="font-awesome-4.5.0/less/variables.less">
+      <publishTime>03/11/2016 00:17:37</publishTime>
+    </File>
+    <File Include="font-awesome-4.5.0/scss/font-awesome.scss">
+      <publishTime>03/11/2016 00:17:37</publishTime>
+    </File>
+    <File Include="font-awesome-4.5.0/scss/_animated.scss">
+      <publishTime>03/11/2016 00:17:37</publishTime>
+    </File>
+    <File Include="font-awesome-4.5.0/scss/_bordered-pulled.scss">
+      <publishTime>03/11/2016 00:17:37</publishTime>
+    </File>
+    <File Include="font-awesome-4.5.0/scss/_core.scss">
+      <publishTime>03/11/2016 00:17:37</publishTime>
+    </File>
+    <File Include="font-awesome-4.5.0/scss/_fixed-width.scss">
+      <publishTime>03/11/2016 00:17:37</publishTime>
+    </File>
+    <File Include="font-awesome-4.5.0/scss/_icons.scss">
+      <publishTime>03/11/2016 00:17:37</publishTime>
+    </File>
+    <File Include="font-awesome-4.5.0/scss/_larger.scss">
+      <publishTime>03/11/2016 00:17:37</publishTime>
+    </File>
+    <File Include="font-awesome-4.5.0/scss/_list.scss">
+      <publishTime>03/11/2016 00:17:37</publishTime>
+    </File>
+    <File Include="font-awesome-4.5.0/scss/_mixins.scss">
+      <publishTime>03/11/2016 00:17:37</publishTime>
+    </File>
+    <File Include="font-awesome-4.5.0/scss/_path.scss">
+      <publishTime>03/11/2016 00:17:37</publishTime>
+    </File>
+    <File Include="font-awesome-4.5.0/scss/_rotated-flipped.scss">
+      <publishTime>03/11/2016 00:17:37</publishTime>
+    </File>
+    <File Include="font-awesome-4.5.0/scss/_stacked.scss">
+      <publishTime>03/11/2016 00:17:37</publishTime>
+    </File>
+    <File Include="font-awesome-4.5.0/scss/_variables.scss">
+      <publishTime>03/11/2016 00:17:37</publishTime>
     </File>
     <File Include="fonts/glyphicons-halflings-regular.eot">
       <publishTime>03/25/2016 19:29:41</publishTime>
@@ -186,6 +351,27 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Global.asax">
       <publishTime>03/25/2016 19:29:31</publishTime>
     </File>
+    <File Include="Images/addAsset.png">
+      <publishTime>04/02/2016 16:02:45</publishTime>
+    </File>
+    <File Include="Images/addUser.jpg">
+      <publishTime>04/02/2016 16:34:17</publishTime>
+    </File>
+    <File Include="Images/editAsset.png">
+      <publishTime>04/02/2016 16:05:03</publishTime>
+    </File>
+    <File Include="Images/editMaster.png">
+      <publishTime>04/02/2016 16:35:19</publishTime>
+    </File>
+    <File Include="Images/removeAsset.png">
+      <publishTime>04/02/2016 16:02:25</publishTime>
+    </File>
+    <File Include="Images/removeUser.jpg">
+      <publishTime>04/02/2016 16:34:51</publishTime>
+    </File>
+    <File Include="Images/Underconstruction.png">
+      <publishTime>04/19/2016 22:01:11</publishTime>
+    </File>
     <File Include="packages.config">
       <publishTime>03/25/2016 19:30:11</publishTime>
     </File>
@@ -196,7 +382,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/25/2016 19:30:10</publishTime>
     </File>
     <File Include="Scripts/assestManagementFormFlow.js">
-      <publishTime>04/02/2016 00:11:12</publishTime>
+      <publishTime>05/16/2016 20:18:51</publishTime>
     </File>
     <File Include="Scripts/bootstrap-datepicker.min.js">
       <publishTime>04/01/2016 19:11:10</publishTime>
@@ -206,6 +392,15 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Scripts/bootstrap.min.js">
       <publishTime>03/25/2016 19:29:41</publishTime>
+    </File>
+    <File Include="Scripts/chosen.jquery.min.js">
+      <publishTime>02/18/2016 13:37:50</publishTime>
+    </File>
+    <File Include="Scripts/dropzone-amd-module.js">
+      <publishTime>04/12/2016 17:27:35</publishTime>
+    </File>
+    <File Include="Scripts/dropzone.js">
+      <publishTime>04/12/2016 17:27:35</publishTime>
     </File>
     <File Include="Scripts/formValidation.bootstrap.min.js">
       <publishTime>04/01/2016 19:09:38</publishTime>
@@ -222,6 +417,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Scripts/jquery-1.10.2.min.map">
       <publishTime>03/25/2016 19:29:42</publishTime>
     </File>
+    <File Include="Scripts/jquery-ui.min.js">
+      <publishTime>03/15/2013 00:46:59</publishTime>
+    </File>
     <File Include="Scripts/jquery.bootstrap.wizard.min.js">
       <publishTime>04/01/2016 19:03:55</publishTime>
     </File>
@@ -237,6 +435,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Scripts/jquery.validate.unobtrusive.min.js">
       <publishTime>03/25/2016 19:29:49</publishTime>
     </File>
+    <File Include="Scripts/jsgrid.min.js">
+      <publishTime>04/07/2016 20:44:26</publishTime>
+    </File>
     <File Include="Scripts/modernizr-2.6.2.js">
       <publishTime>03/25/2016 19:29:48</publishTime>
     </File>
@@ -247,7 +448,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/25/2016 19:29:48</publishTime>
     </File>
     <File Include="Scripts/_references.js">
-      <publishTime>04/01/2016 19:20:58</publishTime>
+      <publishTime>04/25/2016 18:54:52</publishTime>
     </File>
     <File Include="Views/Account/ConfirmEmail.cshtml">
       <publishTime>03/25/2016 19:29:51</publishTime>
@@ -285,14 +486,92 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/Account/_ExternalLoginsListPartial.cshtml">
       <publishTime>03/25/2016 19:29:51</publishTime>
     </File>
+    <File Include="Views/AssetAccount/AddMainAsset.cshtml">
+      <publishTime>05/16/2016 19:22:50</publishTime>
+    </File>
+    <File Include="Views/AssetAccount/AddSubAsset.cshtml">
+      <publishTime>05/12/2016 22:32:17</publishTime>
+    </File>
+    <File Include="Views/AssetAccount/OpenAsset.cshtml">
+      <publishTime>05/07/2016 20:19:46</publishTime>
+    </File>
+    <File Include="Views/AssetAccount/OpenEditAsset.cshtml">
+      <publishTime>04/25/2016 20:56:56</publishTime>
+    </File>
+    <File Include="Views/AssetAccount/PartialAddManagementDetails.cshtml">
+      <publishTime>04/10/2016 19:42:38</publishTime>
+    </File>
+    <File Include="Views/AssetAccount/PartialOpenTestGallery.cshtml">
+      <publishTime>05/10/2016 22:02:18</publishTime>
+    </File>
+    <File Include="Views/AssetAccount/RemoveAsset.cshtml">
+      <publishTime>05/08/2016 12:06:26</publishTime>
+    </File>
     <File Include="Views/Home/About.cshtml">
-      <publishTime>04/02/2016 00:18:48</publishTime>
+      <publishTime>04/05/2016 20:45:40</publishTime>
     </File>
     <File Include="Views/Home/Contact.cshtml">
       <publishTime>03/25/2016 19:29:31</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>03/25/2016 19:29:31</publishTime>
+      <publishTime>04/19/2016 22:01:47</publishTime>
+    </File>
+    <File Include="Views/Image/PartialOpenAdvisoryUploadFileSave.cshtml">
+      <publishTime>05/16/2016 19:19:33</publishTime>
+    </File>
+    <File Include="Views/Image/PartialOpenAssetStatusUpload.cshtml">
+      <publishTime>05/16/2016 19:19:12</publishTime>
+    </File>
+    <File Include="Views/Image/PartialOpenCourtOrderUpload.cshtml">
+      <publishTime>05/16/2016 19:19:47</publishTime>
+    </File>
+    <File Include="Views/Image/PartialOpenCrNumberUpload.cshtml">
+      <publishTime>05/16/2016 19:19:54</publishTime>
+    </File>
+    <File Include="Views/Image/PartialOpenEastUpload.cshtml">
+      <publishTime>05/16/2016 19:20:04</publishTime>
+    </File>
+    <File Include="Views/Image/PartialOpenEstimatedValueUpload.cshtml">
+      <publishTime>05/16/2016 19:20:14</publishTime>
+    </File>
+    <File Include="Views/Image/PartialOpenGeoStampedUpload.cshtml">
+      <publishTime>05/16/2016 19:20:23</publishTime>
+    </File>
+    <File Include="Views/Image/PartialOpenGnNumberUpload.cshtml">
+      <publishTime>05/16/2016 19:20:35</publishTime>
+    </File>
+    <File Include="Views/Image/PartialOpenKhathaNoUpload.cshtml">
+      <publishTime>05/16/2016 19:20:46</publishTime>
+    </File>
+    <File Include="Views/Image/PartialOpenLitigationAssetUpload.cshtml">
+      <publishTime>05/16/2016 19:20:56</publishTime>
+    </File>
+    <File Include="Views/Image/PartialOpenLitigationManagementUpload.cshtml">
+      <publishTime>05/16/2016 19:21:05</publishTime>
+    </File>
+    <File Include="Views/Image/PartialOpenManagementUploadFileSave.cshtml">
+      <publishTime>05/16/2016 19:21:13</publishTime>
+    </File>
+    <File Include="Views/Image/PartialOpenMunicipalNoUpload.cshtml">
+      <publishTime>05/16/2016 19:21:29</publishTime>
+    </File>
+    <File Include="Views/Image/PartialOpenNorthUpload.cshtml">
+      <publishTime>05/07/2016 21:17:08</publishTime>
+    </File>
+    <File Include="Views/Image/PartialOpenSouthUpload.cshtml">
+      <publishTime>05/16/2016 19:21:48</publishTime>
+    </File>
+    <File Include="Views/Image/PartialOpenSurveyNoUpload.cshtml">
+      <publishTime>05/16/2016 19:21:56</publishTime>
+    </File>
+    <File Include="Views/Image/PartialOpenWestUpload.cshtml">
+      <publishTime>05/16/2016 19:22:06</publishTime>
+    </File>
+    <File Include="Views/LoginReg/OpenAccountPage.cshtml">
+      <publishTime>05/10/2016 19:47:21</publishTime>
+    </File>
+    <File Include="Views/LoginReg/OpenLogin.cshtml">
+      <publishTime>04/02/2016 13:49:20</publishTime>
     </File>
     <File Include="Views/Manage/AddPhoneNumber.cshtml">
       <publishTime>03/25/2016 19:29:51</publishTime>
@@ -319,10 +598,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/25/2016 19:29:51</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>04/02/2016 00:14:08</publishTime>
+      <publishTime>05/08/2016 00:13:36</publishTime>
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
-      <publishTime>03/30/2016 21:46:39</publishTime>
+      <publishTime>05/07/2016 02:54:47</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>03/25/2016 19:29:31</publishTime>
@@ -331,7 +610,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/25/2016 19:29:31</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>03/28/2016 22:03:27</publishTime>
+      <publishTime>04/20/2016 20:22:56</publishTime>
     </File>
   </ItemGroup>
 </Project>

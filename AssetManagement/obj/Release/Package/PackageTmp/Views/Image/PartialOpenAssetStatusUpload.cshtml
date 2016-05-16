@@ -1,0 +1,69 @@
+﻿<div class="dropzone" id="assetStatusDropzone"></div>
+
+
+<script>
+
+    $(document).ready(function () {
+  
+        uploadFiles();
+  
+    });
+
+    function uploadFiles() {
+
+        var myDropzone = new Dropzone("#assetStatusDropzone", {
+            paramName: 'file',
+            method: 'post',
+            //maxFiles: 1,
+            url: '/Image/OpenAssetStatusUploadFileSave',
+            dictDefaultMessage: "Click or drag photos ",
+            clickable: true,
+            maxFilesize: 512,
+            uploadMultiple: true,
+            addRemoveLinks: true,
+            forceFallback: false,
+            init: function () {
+                this.on("addedfile", function (file) {
+                   
+                });
+                this.on("maxfilesexceeded", function (file) {
+                    alert("File limit 512");
+                });
+                this.on("complete", function (file) {
+                    assetStatusImageArray.push(file);
+                    $('#assetStatusFileCount').html(assetStatusImageArray.length + ' Files uploaded');
+
+
+                });
+                this.on("removedfile",function(file){
+                    
+                    var i = assetStatusImageArray.indexOf(file);
+                    assetStatusImageArray.splice(i, 1);
+                    $('#assetStatusFileCount').html(assetStatusImageArray.length + ' Files uploaded');
+
+                    $.ajax({
+                        type: 'Post',
+                        url: '/Image/RemoveAssetStatusUploadedFile',
+                        data: { "fileName": file.name },
+                        success: function (data) {
+
+                        }
+                    });
+
+                });
+            }
+        });
+
+        if (assetStatusImageArray != null) {
+            for (var i in assetStatusImageArray) {
+                myDropzone.emit("addedfile", assetStatusImageArray[i]);
+                $(".dz-progress").css("background-color", 'initial');
+            }
+        }
+
+        return myDropzone;
+    }
+
+
+    
+</script>

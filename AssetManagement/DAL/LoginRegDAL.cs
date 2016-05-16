@@ -9,7 +9,11 @@ namespace AssetManagement.DAL
     {
         public bool loginCheck(string email, string password)
         {
-            bool status = true;
+            bool status = false;
+            if(email == "admin" && password == "admin")
+            {
+                status = true;
+            }
             return status;
         }
     }

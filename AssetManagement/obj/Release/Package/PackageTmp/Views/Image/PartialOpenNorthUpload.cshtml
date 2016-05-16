@@ -1,0 +1,73 @@
+﻿
+
+
+
+<div class="dropzone" id="northUploadDropzone"></div>
+
+
+<script>
+
+    $(document).ready(function () {
+
+        uploadFilesNorthDropzone();
+
+    });
+
+    function uploadFilesNorthDropzone() {
+
+        var myDropzone = new Dropzone("#northUploadDropzone", {
+            paramName: 'file',
+            method: 'post',
+            //maxFiles: 1,
+            url: '/Image/OpenNorthUploadFileSave',
+            dictDefaultMessage: "Click or Drag your images for zone ",
+            clickable: true,
+            maxFilesize: 512,
+            uploadMultiple: true,
+            addRemoveLinks: true,
+            forceFallback: false,
+            init: function () {
+                this.on("addedfile", function (file) {
+
+                });
+                this.on("maxfilesexceeded", function (file) {
+                    alert("File limit 512");
+                });
+                this.on("complete", function (file) {
+                    northImageArray.push(file);
+                    $('#northFileCount').html(northImageArray.length + ' Files uploaded');
+
+                });
+                this.on("removedfile",function(file){
+
+                    var i = northImageArray.indexOf(file);
+                    northImageArray.splice(i, 1);
+                    $('#northFileCount').html(northImageArray.length + ' Files uploaded');
+
+                    $.ajax({
+                        type: 'Post',
+                        url: '/Image/RemoveNorthUploadedFile',
+                        data: { "fileName": file.name },
+                        success: function (data) {
+
+                        }
+                    });
+
+                });
+            }
+        });
+
+        if (northImageArray != null) {
+            for (var i in northImageArray) {
+
+                myDropzone.emit("addedfile", northImageArray[i]);
+                $(".dz-progress").css("background-color", 'initial');
+            }
+        }
+
+        return myDropzone;
+    }
+
+
+
+</script>

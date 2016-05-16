@@ -1,0 +1,72 @@
+﻿@using AssetManagement.Models
+@model AssetViewModels
+
+
+<div class="form-group">
+    @Html.LabelFor(m => m.managementSocietyName, new { @class = "col-xs-3 control-label" })
+    <div class="col-xs-5">
+        @Html.TextBoxFor(m => m.managementSocietyName, new { @class = "form-control" })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(m => m.managementApprovalNumber, new { @class = "col-xs-3 control-label" })
+    <div class="col-xs-5">
+        @Html.TextBoxFor(m => m.managementApprovalNumber, new { @class = "form-control" })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(m => m.managementRegNumber, new { @class = "col-xs-3 control-label" })
+    <div class="col-xs-5">
+        @Html.TextBoxFor(m => m.managementRegNumber, new { @class = "form-control" })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(m => m.managementRegDate, new { @class = "col-xs-3 control-label" })
+    <div class="col-xs-5">
+
+        <div class="input-group input-append date" id="pickManagementAdvisoryRegDate">
+            @Html.TextBoxFor(m => m.managementRegDate, new { @class = "form-control" })
+            <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
+        </div>
+
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(m => m.managementExpDate, new { @class = "col-xs-3 control-label" })
+    <div class="col-xs-5">
+
+        <div class="input-group input-append date" id="pickManagementAdvisoryExpDate">
+            @Html.TextBoxFor(m => m.managementExpDate, new { @class = "form-control" })
+            <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
+        </div>
+
+    </div>
+</div>
+
+<script>
+
+$(function () {
+        $('#pickManagementAdvisoryRegDate')
+   .datepicker({
+       format: 'mm/dd/yyyy'
+   })
+   .on('changeDate', function (e) {
+       // Revalidate the date field
+       $('#installationForm').formValidation('revalidateField', 'managementRegDate');
+   });
+
+        $('#pickManagementAdvisoryExpDate')
+       .datepicker({
+           format: 'mm/dd/yyyy'
+       })
+       .on('changeDate', function (e) {
+           // Revalidate the date field
+           $('#installationForm').formValidation('revalidateField', 'managementExpDate');
+       });
+
+})
+</script>

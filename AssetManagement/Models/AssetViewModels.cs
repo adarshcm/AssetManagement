@@ -10,7 +10,12 @@ namespace AssetManagement.Models
 {
     public class AssetViewModels
     {
-        public int assetID { get; set; }
+        public string sel { get; set; }
+
+        public string rdBtnType { get; set; }
+
+        [Display(Name = "Institution ID")]
+        public string assetID { get; set; }
 
         public string assetTypeFlow { get; set; }
 
@@ -43,7 +48,8 @@ namespace AssetManagement.Models
         [Display(Name = "MLA Constituency")]
         public List<SelectListItem> MLAConstituency { get; set; }
         public string selectedMLAConstituency { get; set; }
-       
+      
+
         [Display(Name = "Urban")]
         public string urban { get; set; }
 
@@ -84,10 +90,17 @@ namespace AssetManagement.Models
         public string advisoryRegNumber { get; set; }
 
         [Display(Name = "Date of Registration")]
-        public DateTime advisoryRegDate { get; set; }
+        public string advisoryRegDate { get; set; }
 
         [Display(Name = "Date of Expiry")]
-        public DateTime advisoryExpDate { get; set; }
+        public string advisoryExpDate { get; set; }
+
+        [Display(Name = "Appointment Type")]
+        public List<SelectListItem> advisoryAppointmentType { get; set; }
+        public string selectedAdvisoryAppointmentType { get; set; }
+
+        [Display(Name = "Tenure")]
+        public string advisoryTenure { get; set; }
 
         public List<CommitteeDetails> advisoryDetails { get; set; }
         
@@ -104,6 +117,7 @@ namespace AssetManagement.Models
         [Display(Name = "Asset Type")]
         public List<SelectListItem> assetType { get; set; }
         public string selectedAssetType { get; set; }
+        public List<string> selectedAssetTypeList { get; set; }
 
         [Display(Name = "Asset Status")]
         public List<SelectListItem> assetStatus { get; set; }
@@ -117,13 +131,13 @@ namespace AssetManagement.Models
         public string gnNumber { get; set; }
 
         [Display(Name = "G.N. Date")]
-        public DateTime gnDate { get; set; }
+        public string gnDate { get; set; }
 
         [Display(Name = "C.R. No")]
         public string crNumber { get; set; }
 
         [Display(Name = "C.R. Date")]
-        public DateTime crDate { get; set; }
+        public string crDate { get; set; }
 
         [Display(Name = "Classification")]
         public List<SelectListItem> classificationType { get; set; }
@@ -197,16 +211,36 @@ namespace AssetManagement.Models
         public string managementRegNumber { get; set; }
 
         [Display(Name = "Date of Registration")]
-        public DateTime managementRegDate { get; set; }
+        public string managementRegDate { get; set; }
 
         [Display(Name = "Date of Expiry")]
-        public DateTime managementExpDate { get; set; }
+        public string managementExpDate { get; set; }
+
+        [Display(Name = "Appointment Type")]
+        public List<SelectListItem> managementAppointmentType { get; set; }
+        public string selectedManagementAppointmentType { get; set; }
+
+        [Display(Name = "Tenure")]
+        public string managementTenure { get; set; }
 
         public List<CommitteeDetails> managementDetails { get; set; }
 
         public List<ImageDetails> assetStatusImages { get; set; }
-
-
+        public List<ImageDetails> gnNumberImages { get; set; }
+        public List<ImageDetails> crNumberImages { get; set; }
+        public List<ImageDetails> courtOrderImages { get; set; }
+        public List<ImageDetails> surveyNoImages { get; set; }
+        public List<ImageDetails> khathaNoImages { get; set; }
+        public List<ImageDetails> municipalNoImages { get; set; }
+        public List<ImageDetails> northImages { get; set; }
+        public List<ImageDetails> eastImages { get; set; }
+        public List<ImageDetails> southImages { get; set; }
+        public List<ImageDetails> westImages { get; set; }
+        public List<ImageDetails> estimatedValueImages { get; set; }
+        public List<ImageDetails> litigationManagementImages { get; set; }
+        public List<ImageDetails> litigationAssetImages { get; set; }
+        public List<ImageDetails> geoStampedImages { get; set; }
+        
 
         public AssetViewModels()
         {
@@ -231,8 +265,26 @@ namespace AssetManagement.Models
             this.managementType = new List<SelectListItem>();
             this.mainInstitutionName = new List<SelectListItem>();
             this.managementDetails = new List<CommitteeDetails>();
+            this.managementAppointmentType = new List<SelectListItem>();
+            this.advisoryAppointmentType = new List<SelectListItem>();
+
             this.assetStatusImages = new List<ImageDetails>();
- 
+            this.gnNumberImages = new List<ImageDetails>();
+            this.crNumberImages = new List<ImageDetails>();
+            this.courtOrderImages = new List<ImageDetails>();
+            this.surveyNoImages = new List<ImageDetails>();
+            this.khathaNoImages = new List<ImageDetails>();
+            this.municipalNoImages = new List<ImageDetails>();
+            this.northImages = new List<ImageDetails>();
+            this.southImages = new List<ImageDetails>();
+            this.eastImages = new List<ImageDetails>();
+            this.westImages = new List<ImageDetails>();
+            this.litigationAssetImages = new List<ImageDetails>();
+            this.litigationManagementImages = new List<ImageDetails>();
+            this.geoStampedImages = new List<ImageDetails>();
+            this.estimatedValueImages = new List<ImageDetails>();
+            this.selectedAssetTypeList = new List<string>();
+
         }
 
         public void populateAssetViewModel()
@@ -248,54 +300,46 @@ namespace AssetManagement.Models
                              Value = item
                          }).ToList();
 
-            List<string> divisionLst = assetDal.getDivisionDetails();
+            List<string> divisionLst = assetDal.getDivision("Karnataka");
             this.division = (from item in divisionLst
                           select new SelectListItem
                           {
                               Text = item,
                               Value = item
-                          }).ToList();
-
-            List<string> districtLst = assetDal.getDistrictDetails();
-            this.district = (from item in districtLst
-                             select new SelectListItem
-                             {
-                                 Text = item,
-                                 Value = item
-                             }).ToList();
-
-            List<string> talukLst = assetDal.getTalukDetails();
-            this.taluk = (from item in talukLst
-                          select new SelectListItem
-                             {
-                                 Text = item,
-                                 Value = item
-                             }).ToList();
+                          }).ToList();        
 
 
-            List<string> MPLst = assetDal.getMPConstituency();
-            this.MPConstituency = (from item in MPLst
-                          select new SelectListItem
-                          {
-                              Text = item,
-                              Value = item
-                          }).ToList();
+            //List<string> MPLst = assetDal.getMPConstituency();
+            //this.MPConstituency = (from item in MPLst
+            //              select new SelectListItem
+            //              {
+            //                  Text = item,
+            //                  Value = item
+            //              }).ToList();
 
-            List<string> talukPanchLst = assetDal.getTalukPanchayath();
-            this.talukPanchayat = (from item in talukPanchLst
-                                   select new SelectListItem
-                                   {
-                                       Text = item,
-                                       Value = item
-                                   }).ToList();
+            //List<string> talukPanchLst = assetDal.getTalukPanchayath();
+            //this.talukPanchayat = (from item in talukPanchLst
+            //                       select new SelectListItem
+            //                       {
+            //                           Text = item,
+            //                           Value = item
+            //                       }).ToList();
 
-            List<string> MLALst = assetDal.getMPConstituency();
-            this.MLAConstituency = (from item in MLALst
-                                   select new SelectListItem
-                                   {
-                                       Text = item,
-                                       Value = item
-                                   }).ToList();
+            //List<string> villagePanchLst = assetDal.getVillagePanchayath();
+            //this.gramaPamchayat = (from item in villagePanchLst
+            //                       select new SelectListItem
+            //                       {
+            //                           Text = item,
+            //                           Value = item
+            //                       }).ToList();
+
+            //List<string> MLALst = assetDal.getMLAConstituency();
+            //this.MLAConstituency = (from item in MLALst
+            //                       select new SelectListItem
+            //                       {
+            //                           Text = item,
+            //                           Value = item
+            //                       }).ToList();
 
 
             List<string> assetTypeLst = assetDal.getAssetType();
@@ -338,13 +382,22 @@ namespace AssetManagement.Models
                                            Value = item
                                        }).ToList();
 
-            List<string> mainNameLst = assetDal.getMainAssetName();
-            this.mainInstitutionName = (from item in mainNameLst
-                                        select new SelectListItem
+            List<string> managementAppointmentLst = assetDal.getManagementAppointmentType();
+            this.managementAppointmentType = (from item in managementAppointmentLst
+                                   select new SelectListItem
                                    {
                                        Text = item,
                                        Value = item
                                    }).ToList();
+
+            List<string> advisoryAppointmentLst = assetDal.getAdvisoryAppointmentType();
+            this.advisoryAppointmentType = (from item in advisoryAppointmentLst
+                                              select new SelectListItem
+                                              {
+                                                  Text = item,
+                                                  Value = item
+                                              }).ToList();
+
 
         }
 
@@ -353,6 +406,7 @@ namespace AssetManagement.Models
 
     
 }
+
 
 
 

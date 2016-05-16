@@ -8,10 +8,53 @@
     @Scripts.Render("~/bundles/modernizr")
 
     <link href="~/Content/datepicker.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link href="~/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/jquery-ui.min.css" rel="stylesheet" />
+    <link href="~/Content/jsgrid.min.css" rel="stylesheet" />
+    <link href="~/Content/jsgrid-theme.min.css" rel="stylesheet" />
+    <link href="~/Content/dropzone.css" rel="stylesheet" />
+    <link href="~/Content/chosen.min.css" rel="stylesheet" />
 
 </head>
 <body>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+    <!-- Include Bootstrap Wizard -->
+    <script src="~/Scripts/jquery-ui.min.js"></script>
+    <script src="~/Scripts/jquery.bootstrap.wizard.min.js"></script>
+    <script src="~/Scripts/formValidation.min.js"></script>
+    <script src="~/Scripts/formValidation.bootstrap.min.js"></script>
+    <script src="~/Scripts/bootstrap-datepicker.min.js"></script>
+    <script src="~/Scripts/assestManagementFormFlow.js"></script>
+    <script src="~/Scripts/jsgrid.min.js"></script>
+    <script src="~/Scripts/dropzone-amd-module.js"></script>
+    <script src="~/Scripts/dropzone.js"></script>
+    <script src="~/Scripts/chosen.jquery.min.js"></script>
+
+    <script>
+        var assetFlowStatus,institutionId, rowImageMG, rowImageAG, flagToCheckEditClickedMG = 'Novalue', flagToCheckEditClickedAG = 'Novalue';
+        var assetStatusImageArray = [];
+        var gnNumberImageArray = [];
+        var crNumberImageArray = [];
+        var courtOrderImageArray = [];
+        var surveyNoImageArray = [];
+        var khathaNoImageArray = [];
+        var municipalNoImageArray = [];
+        var northImageArray = [];
+        var eastImageArray = [];
+        var southImageArray = [];
+        var westImageArray = [];
+        var estimatedValueImageArray = [];
+        var litigationManagementUploadImageArray = [];
+        var litigationAssetUploadImageArray = [];
+        var geoStampedUploadImageArray = [];
+        var managementImageArray = [];
+        var advisoryImageArray = [];
+
+    </script>
+
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -20,14 +63,30 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Asset Managemet Portal", "About", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Asset Managemet Portal", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     @*<li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
+
+                    @{
+
+
+                        if (ViewBag.login == "Login")
+                        {
+                            
+                        }
+                        else
+                        {
+                            <li id="homeBtn">@Html.ActionLink("Home", "OpenAccountPage", "AssetAccount")</li>
+                        }
+                    }
+
                 </ul>
+
+                
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
@@ -40,17 +99,7 @@
         </footer>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
-
-    <!-- Include Bootstrap Wizard -->
-    
-    <script src="~/Scripts/jquery.bootstrap.wizard.min.js"></script>
-    <script src="~/Scripts/formValidation.min.js"></script>
-    <script src="~/Scripts/formValidation.bootstrap.min.js"></script>
-    <script src="~/Scripts/bootstrap-datepicker.min.js"></script>
-    <script src="~/Scripts/assestManagementFormFlow.js"></script>
+   
     
 </body>
 </html>

@@ -220,9 +220,10 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\chosen-sprite.png" />
+    <Content Include="Content\chosen.min.css" />
     <Content Include="Content\datepicker.min.css" />
     <Content Include="Content\dropzone.css" />
-    <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\images\animated-overlay.gif" />
     <Content Include="Content\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -252,6 +253,7 @@
     <Content Include="Images\editMaster.png" />
     <Content Include="Images\removeAsset.png" />
     <Content Include="Images\removeUser.jpg" />
+    <Content Include="Images\Underconstruction.png" />
     <Content Include="Scripts\ai.0.15.0-build58334.js" />
     <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="Scripts\assestManagementFormFlow.js" />
@@ -295,6 +297,7 @@
     <Content Include="font-awesome-4.5.0\scss\_variables.scss" />
     <None Include="Properties\PublishProfiles\AssestDemo.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\chosen.jquery.min.js" />
     <Content Include="Scripts\dropzone-amd-module.js" />
     <Content Include="Scripts\dropzone.js" />
     <Content Include="Scripts\formValidation.bootstrap.min.js" />
@@ -355,11 +358,27 @@
     <Content Include="Views\AssetAccount\PartialAddManagementDetails.cshtml" />
     <Content Include="Views\AssetAccount\RemoveAsset.cshtml" />
     <Content Include="Views\AssetAccount\OpenEditAsset.cshtml" />
-    <Content Include="Views\AssetAccount\PartialOpenAssetStatusUpload.cshtml" />
+    <Content Include="Views\Image\PartialOpenAssetStatusUpload.cshtml" />
+    <Content Include="Views\Image\PartialOpenGnNumberUpload.cshtml" />
+    <Content Include="Views\Image\PartialOpenCrNumberUpload.cshtml" />
+    <Content Include="Views\Image\PartialOpenCourtOrderUpload.cshtml" />
+    <Content Include="Views\Image\PartialOpenSurveyNoUpload.cshtml" />
+    <Content Include="Views\Image\PartialOpenKhathaNoUpload.cshtml" />
+    <Content Include="Views\Image\PartialOpenMunicipalNoUpload.cshtml" />
+    <Content Include="Views\Image\PartialOpenNorthUpload.cshtml" />
+    <Content Include="Views\Image\PartialOpenEastUpload.cshtml" />
+    <Content Include="Views\Image\PartialOpenSouthUpload.cshtml" />
+    <Content Include="Views\Image\PartialOpenWestUpload.cshtml" />
+    <Content Include="Views\Image\PartialOpenEstimatedValueUpload.cshtml" />
+    <Content Include="Views\Image\PartialOpenLitigationManagementUpload.cshtml" />
+    <Content Include="Views\Image\PartialOpenLitigationAssetUpload.cshtml" />
+    <Content Include="Views\Image\PartialOpenGeoStampedUpload.cshtml" />
+    <Content Include="Views\Image\PartialOpenManagementUploadFileSave.cshtml" />
+    <Content Include="Views\Image\PartialOpenAdvisoryUploadFileSave.cshtml" />
+    <Content Include="Views\AssetAccount\PartialOpenTestGallery.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Image\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

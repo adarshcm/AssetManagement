@@ -1,0 +1,74 @@
+﻿
+<div class="dropzone" id="litigationAssetUploadDropzone"></div>
+
+
+<script>
+
+    $(document).ready(function () {
+
+        uploadFilesLitigationAssetDropzone();
+
+    });
+
+    function uploadFilesLitigationAssetDropzone() {
+
+        var myDropzone = new Dropzone("#litigationAssetUploadDropzone", {
+            paramName: 'file',
+            method: 'post',
+            //maxFiles: 1,
+            url: '/Image/OpenLitigationAssetUploadFileSave',
+            dictDefaultMessage: "Click or drag photos ",
+            clickable: true,
+            maxFilesize: 512,
+            uploadMultiple: true,
+            addRemoveLinks: true,
+            forceFallback: false,
+            init: function () {
+                this.on("addedfile", function (file) {
+
+                });
+                this.on("maxfilesexceeded", function (file) {
+                    alert("File limit 512");
+                });
+                this.on("complete", function (file) {
+                    litigationAssetUploadImageArray.push(file);
+                    $('#litigationAssetFileCount').html(litigationAssetUploadImageArray.length + ' Files uploaded');
+
+                });
+                this.on("removedfile",function(file){
+
+                    var i = litigationAssetUploadImageArray.indexOf(file);
+                    litigationAssetUploadImageArray.splice(i, 1);
+                    $('#litigationAssetFileCount').html(litigationAssetUploadImageArray.length + ' Files uploaded');
+
+                    $.ajax({
+                        type: 'Post',
+                        url: '/Image/RemoveLitigationAssetUploadedFile',
+                        data: { "fileName": file.name },
+                        success: function (data) {
+
+                        }
+                    });
+
+                });
+            }
+        });
+
+        if (litigationAssetUploadImageArray != null) {
+            for (var i in litigationAssetUploadImageArray) {
+
+                myDropzone.emit("addedfile", litigationAssetUploadImageArray[i]);
+                $(".dz-progress").css("background-color", 'initial');
+            }
+        }
+
+        return myDropzone;
+    }
+
+
+
+</script>
+
+
+
+

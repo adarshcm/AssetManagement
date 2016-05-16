@@ -1,0 +1,73 @@
+﻿
+
+
+
+<div class="dropzone" id="municipalNoUploadDropzone"></div>
+
+
+<script>
+
+    $(document).ready(function () {
+
+        uploadFilesMunicipalNoDropzone();
+
+    });
+
+    function uploadFilesMunicipalNoDropzone() {
+
+        var myDropzone = new Dropzone("#municipalNoUploadDropzone", {
+            paramName: 'file',
+            method: 'post',
+            //maxFiles: 1,
+            url: '/Image/OpenMunicipalNoUploadFileSave',
+            dictDefaultMessage: "Click or drag photos ",
+            clickable: true,
+            maxFilesize: 512,
+            uploadMultiple: true,
+            addRemoveLinks: true,
+            forceFallback: false,
+            init: function () {
+                this.on("addedfile", function (file) {
+
+                });
+                this.on("maxfilesexceeded", function (file) {
+                    alert("File limit 512");
+                });
+                this.on("complete", function (file) {
+                    municipalNoImageArray.push(file);
+                    $('#municipalNoFileCount').html(municipalNoImageArray.length + ' Files uploaded');
+
+                });
+                this.on("removedfile",function(file){
+
+                    var i = municipalNoImageArray.indexOf(file);
+                    municipalNoImageArray.splice(i, 1);
+                    $('#municipalNoFileCount').html(municipalNoImageArray.length + ' Files uploaded');
+
+                    $.ajax({
+                        type: 'Post',
+                        url: '/Image/RemoveMunicipalNoUploadedFile',
+                        data: { "fileName": file.name },
+                        success: function (data) {
+
+                        }
+                    });
+
+                });
+            }
+        });
+
+        if (municipalNoImageArray != null) {
+            for (var i in municipalNoImageArray) {
+
+                myDropzone.emit("addedfile", municipalNoImageArray[i]);
+                $(".dz-progress").css("background-color", 'initial');
+            }
+        }
+
+        return myDropzone;
+    }
+
+
+
+</script>

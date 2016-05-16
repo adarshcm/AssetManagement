@@ -10,17 +10,20 @@ namespace AssetManagement.Controllers
     public class HomeController : Controller
     {
         public ActionResult Index()
+
         {
+            ViewBag.login = "Login";
             return View();
         }
 
         public ActionResult About(string assetType)
         {
-            AssetViewModels model = new AssetViewModels();
-            model.assetTypeFlow = assetType;
-            ViewBag.assetTypeFlow = assetType;
-            model.populateAssetViewModel();
-            return View("~/Views/Home/About.cshtml",model);
+            
+            //AssetViewModels model = new AssetViewModels();
+            //model.assetTypeFlow = assetType;
+            //ViewBag.assetTypeFlow = assetType;
+            //model.populateAssetViewModel();
+            return View("~/Views/Home/About.cshtml");
         }
 
         public ActionResult Contact()

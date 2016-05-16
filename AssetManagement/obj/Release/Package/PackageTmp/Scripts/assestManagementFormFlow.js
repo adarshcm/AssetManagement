@@ -1,5 +1,12 @@
 ﻿$(document).ready(function () {
 
+    // uncomment to disable click on tabs
+    //$(".nav-pills li a[data-toggle=tab]").on("click", function (e) {
+    //    //if ($(this).hasClass("disabled")) { 
+    //    e.preventDefault();
+    //    return false;
+    //    //} 
+    //});
 
 
     $('#installationForm')
@@ -13,14 +20,21 @@
                 // This option will not ignore invisible fields which belong to inactive panels
                 excluded: ':disabled',
                 fields: {
+                    assetID: {
+                        validators: {
+                            notEmpty: {
+                                message: 'The institution Id is required'
+                            }
+                        }
+                    },
                     institutionName: {
                         validators: {
                             notEmpty: {
                                 message: 'The institution name is required'
                             }
                         }
-                    },
-                    address: {
+                    }
+                   /* address: {
                         validators: {
                             notEmpty: {
                                 message: 'The address is required'
@@ -131,7 +145,7 @@
                                 message: 'The Advisory registration date is required'
                             },
                             date: {
-                                format: 'MM/DD/YYYY',
+                                format: 'DD/MM/YYYY',
                                 message: 'The date is not a valid'
                             }
                         }
@@ -142,7 +156,7 @@
                                 message: 'The Advisory expiry date is required'
                             },
                             date: {
-                                format: 'MM/DD/YYYY',
+                                format: 'DD/MM/YYYY',
                                 message: 'The date is not a valid'
                             }
                         }
@@ -153,7 +167,7 @@
                                 message: 'The G.N. date is required'
                             },
                             date: {
-                                format: 'MM/DD/YYYY',
+                                format: 'DD/MM/YYYY',
                                 message: 'The date is not a valid'
                             }
                         }
@@ -164,11 +178,11 @@
                                 message: 'The C.R. date is required'
                             },
                             date: {
-                                format: 'MM/DD/YYYY',
+                                format: 'DD/MM/YYYY',
                                 message: 'The date is not a valid'
                             }
                         }
-                    }
+                    }*/
 
 
                 }
@@ -177,9 +191,24 @@
             .bootstrapWizard({
                 tabClass: 'nav nav-pills',
                 onTabClick: function (tab, navigation, index) {
+                    console.log(tab);
+                    if (assetFlowStatus != "EditAsset") {
+                        //if (index == 3) {
+                            createInstitutionId();
+                        //}
+                    }
                     return validateTab(index);
                 },
                 onNext: function (tab, navigation, index) {
+                    
+                   
+                    if (assetFlowStatus != "EditAsset"){ 
+                        if (index == 2) {
+                            createInstitutionId();
+                        }                      
+                    }
+
+                    $(window).scrollTop(0);
                     var numTabs = $('#installationForm').find('.tab-pane').length,
                         isValidTab = validateTab(index - 1);
                     if (!isValidTab) {
@@ -188,12 +217,12 @@
 
                     if (index === numTabs) {
                         // We are at the last tab
-
-                        // Uncomment the following line to submit the form using the defaultSubmit() method
-                        // $('#installationForm').formValidation('defaultSubmit');
-
+                        
+                        $('#installationForm').formValidation('defaultSubmit');
+                        clearAllGlobalObjects();
 
                     }
+                    
 
                     return true;
                 },
@@ -210,7 +239,7 @@
                             .html(index === numTabs - 1 ? 'Save' : 'Next');
   
                 }
-            });
+    });
 
     function validateTab(index) {
         var fv = $('#installationForm').data('formValidation'), // FormValidation instance
@@ -229,6 +258,15 @@
         return true;
     }
 
+
+    function createInstitutionId() {
+
+        institutionId = ($('#selectedState').val()).substring(0, 2);
+        institutionId += ($('#selectedDistrict').val()).substring(0, 3);
+        institutionId += ($('#selectedTaluk').val()).substring(0, 3);
+        institutionId += '00';
+        $('#assetID').val(institutionId.toUpperCase());
+    }
 
     $('#rdBtnMPConstituency').click(function () {
         $('#showMPFlow').show();
@@ -256,38 +294,499 @@
 
     $('#pickAdvisoryRegDate')
         .datepicker({
-            format: 'mm/dd/yyyy'
+            format: 'dd/mm/yyyy'
         })
         .on('changeDate', function (e) {
             // Revalidate the date field
-            $('#installationForm').formValidation('revalidateField', 'advisoryRegDate');
+           // $('#installationForm').formValidation('revalidateField', 'advisoryRegDate');
         });
 
     $('#pickAdvisoryExpDate')
     .datepicker({
-        format: 'mm/dd/yyyy'
+        format: 'dd/mm/yyyy'
     })
     .on('changeDate', function (e) {
         // Revalidate the date field
-        $('#installationForm').formValidation('revalidateField', 'advisoryExpDate');
+        //$('#installationForm').formValidation('revalidateField', 'advisoryExpDate');
     });
 
     $('#pickGnDate')
     .datepicker({
-        format: 'mm/dd/yyyy'
+        format: 'dd/mm/yyyy'
     })
     .on('changeDate', function (e) {
         // Revalidate the date field
-        $('#installationForm').formValidation('revalidateField', 'gnDate');
+        //$('#installationForm').formValidation('revalidateField', 'gnDate');
     });
 
     $('#pickCrDate')
     .datepicker({
-        format: 'mm/dd/yyyy'
+        format: 'dd/mm/yyyy'
     })
     .on('changeDate', function (e) {
         // Revalidate the date field
-        $('#installationForm').formValidation('revalidateField', 'crDate');
+        //$('#installationForm').formValidation('revalidateField', 'crDate');
     });
 
-});
+    $('#pickManagementAdvisoryRegDate')
+    .datepicker({
+        format: 'dd/mm/yyyy'
+    })
+    .on('changeDate', function (e) {
+        // Revalidate the date field
+        //$('#installationForm').formValidation('revalidateField', 'managementRegDate');
+    });
+
+    $('#pickManagementAdvisoryExpDate')
+   .datepicker({
+       format: 'dd/mm/yyyy'
+   })
+   .on('changeDate', function (e) {
+       // Revalidate the date field
+       //$('#installationForm').formValidation('revalidateField', 'managementExpDate');
+   });
+
+
+    $('#pickManagementTenure')
+     .datepicker({
+         format: 'dd/mm/yyyy'
+     })
+     .on('changeDate', function (e) {
+         // Revalidate the date field
+        // $('#installationForm').formValidation('revalidateField', 'managementTenure');
+     });
+
+
+    $('#pickAdvisoryTenure')
+    .datepicker({
+        format: 'dd/mm/yyyy'
+    })
+    .on('changeDate', function (e) {
+        // Revalidate the date field
+       // $('#installationForm').formValidation('revalidateField', 'advisoryTenure');
+    });
+
+
+    $('#addAsset').click(function () {
+        
+        var divs = $('body').find('div[id="divAddAsset"]');
+
+        $.each(divs, function (index, divItem) {
+            $(divItem).remove();
+        });
+
+        //add new div
+        $('body').append('<div id="divAddAsset"></div>');
+
+        $.ajax({
+            type: 'Post',
+            url: '/AssetAccount/OpenAddAsset',
+            success: function (data) {
+                
+                $('#divAddAsset').html(data);
+
+            }
+        });
+
+        var widthAppWindow = $(window).width();
+        var heightAppWindow = $(window).height();
+
+
+        widthAppWindow = parseInt(widthAppWindow) - parseInt(700);
+        heightAppWindow = parseInt(heightAppWindow) - parseInt(400);
+        $('#divAddAsset').dialog({
+
+            modal: true,
+            width: widthAppWindow,
+            height: heightAppWindow,
+            autoOpen: false,
+            title: "Select Asset Type",
+            buttons: {
+                OK: function () {
+                    var assetType = $('#selectAssetType').val();
+                    window.location.href = '/AssetAccount/AddAsset?assetType=' + assetType;
+                }
+            }
+        });
+
+        $('#divAddAsset').dialog('open');
+        
+
+    })
+
+
+    //$('#selectedManagementType').change(function () {
+       
+
+    //    $.ajax({
+    //        type: 'Post',
+    //        url: '/AssetAccount/AddManagementDetails',
+    //        success: function (data) {
+
+    //            $('#managementCommitteDetails').html(data);
+
+    //        }
+    //    });
+
+    //})
+
+
+
+
+
+    $('#removeAsset').click(function () {
+        
+        window.location.href = '/AssetAccount/RemoveAsset';
+    })
+
+    $('#editAsset').click(function () {
+
+        //'@Url.Action("{OpenEditAsset}", "{AssetAccount}")'
+        window.location.href = '/AssetAccount/OpenEditAsset';
+    })
+
+
+    
+    function popUpForImageUpload(divID,url){
+        
+        var divs = $('body').find('div[id="'+divID+'"]');
+
+        $.each(divs, function (index, divItem) {
+            $(divItem).remove();
+        });
+
+        //add new div
+        $('body').append('<div id="'+ divID +'"></div>');
+
+        $.ajax({
+            type: 'Post',
+            url: url,
+            success: function (data) {
+                $('#' + divID + '').html(data);
+            }
+        });
+
+        var widthAppWindow = $(window).width();
+        var heightAppWindow = $(window).height();
+
+
+        widthAppWindow = parseInt(widthAppWindow) - parseInt(600);
+        heightAppWindow = parseInt(heightAppWindow) - parseInt(350);
+
+        $('#' + divID + '').dialog({
+            modal: true,
+            width: widthAppWindow,
+            height: heightAppWindow,
+            autoOpen: false,
+            title: "Upload",
+
+        });
+
+        $('#' + divID + '').dialog('open');
+    }
+
+
+    $('#assetStatusUpload').click(function () {
+        popUpForImageUpload('divassetStatusUpload', '/Image/OpenAssetStatusUpload');
+    })
+
+
+    $('#gnNumberUpload').click(function () {
+        popUpForImageUpload('divgnNumberUpload', '/Image/OpenGnNumberUpload');
+    })
+
+    $('#crNumberUpload').click(function () {
+        popUpForImageUpload('divcrNumberUpload', '/Image/OpenCrNumberUpload');
+    })
+    
+    $('#courtOrderUpload').click(function () {
+        popUpForImageUpload('divcourtOrderUpload', '/Image/OpenCourtOrderUpload');
+    })
+
+    $('#surveyNoUpload').click(function () {
+        popUpForImageUpload('divsurveyNoUpload', '/Image/OpenSurveyNoUpload');
+    })
+
+    $('#khathaNoUpload').click(function () {
+        popUpForImageUpload('divkhathaNoUpload', '/Image/OpenKhathaNoUpload');
+    })
+
+    $('#municipalNoUpload').click(function () {
+        popUpForImageUpload('divmunicipalNoUpload', '/Image/OpenMunicipalNoUpload');
+    })
+
+    $('#northUpload').click(function () {
+        popUpForImageUpload('divnorthUpload', '/Image/OpenNorthUpload');
+    })
+
+    $('#eastUpload').click(function () {
+        popUpForImageUpload('diveastUpload', '/Image/OpenEastUpload');
+    })
+
+    $('#southUpload').click(function () {
+        popUpForImageUpload('divsouthUpload', '/Image/OpenSouthUpload');
+    })
+
+    $('#westUpload').click(function () {
+        popUpForImageUpload('divwestUpload', '/Image/OpenWestUpload');
+    })
+
+    $('#estimatedValueUpload').click(function () {
+        popUpForImageUpload('divestimatedValueUpload', '/Image/OpenEstimatedValueUpload');
+    })
+
+    $('#litigationManagementUpload').click(function () {
+        popUpForImageUpload('divlitigationManagementUpload', '/Image/OpenLitigationManagementUpload');
+    })
+
+    $('#litigationAssetUpload').click(function () {
+        popUpForImageUpload('divlitigationAssetUpload', '/Image/OpenLitigationAssetUpload');
+    })
+
+    $('#geoStampedUpload').click(function () {
+        popUpForImageUpload('divgeoStampedUpload', '/Image/OpenGeoStampedUpload');
+    })
+
+    function clearAllGlobalObjects() {
+       
+        assetStatusImageArray = [];
+        gnNumberImageArray = [];
+        crNumberImageArray = [];
+        courtOrderImageArray = [];
+        surveyNoImageArray = [];
+        khathaNoImageArray = [];
+        municipalNoImageArray = [];
+        northImageArray = [];
+        eastImageArray = [];
+        southImageArray = [];
+        westImageArray = [];
+        estimatedValueImageArray = [];
+        litigationManagementUploadImageArray = [];
+        litigationAssetUploadImageArray = [];
+        geoStampedUploadImageArray = [];
+    }
+
+
+
+
+    $('#selectedDivision').change(function () {
+        var selVal = $('#selectedDivision').val();
+
+        $.ajax({
+            type: 'Post',
+            url: '/AssetAccount/GetDistrict',
+            data: { 'division': selVal },
+            success: function (data) {
+
+                if (data.result != null) {
+                    var dd1 = document.getElementById("selectedDistrict");
+                    dd1.innerHTML = '';
+
+                    for (i = 0; i < data.result.length; i++) {
+                        dd1.options[dd1.length] = new Option(data.result[i], data.result[i]);
+                    }
+                }
+
+                $('#selectedDistrict').trigger('change');
+                
+            }
+        });
+    })
+
+
+    $('#selectedDistrict').change(function () {
+        var selVal = $('#selectedDistrict').val();
+
+        $.ajax({
+            type: 'Post',
+            url: '/AssetAccount/GetTaluk',
+            data: { 'district': selVal },
+            success: function (data) {
+
+                if (data.result != null) {
+                    var dd1 = document.getElementById("selectedTaluk");
+                    dd1.innerHTML = '';
+
+                    for (i = 0; i < data.result.length; i++) {
+                        dd1.options[dd1.length] = new Option(data.result[i], data.result[i]);
+                    }
+                }
+                $('#selectedTaluk').trigger('change');
+            }
+        });
+
+
+
+        $.ajax({
+            type: 'Post',
+            url: '/AssetAccount/GetMPList',
+            data: { 'district': selVal },
+            success: function (data) {
+
+                if (data.result != null) {
+                    var dd1 = document.getElementById("selectedMPConstituency");
+                    dd1.innerHTML = '';
+
+                    for (i = 0; i < data.result.length; i++) {
+                        dd1.options[dd1.length] = new Option(data.result[i], data.result[i]);
+                    }
+                }
+                
+            }
+        });
+
+        $.ajax({
+            type: 'Post',
+            url: '/AssetAccount/GetMLAList',
+            data: { 'district': selVal },
+            success: function (data) {
+
+                if (data.result != null) {
+                    var dd1 = document.getElementById("selectedMLAConstituency");
+                    dd1.innerHTML = '';
+
+                    for (i = 0; i < data.result.length; i++) {
+                        dd1.options[dd1.length] = new Option(data.result[i], data.result[i]);
+                    }
+                }
+
+            }
+        });
+
+
+
+    })
+
+
+    $('#selectedTaluk').change(function () {
+        var selVal = $('#selectedTaluk').val();
+
+        var dd1 = document.getElementById("selectedTalukPanchayat");
+        dd1.innerHTML = '';
+        dd1.options[dd1.length] = new Option(selVal, selVal);
+       
+       $('#selectedTalukPanchayat').trigger('change');
+
+    })
+
+
+
+    $('#selectedTalukPanchayat').change(function () {
+        var selVal = $('#selectedTalukPanchayat').val();
+
+        $.ajax({
+            type: 'Post',
+            url: '/AssetAccount/GetGramaPanchayath',
+            data: { 'talukP': selVal },
+            success: function (data) {
+
+                if (data.result != null) {
+                    var dd1 = document.getElementById("selectedGramaPanchayat");
+                    dd1.innerHTML = '';
+
+                    for (i = 0; i < data.result.length; i++) {
+                        dd1.options[dd1.length] = new Option(data.result[i], data.result[i]);
+                    }
+                }
+                $('#selectedGramaPanchayat').trigger('change');
+            }
+        });
+    })
+
+
+
+    $('#selectedGramaPanchayat').change(function () {
+        var selVal = $('#selectedGramaPanchayat').val();
+
+        $.ajax({
+            type: 'Post',
+            url: '/AssetAccount/GetVillage',
+            data: { 'gramaPanchayat': selVal },
+            success: function (data) {
+
+                if (data.result != null) {
+                    var dd1 = document.getElementById("selectedVillage");
+                    dd1.innerHTML = '';
+
+                    for (i = 0; i < data.result.length; i++) {
+                        dd1.options[dd1.length] = new Option(data.result[i], data.result[i]);
+                    }
+                }
+            }
+        });
+    })
+
+    
+
+    $('#selectedDistrict').change(function () {
+
+        $('#setDistrictName').text($('#selectedDistrict').val());
+
+    });
+
+
+
+
+    
+
+    $('#homeBtn').click(function () {
+        var status = confirm("Are you sure you want to navigate away from this page?\n\nPress OK to continue, or Cancel to stay on the current page");
+        if (status) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    })
+
+
+
+    $('#editMasterBtn1').click(function () {
+       
+        var divs = $('body').find('div[id="divAddAsset"]');
+
+        $.each(divs, function (index, divItem) {
+            $(divItem).remove();
+        });
+
+        //add new div
+        $('body').append('<div id="divAddAsset"></div>');
+
+        $.ajax({
+            type: 'Post',
+            url: '/AssetAccount/OpenTestGallery',
+            success: function (data) {
+
+                $('#divAddAsset').html(data);
+
+            }
+        });
+
+        var widthAppWindow = $(window).width();
+        var heightAppWindow = $(window).height();
+
+
+        widthAppWindow = parseInt(widthAppWindow) - parseInt(300);
+        heightAppWindow = parseInt(heightAppWindow) - parseInt(100);
+        $('#divAddAsset').dialog({
+
+            modal: true,
+            width: widthAppWindow,
+            height: heightAppWindow,
+            autoOpen: false,
+            title: "Select Asset Type",
+            buttons: {
+                OK: function () {
+                }
+            }
+        });
+
+        $('#divAddAsset').dialog('open');
+
+
+    })
+
+
+
+
+}); // end of main function

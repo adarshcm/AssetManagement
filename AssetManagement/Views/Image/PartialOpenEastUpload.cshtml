@@ -1,0 +1,71 @@
+﻿
+
+<div class="dropzone" id="eastUploadDropzone"></div>
+
+
+<script>
+
+    $(document).ready(function () {
+
+        uploadFilesEastDropzone();
+
+    });
+
+    function uploadFilesEastDropzone() {
+
+        var myDropzone = new Dropzone("#eastUploadDropzone", {
+            paramName: 'file',
+            method: 'post',
+            //maxFiles: 1,
+            url: '/Image/OpenEastUploadFileSave',
+            dictDefaultMessage: "Click or drag photos ",
+            clickable: true,
+            maxFilesize: 512,
+            uploadMultiple: true,
+            addRemoveLinks: true,
+            forceFallback: false,
+            init: function () {
+                this.on("addedfile", function (file) {
+
+                });
+                this.on("maxfilesexceeded", function (file) {
+                    alert("File limit 512");
+                });
+                this.on("complete", function (file) {
+                    eastImageArray.push(file);
+                    $('#eastFileCount').html(eastImageArray.length + ' Files uploaded');
+
+                });
+                this.on("removedfile",function(file){
+
+                    var i = eastImageArray.indexOf(file);
+                    eastImageArray.splice(i, 1);
+                    $('#eastFileCount').html(eastImageArray.length + ' Files uploaded');
+
+                    $.ajax({
+                        type: 'Post',
+                        url: '/Image/RemoveEastUploadedFile',
+                        data: { "fileName": file.name },
+                        success: function (data) {
+
+                        }
+                    });
+
+                });
+            }
+        });
+
+        if (eastImageArray != null) {
+            for (var i in eastImageArray) {
+
+                myDropzone.emit("addedfile", eastImageArray[i]);
+                $(".dz-progress").css("background-color", 'initial');
+            }
+        }
+
+        return myDropzone;
+    }
+
+
+
+</script>

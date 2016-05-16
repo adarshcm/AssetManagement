@@ -19,7 +19,7 @@ else
         @*<li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
         <li>@Html.ActionLink("Log in", "OpenLogin", "LoginReg", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>*@
         @{
-            if (ViewBag.login != "login")
+            if (ViewBag.login == "Login")
             {
                 <li>@Html.ActionLink("Log in", "OpenLogin", "LoginReg",routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
             }

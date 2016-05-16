@@ -1,0 +1,74 @@
+﻿
+
+
+<div class="dropzone" id="estimatedValueUploadDropzone"></div>
+
+
+<script>
+
+    $(document).ready(function () {
+
+        uploadFilesEstimatedValueDropzone();
+
+    });
+
+    function uploadFilesEstimatedValueDropzone() {
+
+        var myDropzone = new Dropzone("#estimatedValueUploadDropzone", {
+            paramName: 'file',
+            method: 'post',
+            //maxFiles: 1,
+            url: '/Image/OpenEstimatedValueUploadFileSave',
+            dictDefaultMessage: "Click or drag photos ",
+            clickable: true,
+            maxFilesize: 512,
+            uploadMultiple: true,
+            addRemoveLinks: true,
+            forceFallback: false,
+            init: function () {
+                this.on("addedfile", function (file) {
+
+                });
+                this.on("maxfilesexceeded", function (file) {
+                    alert("File limit 512");
+                });
+                this.on("complete", function (file) {
+                    estimatedValueImageArray.push(file);
+                    $('#estimatedValueFileCount').html(estimatedValueImageArray.length + ' Files uploaded');
+
+                });
+                this.on("removedfile",function(file){
+
+                    var i = estimatedValueImageArray.indexOf(file);
+                    estimatedValueImageArray.splice(i, 1);
+                    $('#estimatedValueFileCount').html(estimatedValueImageArray.length + ' Files uploaded');
+
+                    $.ajax({
+                        type: 'Post',
+                        url: '/Image/RemoveEstimatedValueUploadedFile',
+                        data: { "fileName": file.name },
+                        success: function (data) {
+
+                        }
+                    });
+
+                });
+            }
+        });
+
+        if (estimatedValueImageArray != null) {
+            for (var i in estimatedValueImageArray) {
+
+                myDropzone.emit("addedfile", estimatedValueImageArray[i]);
+                $(".dz-progress").css("background-color", 'initial');
+            }
+        }
+
+        return myDropzone;
+    }
+
+
+
+</script>
+
+
