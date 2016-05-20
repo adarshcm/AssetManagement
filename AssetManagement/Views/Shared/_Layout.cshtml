@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -14,6 +14,7 @@
     <link href="~/Content/jsgrid-theme.min.css" rel="stylesheet" />
     <link href="~/Content/dropzone.css" rel="stylesheet" />
     <link href="~/Content/chosen.min.css" rel="stylesheet" />
+    <link href="~/Map/css/map.css" rel="stylesheet" />
 
 </head>
 <body>
@@ -32,6 +33,10 @@
     <script src="~/Scripts/dropzone-amd-module.js"></script>
     <script src="~/Scripts/dropzone.js"></script>
     <script src="~/Scripts/chosen.jquery.min.js"></script>
+
+    <script src="~/Map/js/lib/d3.v3.min.js"></script>
+    <script src="~/Map/js/lib/topojson.v1.min.js"></script>
+    <script src="~/Map/js/map.js"></script>
 
     <script>
         var assetFlowStatus,institutionId, rowImageMG, rowImageAG, flagToCheckEditClickedMG = 'Novalue', flagToCheckEditClickedAG = 'Novalue';

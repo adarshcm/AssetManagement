@@ -1,0 +1,234 @@
+﻿@{
+    Layout = "~/Views/Shared/_WebLayout.cshtml";
+}
+@{
+    ViewBag.Title = "ViewInstituionDetails";
+}
+@using AssetManagement.Models
+@model AssetViewModels
+
+<style>
+    
+.panel-title:hover {
+    cursor: pointer;
+}
+
+.borderless td, .borderless th {
+    border: none !important;
+}
+
+</style>
+
+<div class="panel-group" id="accordion">
+    <!-- First Panel -->
+    <div class="panel panel-default">
+        <div class="panel-heading" style="color: white;background-color: #E36974;">
+            <h4 class="panel-title" data-toggle="collapse" data-target="#collapseOne">
+                Institution Information
+                <i class="indicator glyphicon glyphicon-chevron-down  pull-right"></i>
+            </h4>
+
+            
+
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse">
+            <div class="panel-body">
+                <table class="table borderless">
+                    <tr>
+                        <td>
+                            Institution ID :
+                        </td>
+                        <td>
+                            @Model.assetID
+                        </td>
+                        <td>
+                            Institution Name :
+                        </td>
+                        <td>
+                            @Model.institutionName
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Asset Type :
+                        </td>
+                        <td>
+                            @Model.selectedAssetType
+                        </td>
+                        <td>
+                            Asset Status :
+                        </td>
+                        <td>
+                            @Model.selectedAssetStatus
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            G.N. No :
+                        </td>
+                        <td>
+                            @Model.gnNumber
+                        </td>
+                        <td>
+                            G.N. Date :
+                        </td>
+                        <td>
+                            @Model.gnDate
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            C.R. No :
+                        </td>
+                        <td>
+                            @Model.crNumber
+                        </td>
+                        <td>
+                            C.R. Date :
+                        </td>
+                        <td>
+                            @Model.crDate
+                        </td>
+                    </tr>
+                </table>
+                
+            </div>
+        </div>
+    </div>
+
+    <!-- Second Panel -->
+    <div class="panel panel-default">
+        <div class="panel-heading" style="color: white;background-color: #EAA651;">
+            <h4 class="panel-title" data-toggle="collapse" data-target="#collapseTwo">
+                Property Information
+                <i class="indicator glyphicon glyphicon-chevron-down  pull-right"></i>
+            </h4>
+        </div>
+        <div id="collapseTwo" class="panel-collapse collapse">
+            <div class="panel-body">
+                <table class="table borderless">
+                    <tr>
+                        <td>
+                            Survey Number :
+                        </td>
+                        <td>
+                            @Model.surveyNo
+                        </td>
+                        <td>
+                            Khatha Number :
+                        </td>
+                        <td>
+                            @Model.khathaNo
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Municipal Number :
+                        </td>
+                        <td>
+                            @Model.municipalNo
+                        </td>
+                        <td>
+                            Estimated Value :
+                        </td>
+                        <td>
+                            @Model.estimatedValue
+                        </td>
+                    </tr>
+
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Third Panel -->
+    <div class="panel panel-default">
+        <div class="panel-heading" style="color: white;background-color: #9CAA6D;">
+            <h4 class="panel-title" data-toggle="collapse" data-target="#collapseThree">
+                Management Information
+                <i class="indicator glyphicon glyphicon-chevron-down  pull-right"></i>
+            </h4>
+        </div>
+        <div id="collapseThree" class="panel-collapse collapse">
+            <div class="panel-body">
+                Anim pariatur cliche reprehenderit,
+                enim eiusmod high life accusamus terry richardson ad squid.
+            </div>
+        </div>
+    </div>
+
+    <!-- Fourth Panel -->
+    <div class="panel panel-default">
+        <div class="panel-heading" style="color: white;background-color: #ECC448;">
+            <h4 class="panel-title" data-toggle="collapse" data-target="#collapseFour">
+                District Information
+                <i class="indicator glyphicon glyphicon-chevron-down  pull-right"></i>
+            </h4>
+        </div>
+        <div id="collapseFour" class="panel-collapse collapse">
+            <div class="panel-body">
+                Anim pariatur cliche reprehenderit,
+                enim eiusmod high life accusamus terry richardson ad squid.
+            </div>
+        </div>
+    </div>
+
+    <!-- Fifth Panel -->
+    <div class="panel panel-default">
+        <div class="panel-heading" style="color: white;background-color: #66B0B1;">
+            <h4 class="panel-title" data-toggle="collapse" data-target="#collapseFifth">
+                Gallery
+                <i class="indicator glyphicon glyphicon-chevron-down  pull-right"></i>
+            </h4>
+        </div>
+        <div id="collapseFifth" class="panel-collapse collapse">
+            <div class="panel-body">
+                Anim pariatur cliche reprehenderit,
+                enim eiusmod high life accusamus terry richardson ad squid.
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+
+
+<script>
+
+    $(function () {
+        $('#institutionNavBtn').addClass("active");
+        var active = true;
+
+        $('#collapse-init').click(function () {
+            if (active) {
+                active = false;
+                $('.panel-collapse').collapse('show');
+                $('.panel-title').attr('data-toggle', '');
+                $(this).text('Enable accordion behavior');
+            } else {
+                active = true;
+                $('.panel-collapse').collapse('hide');
+                $('.panel-title').attr('data-toggle', 'collapse');
+                $(this).text('Disable accordion behavior');
+            }
+        });
+
+        $('#accordion').on('show.bs.collapse', function () {
+            if (active) $('#accordion .in').collapse('hide');
+        });
+
+
+        function toggleChevron(e) {
+            $(e.target)
+                .prev('.panel-heading')
+                .find("i.indicator")
+                .toggleClass('glyphicon-chevron-down glyphicon-chevron-up');
+        }
+        $('#accordion').on('hidden.bs.collapse', toggleChevron);
+        $('#accordion').on('shown.bs.collapse', toggleChevron);
+
+
+    });
+</script>

@@ -1,0 +1,49 @@
+.kar {
+    text-align: center;
+}
+
+text {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    pointer-events: none;
+}
+
+.background {
+    fill: none;
+    pointer-events: all;
+}
+
+.feature {
+    fill: #ccc;
+    cursor: pointer;
+}
+
+.feature.active {
+    fill: orange;
+}
+
+.feature.hover {
+    fill: orange;
+}
+
+.mesh {
+    fill: none;
+    stroke: #000;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+div.tooltip {	
+    position: absolute;			
+    text-align: center;			
+/*
+    width: 90px;					
+    height: 30px;					
+*/
+    padding: 2px;				
+    font: 12px sans-serif;		
+    background: white;	
+    border: 0px;		
+    border-radius: 8px;			
+    pointer-events: none;	
+    		
+}

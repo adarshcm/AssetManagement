@@ -1,8 +1,41 @@
 ﻿@{
+    Layout = "~/Views/Shared/_WebLayout.cshtml";
+}
+
+@{
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron text-center" >
+@*<div class="jumbotron text-center" >
     <img src="~/Images/Underconstruction.png" /><br/>  
+</div>*@
+<style type="text/css">
+    #mapDiv {
+        text-align:center;       
+    }
+</style>
+
+<div id="mapDiv">
+
+
 </div>
 
+<script>
+    $(function () {
+        
+        $('#homeNavBtn').addClass("active");
+        var markerData = @Html.Raw(ViewBag.getMarkers);
+
+        console.log(markerData);
+        var mapRender = new Map();
+
+        d3.json('/Map/mapdata/topojson/Karnataka.json', function (err, data) {
+            mapRender.init({ container: 'mapDiv', height: '470', width: '750' });
+            mapRender.drawTaluk('Karnataka_Mandya', 'Shrirangapattana', data);
+            mapRender.renderMarker(markerData);
+
+        });
+
+
+    })
+</script>
