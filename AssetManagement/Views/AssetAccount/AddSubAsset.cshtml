@@ -56,14 +56,14 @@
         cursor: pointer;
     }
 
-    .chosen-container-single .chosen-single{
-        height:33px !important;
+    .chosen-container-single .chosen-single {
+        height: 33px !important;
         line-height: 30px !important;
     }
 
-    .chosen-container-single .chosen-single div {
-        top:5px !important;
-    }
+        .chosen-container-single .chosen-single div {
+            top: 5px !important;
+        }
 </style>
 
 
@@ -75,7 +75,6 @@
             <li class="active"><a href="#locationTab" data-toggle="tab">1. Location Details</a></li>
             <li><a href="#assetInfoTab" data-toggle="tab">2. Instituion Information</a></li>
             <li><a href="#propertyInfoTab" data-toggle="tab">3. Property Information</a></li>
-           
         </ul>
 
     </div>
@@ -152,9 +151,9 @@
 
                 <div id="showUrbanFlow" style="display:none">
                     <div class="form-group">
-                        @Html.LabelFor(m => m.municipalWardNo, new { @class = "col-xs-3 control-label" })
+                        @Html.LabelFor(m => m.selectedMunicipalWardNo, new { @class = "col-xs-3 control-label" })
                         <div class="col-xs-5">
-                            @Html.DropDownListFor(m => m.selectedMunicipalWardNo, Model.municipalWardNo, new { @class = "form-control" })
+                            @Html.TextBoxFor(m => m.selectedMunicipalWardNo, new { @type = "number", @class = "form-control" })
                         </div>
                     </div>
                 </div>
@@ -199,7 +198,7 @@
                 </div>
 
             </div>
-     
+
 
         </div>
 
@@ -233,11 +232,11 @@
 
 
             @*<div class="form-group">
-                @Html.LabelFor(m => m.assetName, new { @class = "col-xs-3 control-label" })
-                <div class="col-xs-5">
-                    @Html.TextBoxFor(m => m.assetName, new { @class = "form-control" })
-                </div>
-            </div>*@
+                    @Html.LabelFor(m => m.assetName, new { @class = "col-xs-3 control-label" })
+                    <div class="col-xs-5">
+                        @Html.TextBoxFor(m => m.assetName, new { @class = "form-control" })
+                    </div>
+                </div>*@
 
             <div class="form-group">
                 @Html.LabelFor(m => m.address, new { @class = "col-xs-3 control-label" })
@@ -251,14 +250,21 @@
                 <div class="col-xs-5">
                     @Html.DropDownListFor(m => m.selectedAssetTypeList, Model.assetType, new { Multiple = "multiple", @class = "chosen-select" })
                 </div>
+                <div id="showAssetTypeOthers" style="display:none" class="col-xs-3">
+                    @Html.TextBoxFor(m => m.assetTypeOthers, new { @placeholder = "Enter other Asset type", @class = "form-control" })
+                </div>
+
             </div>
 
             <div class="form-group">
                 @Html.LabelFor(m => m.assetStatus, new { @class = "col-xs-3 control-label" })
                 <div class="col-xs-5">
-                    @Html.DropDownListFor(m => m.selectedAssetStatus, Model.assetStatus, new { @class = "form-control" })
+                    @Html.DropDownListFor(m => m.selectedAssetStatusList, Model.assetStatus, new { Multiple = "multiple", @class = "chosen-select" })
                 </div>
-                
+                <div id="showAssetStatusOthers" style="display:none" class="col-xs-3">
+                    @Html.TextBoxFor(m => m.assetStatusOthers, new { @placeholder = "Enter other Asset status", @class = "form-control" })
+                </div>
+
                 <div class="col-xs-3">
                     <i class="fa fa-upload fa-2x uploadBtnStyle" id="assetStatusUpload"></i>
                     <i id="assetStatusFileCount"></i>
@@ -266,26 +272,26 @@
             </div>
 
             @*<div class="form-group">
-                @Html.LabelFor(m => m.gnNumber, new { @class = "col-xs-3 control-label" })
-                <div class="col-xs-5">
-                    @Html.TextBoxFor(m => m.gnNumber, new { @class = "form-control" })
-                </div>
-                <div class="col-xs-2">
-                    <i class="fa fa-upload fa-2x uploadBtnStyle" id="gnNumberUpload"></i>
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(m => m.gnDate, new { @class = "col-xs-3 control-label" })
-                <div class="col-xs-5">
-
-                    <div class="input-group input-append date" id="pickGnDate">
-                        @Html.TextBoxFor(m => m.gnDate, new { @class = "form-control" })
-                        <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
+                    @Html.LabelFor(m => m.gnNumber, new { @class = "col-xs-3 control-label" })
+                    <div class="col-xs-5">
+                        @Html.TextBoxFor(m => m.gnNumber, new { @class = "form-control" })
                     </div>
-
+                    <div class="col-xs-2">
+                        <i class="fa fa-upload fa-2x uploadBtnStyle" id="gnNumberUpload"></i>
+                    </div>
                 </div>
-            </div>*@
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.gnDate, new { @class = "col-xs-3 control-label" })
+                    <div class="col-xs-5">
+
+                        <div class="input-group input-append date" id="pickGnDate">
+                            @Html.TextBoxFor(m => m.gnDate, new { @class = "form-control" })
+                            <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
+                        </div>
+
+                    </div>
+                </div>*@
 
             <div class="form-group">
                 @Html.LabelFor(m => m.crNumber, new { @class = "col-xs-3 control-label" })
@@ -323,39 +329,39 @@
             </div>
 
             @*<div class="form-group">
-                @Html.LabelFor(m => m.waqfID, new { @class = "col-xs-3 control-label" })
-                <div class="col-xs-5">
-                    @Html.TextBoxFor(m => m.waqfID, new { @class = "form-control" })
+                    @Html.LabelFor(m => m.waqfID, new { @class = "col-xs-3 control-label" })
+                    <div class="col-xs-5">
+                        @Html.TextBoxFor(m => m.waqfID, new { @class = "form-control" })
+                    </div>
                 </div>
-            </div>
 
-            <div class="form-group">
-                @Html.LabelFor(m => m.wamsiCode, new { @class = "col-xs-3 control-label" })
-                <div class="col-xs-5">
-                    @Html.TextBoxFor(m => m.wamsiCode, new { @class = "form-control" })
+                <div class="form-group">
+                    @Html.LabelFor(m => m.wamsiCode, new { @class = "col-xs-3 control-label" })
+                    <div class="col-xs-5">
+                        @Html.TextBoxFor(m => m.wamsiCode, new { @class = "form-control" })
+                    </div>
                 </div>
-            </div>
 
 
-            <div class="form-group">
-                @Html.LabelFor(m => m.institutionType, new { @class = "col-xs-3 control-label" })
-                <div class="col-xs-5">
-                    @Html.DropDownListFor(m => m.selectedInstitutionType, Model.institutionType, new { @class = "form-control" })
+                <div class="form-group">
+                    @Html.LabelFor(m => m.institutionType, new { @class = "col-xs-3 control-label" })
+                    <div class="col-xs-5">
+                        @Html.DropDownListFor(m => m.selectedInstitutionType, Model.institutionType, new { @class = "form-control" })
+                    </div>
                 </div>
-            </div>
 
-            <div class="form-group">
-                @Html.LabelFor(m => m.classificationType, new { @class = "col-xs-3 control-label" })
-                <div class="col-xs-5">
-                    @Html.DropDownListFor(m => m.selectedClassificationType, Model.classificationType, new { @class = "form-control" })
-                </div>
-            </div>*@
+                <div class="form-group">
+                    @Html.LabelFor(m => m.classificationType, new { @class = "col-xs-3 control-label" })
+                    <div class="col-xs-5">
+                        @Html.DropDownListFor(m => m.selectedClassificationType, Model.classificationType, new { @class = "form-control" })
+                    </div>
+                </div>*@
 
 
         </div>
 
         <!--Property info tab-->
-        
+
         <div class="tab-pane" id="propertyInfoTab">
             <fieldset>
                 <legend>Property Details</legend>
@@ -391,7 +397,13 @@
                         <i class="fa fa-upload fa-2x uploadBtnStyle" id="municipalNoUpload"></i>
                         <i id="municipalNoFileCount"></i>
                     </div>
+                </div>
 
+                <div class="form-group">
+                    @Html.LabelFor(m => m.propertyID, new { @class = "col-xs-3 control-label" })
+                    <div class="col-xs-5">
+                        @Html.TextBoxFor(m => m.propertyID, new { @class = "form-control" })
+                    </div>
                 </div>
 
             </fieldset>
@@ -450,6 +462,13 @@
                 <legend>Extent of Land in Acre / S.Ft / Sq. Yard</legend>
 
                 <div class="form-group">
+                    @Html.LabelFor(m => m.extentLandUnit, new { @class = "col-xs-3 control-label" })
+                    <div class="col-xs-5">
+                        @Html.DropDownListFor(m => m.selectedExtentLandUnit, Model.extentLandUnit, new { @class = "form-control" })
+                    </div>
+                </div>
+
+                <div class="form-group">
                     @Html.LabelFor(m => m.northToSouth, new { @class = "col-xs-3 control-label" })
                     <div class="col-xs-5">
                         @Html.TextBoxFor(m => m.northToSouth, new { @class = "form-control" })
@@ -483,11 +502,17 @@
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(m => m.propertyID, new { @class = "col-xs-3 control-label" })
+                @Html.LabelFor(m => m.estimatedDate, new { @class = "col-xs-3 control-label" })
                 <div class="col-xs-5">
-                    @Html.TextBoxFor(m => m.propertyID, new { @class = "form-control" })
+
+                    <div class="input-group input-append date" id="pickCrDate">
+                        @Html.TextBoxFor(m => m.estimatedDate, new { @class = "form-control" })
+                        <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
+                    </div>
                 </div>
             </div>
+
+
 
             <fieldset>
                 <legend>Litigations</legend>
@@ -529,9 +554,9 @@
                 </div>
             </fieldset>
 
-        </div> 
+        </div>
 
-       
+
 
 
         <!-- Previous/Next buttons -->
@@ -554,6 +579,9 @@
 
         $('#selectedAssetTypeList').chosen();
         $('#selectedAssetTypeList_chosen').css('width', '100%');
+
+        $('#selectedAssetStatusList').chosen();
+        $('#selectedAssetStatusList_chosen').css('width', '100%');
 
 
 
@@ -581,9 +609,11 @@
                     if("@ViewBag.assetFlow" == "EditAsset"){
 
                         @{
+
                             <text>
-                                $('#selectedMainInstitutionName option[value="@Model.selectedMainInstitutionName"]').attr("selected", "selected")
+                        $('#selectedMainInstitutionName option[value="@Model.selectedMainInstitutionName"]').attr("selected", "selected")
                         </text>
+
                         }
 
                         $('#setMainInstitutionDetails').html('Instituion ID : ' + $('#assetID').val() + ' | Main Instituion name : ' + $("#selectedMainInstitutionName option:selected").html() + ' | Sub Institution name : '+$("#institutionName").val());
@@ -663,26 +693,59 @@
                     </text>
                 }
 
+                foreach(var i in Model.selectedAssetStatusList) {
+                    <text>
+                        $('#selectedAssetStatusList option[value="@i"]').attr("selected", "selected")
+                    </text>
+                }
+
+                if(Model.assetTypeOthers != "" && Model.assetTypeOthers != null)
+                {
+                    <text>
+                        $("#showAssetTypeOthers").show();
+                    </text>
+                }
+
+                if(Model.assetStatusOthers != "" && Model.assetStatusOthers != null)
+                {
+                    <text>
+                        $("#showAssetStatusOthers").show();
+                    </text>
+                }
+
             }
 
             $(".chosen-select").trigger("chosen:updated");
 
 
             createImageThumbnail(@Html.Raw(Json.Encode(ViewBag.assetStatusImageLst)),assetStatusImageArray);
+            $('#assetStatusFileCount').html(assetStatusImageArray.length + ' Files uploaded');
             createImageThumbnail(@Html.Raw(Json.Encode(ViewBag.crNumberImageLst)),crNumberImageArray);
+            $('#crNumberFileCount').html(crNumberImageArray.length + ' Files uploaded');
             createImageThumbnail(@Html.Raw(Json.Encode(ViewBag.courtOrderImageLst)),courtOrderImageArray);
+            $('#courtJudgementOrderFileCount').html(courtOrderImageArray.length + ' Files uploaded');
             createImageThumbnail(@Html.Raw(Json.Encode(ViewBag.surveyNoImageLst)),surveyNoImageArray);
+            $('#surveyNoFileCount').html(surveyNoImageArray.length + ' Files uploaded');
             createImageThumbnail(@Html.Raw(Json.Encode(ViewBag.khathaNoImageLst)),khathaNoImageArray);
+            $('#khathaNoFileCount').html(khathaNoImageArray.length + ' Files uploaded');
             createImageThumbnail(@Html.Raw(Json.Encode(ViewBag.municipalNoImageLst)),municipalNoImageArray);
+            $('#municipalNoFileCount').html(municipalNoImageArray.length + ' Files uploaded');
             createImageThumbnail(@Html.Raw(Json.Encode(ViewBag.northImageLst)),northImageArray);
+            $('#northFileCount').html(northImageArray.length + ' Files uploaded');
             createImageThumbnail(@Html.Raw(Json.Encode(ViewBag.eastImageLst)),eastImageArray);
+            $('#eastFileCount').html(eastImageArray.length + ' Files uploaded');
             createImageThumbnail(@Html.Raw(Json.Encode(ViewBag.southImageLst)),southImageArray);
+            $('#southFileCount').html(southImageArray.length + ' Files uploaded');
             createImageThumbnail(@Html.Raw(Json.Encode(ViewBag.westImageLst)),westImageArray);
+            $('#westFileCount').html(westImageArray.length + ' Files uploaded');
             createImageThumbnail(@Html.Raw(Json.Encode(ViewBag.estimatedValueImageLst)),estimatedValueImageArray);
+            $('#estimatedValueFileCount').html(estimatedValueImageArray.length + ' Files uploaded');
             createImageThumbnail(@Html.Raw(Json.Encode(ViewBag.litigationManagementImageLst)),litigationManagementUploadImageArray);
+            $('#litigationManagementFileCount').html(litigationManagementUploadImageArray.length + ' Files uploaded');
             createImageThumbnail(@Html.Raw(Json.Encode(ViewBag.litigationAssetImageLst)),litigationAssetUploadImageArray);
+            $('#litigationAssetFileCount').html(litigationAssetUploadImageArray.length + ' Files uploaded');
             createImageThumbnail(@Html.Raw(Json.Encode(ViewBag.geoStampedImageLst)),geoStampedUploadImageArray);
-
+            $('#geoStampedFileCount').html(geoStampedUploadImageArray.length + ' Files uploaded');
         }
 
         function createImageThumbnail(list,arrayElm){

@@ -58,6 +58,7 @@
             for (var i in crNumberImageArray) {
 
                 myDropzone.emit("addedfile", crNumberImageArray[i]);
+                myDropzone.createThumbnailFromUrl(crNumberImageArray[i], '/InstitutionImage/crNumber/' + crNumberImageArray[i].name + '');
                 $(".dz-progress").css("background-color", 'initial');
             }
         }

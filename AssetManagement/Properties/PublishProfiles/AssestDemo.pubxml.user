@@ -19,7 +19,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/25/2016 19:30:10</publishTime>
     </File>
     <File Include="bin/AssetManagement.dll">
-      <publishTime>05/16/2016 20:17:58</publishTime>
+      <publishTime>06/21/2016 21:51:08</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>03/25/2016 19:29:51</publishTime>
@@ -357,11 +357,35 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Images/addUser.jpg">
       <publishTime>04/02/2016 16:34:17</publishTime>
     </File>
+    <File Include="Images/bg.jpg">
+      <publishTime>06/09/2016 20:27:21</publishTime>
+    </File>
+    <File Include="Images/bg2.jpg">
+      <publishTime>06/10/2016 22:37:46</publishTime>
+    </File>
+    <File Include="Images/bg3.jpg">
+      <publishTime>06/10/2016 22:53:17</publishTime>
+    </File>
+    <File Include="Images/daria.jpeg">
+      <publishTime>05/19/2016 13:33:11</publishTime>
+    </File>
+    <File Include="Images/Data Verify Form.pdf">
+      <publishTime>06/10/2016 10:09:30</publishTime>
+    </File>
     <File Include="Images/editAsset.png">
       <publishTime>04/02/2016 16:05:03</publishTime>
     </File>
     <File Include="Images/editMaster.png">
       <publishTime>04/02/2016 16:35:19</publishTime>
+    </File>
+    <File Include="Images/GoogleEarth.png">
+      <publishTime>06/12/2016 00:08:52</publishTime>
+    </File>
+    <File Include="Images/GoogleEarth_org.png">
+      <publishTime>06/11/2016 23:19:36</publishTime>
+    </File>
+    <File Include="Images/kreis_logo.png">
+      <publishTime>06/09/2016 20:15:56</publishTime>
     </File>
     <File Include="Images/removeAsset.png">
       <publishTime>04/02/2016 16:02:25</publishTime>
@@ -369,11 +393,230 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Images/removeUser.jpg">
       <publishTime>04/02/2016 16:34:51</publishTime>
     </File>
+    <File Include="Images/tippu.png">
+      <publishTime>06/13/2016 20:13:26</publishTime>
+    </File>
     <File Include="Images/Underconstruction.png">
       <publishTime>04/19/2016 22:01:11</publishTime>
     </File>
+    <File Include="JSSOR/img/a02.png">
+      <publishTime>05/29/2016 15:27:38</publishTime>
+    </File>
+    <File Include="JSSOR/img/a02_org.png">
+      <publishTime>05/29/2016 12:09:04</publishTime>
+    </File>
+    <File Include="JSSOR/js/jssor.slider.mini.js">
+      <publishTime>05/29/2016 12:09:04</publishTime>
+    </File>
+    <File Include="leaflet/css/font-awesome.css">
+      <publishTime>06/09/2016 22:58:56</publishTime>
+    </File>
+    <File Include="leaflet/css/images/layers-2x.png">
+      <publishTime>10/26/2015 15:26:05</publishTime>
+    </File>
+    <File Include="leaflet/css/images/layers.png">
+      <publishTime>10/26/2015 15:26:05</publishTime>
+    </File>
+    <File Include="leaflet/css/images/marker-icon-2x.png">
+      <publishTime>10/26/2015 15:26:05</publishTime>
+    </File>
+    <File Include="leaflet/css/images/marker-icon.png">
+      <publishTime>10/26/2015 15:26:05</publishTime>
+    </File>
+    <File Include="leaflet/css/images/marker-shadow.png">
+      <publishTime>10/26/2015 15:26:05</publishTime>
+    </File>
+    <File Include="leaflet/css/L.Control.MousePosition.css">
+      <publishTime>06/19/2013 08:34:03</publishTime>
+    </File>
+    <File Include="leaflet/css/leaflet.css">
+      <publishTime>06/09/2016 22:57:14</publishTime>
+    </File>
+    <File Include="leaflet/css/leaflet.extra-markers.min.css">
+      <publishTime>06/02/2016 21:48:30</publishTime>
+    </File>
+    <File Include="leaflet/img/marker.gif">
+      <publishTime>06/10/2016 12:28:55</publishTime>
+    </File>
+    <File Include="leaflet/img/marker1.gif">
+      <publishTime>06/10/2016 22:57:14</publishTime>
+    </File>
+    <File Include="leaflet/img/markers_default%402x.png">
+      <publishTime>06/02/2016 21:48:30</publishTime>
+    </File>
+    <File Include="leaflet/img/markers_default.png">
+      <publishTime>06/02/2016 21:48:30</publishTime>
+    </File>
+    <File Include="leaflet/img/markers_shadow%402x.png">
+      <publishTime>06/02/2016 21:48:30</publishTime>
+    </File>
+    <File Include="leaflet/img/markers_shadow.png">
+      <publishTime>06/02/2016 21:48:30</publishTime>
+    </File>
+    <File Include="leaflet/js/images/marker-icon.png">
+      <publishTime>10/26/2015 15:26:05</publishTime>
+    </File>
+    <File Include="leaflet/js/images/marker-shadow.png">
+      <publishTime>10/26/2015 15:26:05</publishTime>
+    </File>
+    <File Include="leaflet/js/L.Control.MousePosition.js">
+      <publishTime>06/19/2013 08:34:03</publishTime>
+    </File>
+    <File Include="leaflet/js/leaflet.extra-markers.min.js">
+      <publishTime>06/02/2016 21:48:30</publishTime>
+    </File>
+    <File Include="leaflet/js/leaflet.js">
+      <publishTime>06/09/2016 23:14:14</publishTime>
+    </File>
+    <File Include="leaflet/js/leafletmap.js">
+      <publishTime>06/21/2016 20:32:06</publishTime>
+    </File>
+    <File Include="leaflet/mapData/geojson/Karnataka_District.js">
+      <publishTime>06/04/2016 19:46:56</publishTime>
+    </File>
+    <File Include="leaflet/mapData/geojson/Karnataka_Mandya.js">
+      <publishTime>06/04/2016 19:01:36</publishTime>
+    </File>
+    <File Include="leaflet/mapData/geojson/Karnataka_Mandya_Shrirangapattana.js">
+      <publishTime>06/04/2016 19:01:02</publishTime>
+    </File>
+    <File Include="leaflet/mapData/Karnataka_Mandya_ShrirangapattanaT.json">
+      <publishTime>05/30/2016 10:29:52</publishTime>
+    </File>
+    <File Include="leaflet/measurement/images/cancel.png">
+      <publishTime>06/15/2016 21:11:54</publishTime>
+    </File>
+    <File Include="leaflet/measurement/images/cancel_%402X.png">
+      <publishTime>06/15/2016 21:11:54</publishTime>
+    </File>
+    <File Include="leaflet/measurement/images/check.png">
+      <publishTime>06/15/2016 21:11:54</publishTime>
+    </File>
+    <File Include="leaflet/measurement/images/check_%402X.png">
+      <publishTime>06/15/2016 21:11:54</publishTime>
+    </File>
+    <File Include="leaflet/measurement/images/focus.png">
+      <publishTime>06/15/2016 21:11:54</publishTime>
+    </File>
+    <File Include="leaflet/measurement/images/focus_%402X.png">
+      <publishTime>06/15/2016 21:11:54</publishTime>
+    </File>
+    <File Include="leaflet/measurement/images/rulers.png">
+      <publishTime>06/15/2016 21:11:54</publishTime>
+    </File>
+    <File Include="leaflet/measurement/images/rulers_%402X.png">
+      <publishTime>06/15/2016 21:11:54</publishTime>
+    </File>
+    <File Include="leaflet/measurement/images/start.png">
+      <publishTime>06/15/2016 21:11:54</publishTime>
+    </File>
+    <File Include="leaflet/measurement/images/start_%402X.png">
+      <publishTime>06/15/2016 21:11:54</publishTime>
+    </File>
+    <File Include="leaflet/measurement/images/trash.png">
+      <publishTime>06/15/2016 21:11:54</publishTime>
+    </File>
+    <File Include="leaflet/measurement/images/trash_%402X.png">
+      <publishTime>06/15/2016 21:11:54</publishTime>
+    </File>
+    <File Include="leaflet/measurement/leaflet-measure.css">
+      <publishTime>06/15/2016 21:11:54</publishTime>
+    </File>
+    <File Include="leaflet/measurement/leaflet-measure.min.js">
+      <publishTime>06/15/2016 21:11:54</publishTime>
+    </File>
+    <File Include="leaflet/measurePath/images/measure-control.png">
+      <publishTime>06/21/2016 19:55:26</publishTime>
+    </File>
+    <File Include="leaflet/measurePath/images/measure-control.svg">
+      <publishTime>01/08/2016 02:20:30</publishTime>
+    </File>
+    <File Include="leaflet/measurePath/Leaflet.draw/images/spritesheet-2x.png">
+      <publishTime>06/20/2016 22:30:13</publishTime>
+    </File>
+    <File Include="leaflet/measurePath/Leaflet.draw/images/spritesheet.png">
+      <publishTime>06/20/2016 22:30:13</publishTime>
+    </File>
+    <File Include="leaflet/measurePath/Leaflet.draw/images/spritesheet.svg">
+      <publishTime>06/20/2016 22:30:13</publishTime>
+    </File>
+    <File Include="leaflet/measurePath/Leaflet.draw/leaflet.draw.css">
+      <publishTime>06/20/2016 22:30:13</publishTime>
+    </File>
+    <File Include="leaflet/measurePath/Leaflet.draw/leaflet.draw.js">
+      <publishTime>06/20/2016 22:30:13</publishTime>
+    </File>
+    <File Include="leaflet/measurePath/leaflet.measurecontrol.css">
+      <publishTime>01/08/2016 02:20:30</publishTime>
+    </File>
+    <File Include="leaflet/measurePath/leaflet.measurecontrol.js">
+      <publishTime>01/08/2016 02:20:30</publishTime>
+    </File>
+    <File Include="leaflet/mousePointer/Control.Coordinates.css">
+      <publishTime>03/02/2016 22:42:47</publishTime>
+    </File>
+    <File Include="leaflet/mousePointer/Control.Coordinates.js">
+      <publishTime>03/02/2016 22:42:47</publishTime>
+    </File>
+    <File Include="leaflet/mousePointer/util/NumberFormatter.js">
+      <publishTime>03/02/2016 22:42:47</publishTime>
+    </File>
+    <File Include="Map/css/map.css">
+      <publishTime>05/25/2016 12:52:24</publishTime>
+    </File>
+    <File Include="Map/images/marker_new.svg">
+      <publishTime>04/21/2016 15:53:54</publishTime>
+    </File>
+    <File Include="Map/images/plainmarker.png">
+      <publishTime>04/18/2016 13:31:28</publishTime>
+    </File>
+    <File Include="Map/js/lib/d3.v3.min.js">
+      <publishTime>05/25/2016 12:52:24</publishTime>
+    </File>
+    <File Include="Map/js/lib/topojson.v1.min.js">
+      <publishTime>05/25/2016 12:52:24</publishTime>
+    </File>
+    <File Include="Map/js/map.js">
+      <publishTime>05/26/2016 19:21:53</publishTime>
+    </File>
+    <File Include="Map/mapdata/topojson/Karnataka.json">
+      <publishTime>04/18/2016 13:31:28</publishTime>
+    </File>
     <File Include="packages.config">
       <publishTime>03/25/2016 19:30:11</publishTime>
+    </File>
+    <File Include="pwgSlideShow/css/blueimp-gallery.min.css">
+      <publishTime>05/09/2016 06:17:05</publishTime>
+    </File>
+    <File Include="pwgSlideShow/img/error.png">
+      <publishTime>05/09/2016 06:17:05</publishTime>
+    </File>
+    <File Include="pwgSlideShow/img/error.svg">
+      <publishTime>05/09/2016 06:17:05</publishTime>
+    </File>
+    <File Include="pwgSlideShow/img/loading.gif">
+      <publishTime>05/09/2016 06:17:05</publishTime>
+    </File>
+    <File Include="pwgSlideShow/img/play-pause.png">
+      <publishTime>05/09/2016 06:17:05</publishTime>
+    </File>
+    <File Include="pwgSlideShow/img/play-pause.svg">
+      <publishTime>05/09/2016 06:17:05</publishTime>
+    </File>
+    <File Include="pwgSlideShow/img/video-play.png">
+      <publishTime>05/09/2016 06:17:05</publishTime>
+    </File>
+    <File Include="pwgSlideShow/img/video-play.svg">
+      <publishTime>05/09/2016 06:17:05</publishTime>
+    </File>
+    <File Include="pwgSlideShow/js/blueimp-gallery.min.js">
+      <publishTime>05/09/2016 06:17:05</publishTime>
+    </File>
+    <File Include="pwgSlideShow/pgwslideshow.min.css">
+      <publishTime>01/29/2015 23:29:59</publishTime>
+    </File>
+    <File Include="pwgSlideShow/pgwslideshow.min.js">
+      <publishTime>01/29/2015 23:29:59</publishTime>
     </File>
     <File Include="Scripts/ai.0.15.0-build58334.js">
       <publishTime>03/25/2016 19:30:11</publishTime>
@@ -382,7 +625,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/25/2016 19:30:10</publishTime>
     </File>
     <File Include="Scripts/assestManagementFormFlow.js">
-      <publishTime>05/16/2016 20:18:51</publishTime>
+      <publishTime>06/15/2016 19:18:24</publishTime>
     </File>
     <File Include="Scripts/bootstrap-datepicker.min.js">
       <publishTime>04/01/2016 19:11:10</publishTime>
@@ -448,7 +691,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/25/2016 19:29:48</publishTime>
     </File>
     <File Include="Scripts/_references.js">
-      <publishTime>04/25/2016 18:54:52</publishTime>
+      <publishTime>06/20/2016 23:16:17</publishTime>
     </File>
     <File Include="Views/Account/ConfirmEmail.cshtml">
       <publishTime>03/25/2016 19:29:51</publishTime>
@@ -487,10 +730,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/25/2016 19:29:51</publishTime>
     </File>
     <File Include="Views/AssetAccount/AddMainAsset.cshtml">
-      <publishTime>05/16/2016 19:22:50</publishTime>
+      <publishTime>06/20/2016 21:55:59</publishTime>
     </File>
     <File Include="Views/AssetAccount/AddSubAsset.cshtml">
-      <publishTime>05/12/2016 22:32:17</publishTime>
+      <publishTime>06/15/2016 20:10:33</publishTime>
     </File>
     <File Include="Views/AssetAccount/OpenAsset.cshtml">
       <publishTime>05/07/2016 20:19:46</publishTime>
@@ -502,7 +745,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/10/2016 19:42:38</publishTime>
     </File>
     <File Include="Views/AssetAccount/PartialOpenTestGallery.cshtml">
-      <publishTime>05/10/2016 22:02:18</publishTime>
+      <publishTime>05/21/2016 13:01:37</publishTime>
     </File>
     <File Include="Views/AssetAccount/RemoveAsset.cshtml">
       <publishTime>05/08/2016 12:06:26</publishTime>
@@ -514,58 +757,70 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/25/2016 19:29:31</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>04/19/2016 22:01:47</publishTime>
+      <publishTime>06/21/2016 19:43:22</publishTime>
+    </File>
+    <File Include="Views/Home/OpenDataVerifyPage.cshtml">
+      <publishTime>06/10/2016 22:14:12</publishTime>
+    </File>
+    <File Include="Views/Home/OpenInstituion.cshtml">
+      <publishTime>05/20/2016 18:21:45</publishTime>
+    </File>
+    <File Include="Views/Home/OpenReport.cshtml">
+      <publishTime>05/22/2016 23:29:41</publishTime>
+    </File>
+    <File Include="Views/Home/ViewInstituionDetails.cshtml">
+      <publishTime>06/20/2016 22:16:44</publishTime>
     </File>
     <File Include="Views/Image/PartialOpenAdvisoryUploadFileSave.cshtml">
-      <publishTime>05/16/2016 19:19:33</publishTime>
+      <publishTime>06/05/2016 21:36:57</publishTime>
     </File>
     <File Include="Views/Image/PartialOpenAssetStatusUpload.cshtml">
-      <publishTime>05/16/2016 19:19:12</publishTime>
+      <publishTime>06/13/2016 23:30:30</publishTime>
     </File>
     <File Include="Views/Image/PartialOpenCourtOrderUpload.cshtml">
-      <publishTime>05/16/2016 19:19:47</publishTime>
+      <publishTime>06/13/2016 23:33:44</publishTime>
     </File>
     <File Include="Views/Image/PartialOpenCrNumberUpload.cshtml">
-      <publishTime>05/16/2016 19:19:54</publishTime>
+      <publishTime>06/13/2016 23:37:13</publishTime>
     </File>
     <File Include="Views/Image/PartialOpenEastUpload.cshtml">
-      <publishTime>05/16/2016 19:20:04</publishTime>
+      <publishTime>06/13/2016 23:40:05</publishTime>
     </File>
     <File Include="Views/Image/PartialOpenEstimatedValueUpload.cshtml">
-      <publishTime>05/16/2016 19:20:14</publishTime>
+      <publishTime>06/13/2016 23:42:51</publishTime>
     </File>
     <File Include="Views/Image/PartialOpenGeoStampedUpload.cshtml">
-      <publishTime>05/16/2016 19:20:23</publishTime>
+      <publishTime>06/13/2016 23:07:25</publishTime>
     </File>
     <File Include="Views/Image/PartialOpenGnNumberUpload.cshtml">
-      <publishTime>05/16/2016 19:20:35</publishTime>
+      <publishTime>06/13/2016 23:44:40</publishTime>
     </File>
     <File Include="Views/Image/PartialOpenKhathaNoUpload.cshtml">
-      <publishTime>05/16/2016 19:20:46</publishTime>
+      <publishTime>06/13/2016 23:52:24</publishTime>
     </File>
     <File Include="Views/Image/PartialOpenLitigationAssetUpload.cshtml">
-      <publishTime>05/16/2016 19:20:56</publishTime>
+      <publishTime>06/13/2016 23:55:18</publishTime>
     </File>
     <File Include="Views/Image/PartialOpenLitigationManagementUpload.cshtml">
-      <publishTime>05/16/2016 19:21:05</publishTime>
+      <publishTime>06/13/2016 23:56:43</publishTime>
     </File>
     <File Include="Views/Image/PartialOpenManagementUploadFileSave.cshtml">
-      <publishTime>05/16/2016 19:21:13</publishTime>
+      <publishTime>06/03/2016 23:10:51</publishTime>
     </File>
     <File Include="Views/Image/PartialOpenMunicipalNoUpload.cshtml">
-      <publishTime>05/16/2016 19:21:29</publishTime>
+      <publishTime>06/14/2016 00:04:20</publishTime>
     </File>
     <File Include="Views/Image/PartialOpenNorthUpload.cshtml">
-      <publishTime>05/07/2016 21:17:08</publishTime>
+      <publishTime>06/14/2016 00:10:01</publishTime>
     </File>
     <File Include="Views/Image/PartialOpenSouthUpload.cshtml">
-      <publishTime>05/16/2016 19:21:48</publishTime>
+      <publishTime>06/14/2016 00:10:55</publishTime>
     </File>
     <File Include="Views/Image/PartialOpenSurveyNoUpload.cshtml">
-      <publishTime>05/16/2016 19:21:56</publishTime>
+      <publishTime>06/14/2016 19:44:59</publishTime>
     </File>
     <File Include="Views/Image/PartialOpenWestUpload.cshtml">
-      <publishTime>05/16/2016 19:22:06</publishTime>
+      <publishTime>06/14/2016 00:13:22</publishTime>
     </File>
     <File Include="Views/LoginReg/OpenAccountPage.cshtml">
       <publishTime>05/10/2016 19:47:21</publishTime>
@@ -598,10 +853,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/25/2016 19:29:51</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>05/08/2016 00:13:36</publishTime>
+      <publishTime>05/30/2016 21:20:39</publishTime>
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
-      <publishTime>05/07/2016 02:54:47</publishTime>
+      <publishTime>05/30/2016 21:20:53</publishTime>
+    </File>
+    <File Include="Views/Shared/_WebLayout.cshtml">
+      <publishTime>06/21/2016 20:33:24</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>03/25/2016 19:29:31</publishTime>

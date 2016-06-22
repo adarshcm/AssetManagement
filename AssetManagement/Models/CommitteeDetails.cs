@@ -19,7 +19,7 @@ namespace AssetManagement.Models
         public string name { get; set; }
 
         [Display(Name = "Mobile")]
-        public int mobile { get; set; }
+        public string mobile { get; set; }
 
         [Display(Name = "Email ID")]
         public string emailID { get; set; }
@@ -28,8 +28,8 @@ namespace AssetManagement.Models
         ////public List<SelectListItem> appointmentType { get; set; }
         //public string appointmentType { get; set; }
 
-        [Display(Name = "Appointment Date")]
-        public string appointmentDate { get; set; }
+        //[Display(Name = "Appointment Date")]
+        //public string appointmentDate { get; set; }
 
         [Display(Name = "Image")]
         public string imageName { get; set; }
@@ -37,13 +37,13 @@ namespace AssetManagement.Models
         [Display(Name = "Image")]
         public ImageDetails image { get; set; }
 
-       public CommitteeDetails()
-       {
+        public CommitteeDetails()
+        {
             ImageDetails img = new ImageDetails();
             this.image = img;
-       }
+        }
 
     }
 
-   
+
 }

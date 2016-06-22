@@ -58,6 +58,7 @@
             for (var i in geoStampedUploadImageArray) {
 
                 myDropzone.emit("addedfile", geoStampedUploadImageArray[i]);
+                myDropzone.createThumbnailFromUrl(geoStampedUploadImageArray[i],'/InstitutionImage/geoStamped/'+geoStampedUploadImageArray[i].name+'');
                 $(".dz-progress").css("background-color", 'initial');
             }
         }

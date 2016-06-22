@@ -61,6 +61,7 @@
             for (var i in northImageArray) {
 
                 myDropzone.emit("addedfile", northImageArray[i]);
+                myDropzone.createThumbnailFromUrl(northImageArray[i], '/InstitutionImage/north/' + northImageArray[i].name + '');
                 $(".dz-progress").css("background-color", 'initial');
             }
         }

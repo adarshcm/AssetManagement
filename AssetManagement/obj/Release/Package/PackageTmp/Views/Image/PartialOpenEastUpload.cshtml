@@ -59,6 +59,7 @@
             for (var i in eastImageArray) {
 
                 myDropzone.emit("addedfile", eastImageArray[i]);
+                myDropzone.createThumbnailFromUrl(eastImageArray[i], '/InstitutionImage/east/' + eastImageArray[i].name + '');
                 $(".dz-progress").css("background-color", 'initial');
             }
         }

@@ -17,7 +17,7 @@
             paramName: 'file',
             method: 'post',
             //maxFiles: 1,
-            url: '/Image/OpenCourtOrderUploadFileSave',
+            url: '/Image/OpenSurveyNoUploadFileSave',
             dictDefaultMessage: "Click or drag photos ",
             clickable: true,
             maxFilesize: 512,
@@ -44,7 +44,7 @@
 
                     $.ajax({
                         type: 'Post',
-                        url: '/Image/RemoveCourtOrderUploadedFile',
+                        url: '/Image/RemoveSurveyNoUploadedFile',
                         data: { "fileName": file.name },
                         success: function (data) {
 
@@ -59,6 +59,7 @@
             for (var i in surveyNoImageArray) {
 
                 myDropzone.emit("addedfile", surveyNoImageArray[i]);
+                myDropzone.createThumbnailFromUrl(surveyNoImageArray[i], '/InstitutionImage/surveyNo/' + surveyNoImageArray[i].name + '');
                 $(".dz-progress").css("background-color", 'initial');
             }
         }

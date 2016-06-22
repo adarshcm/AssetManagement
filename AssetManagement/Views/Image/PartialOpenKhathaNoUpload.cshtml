@@ -60,6 +60,7 @@
             for (var i in khathaNoImageArray) {
 
                 myDropzone.emit("addedfile", khathaNoImageArray[i]);
+                myDropzone.createThumbnailFromUrl(khathaNoImageArray[i], '/InstitutionImage/khathaNo/' + khathaNoImageArray[i].name + '');
                 $(".dz-progress").css("background-color", 'initial');
             }
         }

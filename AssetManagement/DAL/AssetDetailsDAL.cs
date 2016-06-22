@@ -13,6 +13,7 @@ namespace AssetManagement.DAL
 {
     public class AssetDetailsDAL
     {
+
         public List<string> getStateDetails()
         {
             List<string> list = new List<string>();
@@ -89,16 +90,16 @@ namespace AssetManagement.DAL
         public List<string> getTalukPanchayath(string name)
         {
             List<string> list = new List<string>();
-            if(name == "Mysuru")
+            if (name == "Mysuru")
             {
                 list.Add("Mysuru");
             }
-            else 
+            else
             {
-                
+
             }
-            
-            
+
+
             //list.Add("Nanjangud");
             //list.Add("Heggadadevanakote");
             //list.Add("Hunsur");
@@ -229,7 +230,7 @@ namespace AssetManagement.DAL
             {
                 throw (e);
             }
-                     
+
         }
 
         public List<string> getManagementAppointmentType()
@@ -249,7 +250,7 @@ namespace AssetManagement.DAL
         public List<string> getGramaPanchayath(string talukP)
         {
             List<string> list = new List<string>();
-            if(talukP == "Mysuru")
+            if (talukP == "Mysuru")
             {
                 //list.Add("Selection");
                 //list.Add("Election");
@@ -257,7 +258,7 @@ namespace AssetManagement.DAL
                 //list.Add("Custom");
                 //list.Add("Board");
             }
-            else if(talukP == "Mandya")
+            else if (talukP == "Mandya")
             {
                 //list.Add("Selection");
                 //list.Add("Election");
@@ -269,7 +270,7 @@ namespace AssetManagement.DAL
 
             return list;
         }
-        
+
         public List<string> getAdvisoryAppointmentType()
         {
             List<string> list = new List<string>();
@@ -286,7 +287,7 @@ namespace AssetManagement.DAL
         public List<string> getVillage(string villagePanchayat)
         {
             List<string> list = new List<string>();
-            
+
             try
             {
 
@@ -325,9 +326,6 @@ namespace AssetManagement.DAL
         }
 
 
-
-
-
         public List<string> getAssetType()
         {
             List<string> list = new List<string>();
@@ -338,22 +336,50 @@ namespace AssetManagement.DAL
             list.Add("House");
             list.Add("Mosque");
             list.Add("Madrasa");
-            list.Add("Madrasa");
             list.Add("School");
             list.Add("Darul uloom");
-            list.Add("Lidgah");
+            list.Add("Idgah");
             list.Add("Musafirkhana");
             list.Add("Khankaha");
             list.Add("Imambara");
+            list.Add("Chowki");
+            list.Add("Karbala");
+            list.Add("Darga");
+            list.Add("Mazaar");
+            list.Add("Makbara");
+            list.Add("Ashoorkhana");
+            list.Add("Chilla");
+            list.Add("Graveyard");
+            list.Add("Hujra Takiya");
+            list.Add("Maktab");
+            list.Add("Orchard");
+            list.Add("Fishing pond");
+            list.Add("Toilet");
+            list.Add("Gumbaz");
+            list.Add("Grave");
+            list.Add("Garden");
+            list.Add("Others");
+
 
             return list;
         }
+
+        public List<string> getExtentLandUnit()
+        {
+            List<string> list = new List<string>();
+            list.Add("/Sq.Feet");
+            list.Add("/Sq.Meter");
+            list.Add("/Acre");
+
+            return list;
+        }
+
 
         public List<string> getAssetStatus()
         {
             List<string> list = new List<string>();
             list.Add("Alienated");
-            list.Add("Enroached");
+            list.Add("Encroached");
             list.Add("Litigated");
             list.Add("Non-encumbered");
             list.Add("Unknown");
@@ -389,7 +415,7 @@ namespace AssetManagement.DAL
             return list;
         }
 
-        public Dictionary<string,string> getMainAssetName()
+        public Dictionary<string, string> getMainAssetName()
         {
             Dictionary<string, string> list = new Dictionary<string, string>();
             try
@@ -441,15 +467,15 @@ namespace AssetManagement.DAL
                     con.Open();
 
 
-                    if(model.assetID != null)
+                    if (model.assetID != null)
                     {
                         removeInstitutionFromDB(model.assetID);
-                    }                      
+                    }
                     //string assetId = getMaxInstitutionId(con);
                     //model.assetID = assetId;
 
-                    insert_sql = " INSERT INTO Institution (institutionId,institutionType,state,division,taluk,district,mpConstituency,mlaConstituency,urban,rural,municipalWardNo,talukPanchayat,gramaPanchayat,village,latitude,longitude,advisorySocietyName,advisoryApprovalNumber,advisoryRegNumber,advisoryRegDate,advisoryExpDate,institutionName,assetName,address,assetType,assetStatus,gnNumber,gnDate,crNumber,crDate,classificationType,surveyNo,khathaNo,municipalNo,north,east,south,west,estimatedValue,litigationManagement,litigationAsset,managementType,managementSocietyName,managementApprovalNumber,managementRegNumber,managementRegDate,managementExpDate,total,northToSouth,eastToWest,propertyID,courtJudgementOrder,waqfID,wamsiCode,parentInstitutionId,managementAppointmentType,managementTenure,advisoryAppointmentType,advisoryTenure) ";
-                    insert_sql += " VALUES(@institutionId,@institutionType,@state,@division,@taluk,@district,@mpConstituency,@mlaConstituency,@urban,@rural,@municipalWardNo,@talukPanchayat,@gramaPanchayat,@village,@latitude,@longitude,@advisorySocietyName,@advisoryApprovalNumber,@advisoryRegNumber, @advisoryRegDate, @advisoryExpDate, @institutionName, @assetName,@address, @assetType, @assetStatus, @gnNumber, @gnDate, @crNumber, @crDate, @classificationType, @surveyNo, @khathaNo, @municipalNo, @north, @east, @south, @west, @estimatedValue, @litigationManagement, @litigationAsset, @managementType, @managementSocietyName, @managementApprovalNumber, @managementRegNumber, @managementRegDate, @managementExpDate,@total,@northToSouth,@eastToWest,@propertyID,@courtJudgementOrder,@waqfID,@wamsiCode,@parentInstitutionId,@managementAppointmentType,@managementTenure,@advisoryAppointmentType,@advisoryTenure) ";
+                    insert_sql = " INSERT INTO Institution (institutionId,institutionType,state,division,taluk,district,mpConstituency,mlaConstituency,urban,rural,municipalWardNo,talukPanchayat,gramaPanchayat,village,latitude,longitude,advisorySocietyName,advisoryApprovalNumber,advisoryRegNumber,advisoryRegDate,advisoryExpDate,institutionName,assetName,address,assetType,assetStatus,gnNumber,gnDate,crNumber,crDate,classificationType,surveyNo,khathaNo,municipalNo,north,east,south,west,estimatedValue,litigationManagement,litigationAsset,managementType,managementSocietyName,managementApprovalNumber,managementRegNumber,managementRegDate,managementExpDate,total,northToSouth,eastToWest,propertyID,courtJudgementOrder,waqfID,wamsiCode,parentInstitutionId,managementAppointmentType,managementTenure,advisoryAppointmentType,advisoryTenure,extentLandUnit,estimatedDate,managementAppointmentDate,advisoryAppointmentDate,institutionRegType) ";
+                    insert_sql += " VALUES(@institutionId,@institutionType,@state,@division,@taluk,@district,@mpConstituency,@mlaConstituency,@urban,@rural,@municipalWardNo,@talukPanchayat,@gramaPanchayat,@village,@latitude,@longitude,@advisorySocietyName,@advisoryApprovalNumber,@advisoryRegNumber, @advisoryRegDate, @advisoryExpDate, @institutionName, @assetName,@address, @assetType, @assetStatus, @gnNumber, @gnDate, @crNumber, @crDate, @classificationType, @surveyNo, @khathaNo, @municipalNo, @north, @east, @south, @west, @estimatedValue, @litigationManagement, @litigationAsset, @managementType, @managementSocietyName, @managementApprovalNumber, @managementRegNumber, @managementRegDate, @managementExpDate,@total,@northToSouth,@eastToWest,@propertyID,@courtJudgementOrder,@waqfID,@wamsiCode,@parentInstitutionId,@managementAppointmentType,@managementTenure,@advisoryAppointmentType,@advisoryTenure,@extentLandUnit,@estimatedDate,@managementAppointmentDate,@advisoryAppointmentDate,@institutionRegType) ";
 
                     cmd = new SqlCommand(insert_sql, con);
                     cmd.CommandType = CommandType.Text;
@@ -469,7 +495,7 @@ namespace AssetManagement.DAL
                     }
 
                     cmd.Parameters.Add("@institutionType", SqlDbType.VarChar);
-                    if (model.selectedState == null || model.selectedState == "")
+                    if (model.assetTypeFlow == null || model.assetTypeFlow == "")
                     {
                         cmd.Parameters["@institutionType"].Value = DBNull.Value;
                     }
@@ -721,7 +747,7 @@ namespace AssetManagement.DAL
                     }
 
 
-                    cmd.Parameters.Add("@assetType", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@assetType", SqlDbType.Text);
                     if (model.selectedAssetType == null || model.selectedAssetType == "")
                     {
                         cmd.Parameters["@assetType"].Value = DBNull.Value;
@@ -1083,6 +1109,60 @@ namespace AssetManagement.DAL
                         cmd.Parameters["@advisoryTenure"].Value = model.advisoryTenure;
                     }
 
+                    cmd.Parameters.Add("@extentLandUnit", SqlDbType.VarChar);
+                    if (model.selectedExtentLandUnit == null || model.selectedExtentLandUnit == "")
+                    {
+                        cmd.Parameters["@extentLandUnit"].Value = DBNull.Value;
+                    }
+                    else
+                    {
+                        cmd.Parameters["@extentLandUnit"].Value = model.selectedExtentLandUnit;
+                    }
+
+                    cmd.Parameters.Add("@estimatedDate", SqlDbType.VarChar);
+                    if (model.estimatedDate == null || model.estimatedDate == "")
+                    {
+                        cmd.Parameters["@estimatedDate"].Value = DBNull.Value;
+                    }
+                    else
+                    {
+                        cmd.Parameters["@estimatedDate"].Value = model.estimatedDate;
+                    }
+
+                    cmd.Parameters.Add("@managementAppointmentDate", SqlDbType.VarChar);
+                    if (model.managementAppointmentDate == null || model.managementAppointmentDate == "")
+                    {
+                        cmd.Parameters["@managementAppointmentDate"].Value = DBNull.Value;
+                    }
+                    else
+                    {
+                        cmd.Parameters["@managementAppointmentDate"].Value = model.managementAppointmentDate;
+                    }
+
+
+                    cmd.Parameters.Add("@advisoryAppointmentDate", SqlDbType.VarChar);
+                    if (model.advisoryAppointmentDate == null || model.advisoryAppointmentDate == "")
+                    {
+                        cmd.Parameters["@advisoryAppointmentDate"].Value = DBNull.Value;
+                    }
+                    else
+                    {
+                        cmd.Parameters["@advisoryAppointmentDate"].Value = model.advisoryAppointmentDate;
+                    }
+
+
+                    cmd.Parameters.Add("@institutionRegType", SqlDbType.VarChar);
+                    if (model.selectedInstitutionType == null || model.selectedInstitutionType == "")
+                    {
+                        cmd.Parameters["@institutionRegType"].Value = DBNull.Value;
+                    }
+                    else
+                    {
+                        cmd.Parameters["@institutionRegType"].Value = model.selectedInstitutionType;
+                    }
+                    
+
+
                     numRowsAffected = cmd.ExecuteNonQuery();
                     if (numRowsAffected < 1)
                     {
@@ -1092,12 +1172,12 @@ namespace AssetManagement.DAL
                     }
                     else
                     {
-                       // con.Close();
-                        saveAdvisoryCommitteeDetails(con,model);
-                        saveManagementCommitteeDetails(con,model);
+                        // con.Close();
+                        saveAdvisoryCommitteeDetails(con, model);
+                        saveManagementCommitteeDetails(con, model);
 
-                        
-                        saveImageDetails(con, (List<ImageDetails>)HttpContext.Current.Session["assetStatusImageLst"],model);
+
+                        saveImageDetails(con, (List<ImageDetails>)HttpContext.Current.Session["assetStatusImageLst"], model);
                         saveImageDetails(con, (List<ImageDetails>)HttpContext.Current.Session["gnNumberImageLst"], model);
                         saveImageDetails(con, (List<ImageDetails>)HttpContext.Current.Session["crNumberImageLst"], model);
                         saveImageDetails(con, (List<ImageDetails>)HttpContext.Current.Session["courtOrderImageLst"], model);
@@ -1112,7 +1192,7 @@ namespace AssetManagement.DAL
                         saveImageDetails(con, (List<ImageDetails>)HttpContext.Current.Session["litigationManagementImageLst"], model);
                         saveImageDetails(con, (List<ImageDetails>)HttpContext.Current.Session["litigationAssetImageLst"], model);
                         saveImageDetails(con, (List<ImageDetails>)HttpContext.Current.Session["geoStampedImageLst"], model);
-                        
+
 
                         return true;
                     }
@@ -1125,8 +1205,6 @@ namespace AssetManagement.DAL
                 throw exc;
             }
         }
-
-
 
         public JArray getListOfAssets()
         {
@@ -1146,12 +1224,12 @@ namespace AssetManagement.DAL
 
                     rdr = cmd.ExecuteReader();
 
-                    while (rdr.Read()) 
+                    while (rdr.Read())
                     {
                         JObject jobj = new JObject();
                         jobj.Add("Institution Id", rdr.GetString(0));
                         jobj.Add("Institution Name", rdr.GetString(1));
-                        
+
                         jarray.Add(jobj);
                     }
 
@@ -1169,7 +1247,7 @@ namespace AssetManagement.DAL
             return jarray;
         }
 
-        public AssetViewModels getAssetDetailsForEditFLow(string institutionId,AssetViewModels model)
+        public AssetViewModels getAssetDetailsForEditFLow(string institutionId, AssetViewModels model)
         {
             String select_sql = null;
             SqlDataReader rdr;
@@ -1180,7 +1258,7 @@ namespace AssetManagement.DAL
                 using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["InstitutionConnection"].ToString()))
                 {
                     con.Open();
-                    select_sql = "select institutionId,institutionType,state,division,taluk,district,mpConstituency,mlaConstituency,urban,rural,municipalWardNo,talukPanchayat,gramaPanchayat,village,latitude,longitude,advisorySocietyName,advisoryApprovalNumber,advisoryRegNumber,advisoryRegDate,advisoryExpDate,institutionName,assetName,address,assetType,assetStatus,gnNumber,gnDate,crNumber,crDate,classificationType,surveyNo,khathaNo,municipalNo,north,east,south,west,estimatedValue,litigationManagement,litigationAsset,managementType,managementSocietyName,managementApprovalNumber,managementRegNumber,managementRegDate,managementExpDate,total,northToSouth,eastToWest,propertyID,courtJudgementOrder,waqfID,wamsiCode,managementAppointmentType,managementTenure,advisoryAppointmentType,advisoryTenure,parentInstitutionId from Institution where institutionId=@institutionId";
+                    select_sql = "select institutionId,institutionType,state,division,taluk,district,mpConstituency,mlaConstituency,urban,rural,municipalWardNo,talukPanchayat,gramaPanchayat,village,latitude,longitude,advisorySocietyName,advisoryApprovalNumber,advisoryRegNumber,advisoryRegDate,advisoryExpDate,institutionName,assetName,address,assetType,assetStatus,gnNumber,gnDate,crNumber,crDate,classificationType,surveyNo,khathaNo,municipalNo,north,east,south,west,estimatedValue,litigationManagement,litigationAsset,managementType,managementSocietyName,managementApprovalNumber,managementRegNumber,managementRegDate,managementExpDate,total,northToSouth,eastToWest,propertyID,courtJudgementOrder,waqfID,wamsiCode,managementAppointmentType,managementTenure,advisoryAppointmentType,advisoryTenure,parentInstitutionId,extentLandUnit,estimatedDate,managementAppointmentDate,advisoryAppointmentDate,institutionRegType from Institution where institutionId=@institutionId";
                     cmd = new SqlCommand(select_sql, con);
                     cmd.CommandType = CommandType.Text;
                     cmd.Parameters.Add("@institutionId", SqlDbType.VarChar);
@@ -1192,7 +1270,7 @@ namespace AssetManagement.DAL
                     {
                         if (!rdr.IsDBNull(0))
                             model.assetID = rdr.GetString(0);
-                        
+
                         if (!rdr.IsDBNull(1))
                             model.assetTypeFlow = rdr.GetString(1);
                         else
@@ -1303,12 +1381,27 @@ namespace AssetManagement.DAL
                             model.address = null;
 
                         if (!rdr.IsDBNull(24))
+                        {
                             model.selectedAssetType = rdr.GetString(24);
+                            if (model.selectedAssetType.Contains("Others"))
+                            {
+                                string[] words = model.selectedAssetType.Split('|');
+                                model.assetTypeOthers = words[words.Length - 1];
+                            }
+
+                        }
                         else
                             model.selectedAssetType = null;
 
                         if (!rdr.IsDBNull(25))
+                        {
                             model.selectedAssetStatus = rdr.GetString(25);
+                            if (model.selectedAssetStatus.Contains("Others"))
+                            {
+                                string[] words = model.selectedAssetStatus.Split('|');
+                                model.assetStatusOthers = words[words.Length - 1];
+                            }
+                        }                           
                         else
                             model.selectedAssetStatus = null;
 
@@ -1469,11 +1562,36 @@ namespace AssetManagement.DAL
                         else
                             model.selectedMainInstitutionName = null;
 
+                        if (!rdr.IsDBNull(59))
+                            model.selectedExtentLandUnit = rdr.GetString(59);
+                        else
+                            model.selectedExtentLandUnit = null;
+
+                        if (!rdr.IsDBNull(60))
+                            model.estimatedDate = rdr.GetString(60);
+                        else
+                            model.estimatedDate = null;
+
+                        if (!rdr.IsDBNull(61))
+                            model.managementAppointmentDate = rdr.GetString(61);
+                        else
+                            model.managementAppointmentDate = null;
+
+                        if (!rdr.IsDBNull(62))
+                            model.advisoryAppointmentDate = rdr.GetString(62);
+                        else
+                            model.advisoryAppointmentDate = null;
+
+                        if (!rdr.IsDBNull(63))
+                            model.selectedInstitutionType = rdr.GetString(63);
+                        else
+                            model.selectedInstitutionType = null;
+
                     }
 
                     rdr.Close();
 
-                    getManagementDetailsFromDB(model.assetID,con, model);
+                    getManagementDetailsFromDB(model.assetID, con, model);
                     getDistrictAdvisoryDetailsFromDB(model.assetID, con, model);
                     getImageDetailsFromDB(model.assetID, con, model);
 
@@ -1486,7 +1604,7 @@ namespace AssetManagement.DAL
 
                 throw;
             }
-                
+
         }
 
         public void removeInstitutionFromDB(string institutionId)
@@ -1495,7 +1613,7 @@ namespace AssetManagement.DAL
             SqlDataReader rdr;
             SqlCommand cmd = null;
 
-            
+
             try
             {
                 using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["InstitutionConnection"].ToString()))
@@ -1550,9 +1668,9 @@ namespace AssetManagement.DAL
 
             if (model.managementDetails != null)
             {
-                
-                insert_sql = " INSERT INTO ManagementCommitteeDetails (institutionId, designation, name, mobile, emailID, appointmentDate, managementCommittee,imageName,imageType,imageContent,imageSize) ";
-                insert_sql += " VALUES(@institutionId, @designation, @name, @mobile, @emailID,  @appointmentDate,  @managementCommittee,@imageName,@imageType,@imageContent,@imageSize)";
+
+                insert_sql = " INSERT INTO ManagementCommitteeDetails (institutionId, designation, name, mobile, emailID, managementCommittee,imageName,imageType,imageContent,imageSize) ";
+                insert_sql += " VALUES(@institutionId, @designation, @name, @mobile, @emailID,  @managementCommittee,@imageName,@imageType,@imageContent,@imageSize)";
 
                 foreach (var i in model.managementDetails)
                 {
@@ -1582,7 +1700,7 @@ namespace AssetManagement.DAL
                         cmd.Parameters["@name"].Value = i.name;
                     }
 
-                    cmd.Parameters.Add("@mobile", SqlDbType.Int);
+                    cmd.Parameters.Add("@mobile", SqlDbType.VarChar);
                     if (i.mobile.Equals(null))
                     {
                         cmd.Parameters["@mobile"].Value = DBNull.Value;
@@ -1603,15 +1721,15 @@ namespace AssetManagement.DAL
                     }
 
 
-                    cmd.Parameters.Add("@appointmentDate", SqlDbType.VarChar);
-                    if (i.appointmentDate == null || i.appointmentDate == "")
-                    {
-                        cmd.Parameters["@appointmentDate"].Value = DBNull.Value;
-                    }
-                    else
-                    {
-                        cmd.Parameters["@appointmentDate"].Value = i.appointmentDate;
-                    }
+                    //cmd.Parameters.Add("@appointmentDate", SqlDbType.VarChar);
+                    //if (i.appointmentDate == null || i.appointmentDate == "")
+                    //{
+                    //    cmd.Parameters["@appointmentDate"].Value = DBNull.Value;
+                    //}
+                    //else
+                    //{
+                    //    cmd.Parameters["@appointmentDate"].Value = i.appointmentDate;
+                    //}
 
 
 
@@ -1650,7 +1768,7 @@ namespace AssetManagement.DAL
                     else
                     {
 
-                    
+
                         cmd.Parameters.Add("@imageType", SqlDbType.VarChar);
                         if (i.image.imageType == null || i.image.imageType == "")
                         {
@@ -1705,13 +1823,13 @@ namespace AssetManagement.DAL
             SqlCommand cmd;
             String insert_sql;
             int numRowsAffected = -1;
-            
+
             model.advisoryDetails = (List<CommitteeDetails>)HttpContext.Current.Session["advisoryLst"];
             if (model.advisoryDetails != null)
             {
 
-                insert_sql = " INSERT INTO AdvisoryCommitteeDetails (institutionId, designation, name, mobile, emailID,  appointmentDate, imageName,imageType,imageContent,imageSize ) ";
-                insert_sql += " VALUES(@institutionId, @designation, @name, @mobile, @emailID, @appointmentDate, @imageName, @imageType, @imageContent, @imageSize)";
+                insert_sql = " INSERT INTO AdvisoryCommitteeDetails (institutionId, designation, name, mobile, emailID, imageName,imageType,imageContent,imageSize ) ";
+                insert_sql += " VALUES(@institutionId, @designation, @name, @mobile, @emailID, @imageName, @imageType, @imageContent, @imageSize)";
 
                 foreach (var i in model.advisoryDetails)
                 {
@@ -1741,7 +1859,7 @@ namespace AssetManagement.DAL
                         cmd.Parameters["@name"].Value = i.name;
                     }
 
-                    cmd.Parameters.Add("@mobile", SqlDbType.Int);
+                    cmd.Parameters.Add("@mobile", SqlDbType.VarChar);
                     if (i.mobile.Equals(null))
                     {
                         cmd.Parameters["@mobile"].Value = DBNull.Value;
@@ -1761,17 +1879,17 @@ namespace AssetManagement.DAL
                         cmd.Parameters["@emailID"].Value = i.emailID;
                     }
 
-                    
 
-                    cmd.Parameters.Add("@appointmentDate", SqlDbType.VarChar);
-                    if (i.appointmentDate == null || i.appointmentDate == "")
-                    {
-                        cmd.Parameters["@appointmentDate"].Value = DBNull.Value;
-                    }
-                    else
-                    {
-                        cmd.Parameters["@appointmentDate"].Value = i.appointmentDate;
-                    }
+
+                    //cmd.Parameters.Add("@appointmentDate", SqlDbType.VarChar);
+                    //if (i.appointmentDate == null || i.appointmentDate == "")
+                    //{
+                    //    cmd.Parameters["@appointmentDate"].Value = DBNull.Value;
+                    //}
+                    //else
+                    //{
+                    //    cmd.Parameters["@appointmentDate"].Value = i.appointmentDate;
+                    //}
 
                     cmd.Parameters.Add("@imageName", SqlDbType.VarChar);
                     if (i.imageName == null || i.imageName == "")
@@ -1849,14 +1967,14 @@ namespace AssetManagement.DAL
             SqlDataReader rdr;
             SqlCommand cmd = null;
             int count = 1;
-            select_sql = "select institutionId, designation, name, mobile, emailID, appointmentDate,managementCommittee,imageName,imageType,imageContent,imageSize from ManagementCommitteeDetails where institutionId=@institutionId";
+            select_sql = "select institutionId, designation, name, mobile, emailID,managementCommittee,imageName,imageType,imageContent,imageSize from ManagementCommitteeDetails where institutionId=@institutionId";
             cmd = new SqlCommand(select_sql, con);
             cmd.CommandType = CommandType.Text;
             cmd.Parameters.Add("@institutionId", SqlDbType.VarChar);
             cmd.Parameters["@institutionId"].Value = institutionId;
 
             rdr = cmd.ExecuteReader();
-            
+
             while (rdr.Read())
             {
                 CommitteeDetails obj = new CommitteeDetails();
@@ -1874,97 +1992,22 @@ namespace AssetManagement.DAL
                     obj.name = null;
 
                 if (!rdr.IsDBNull(3))
-                    obj.mobile = rdr.GetInt32(3);
-               
-                if (!rdr.IsDBNull(4))
-                    obj.emailID = rdr.GetString(4);
-                else
-                    obj.emailID = null;              
-
-                if (!rdr.IsDBNull(5))
-                    obj.appointmentDate = rdr.GetString(5);
-                else
-                    obj.appointmentDate = null;
-
-                if (!rdr.IsDBNull(6))
-                    model.selectedManagementType = rdr.GetString(6);
-                else
-                    obj.appointmentDate = null;
-
-                if (!rdr.IsDBNull(7))
-                    obj.imageName = rdr.GetString(7);
-                else
-                    obj.imageName = null;
-
-                if (!rdr.IsDBNull(7))
-                    obj.image.fileName = rdr.GetString(7);
-                else
-                    obj.image.fileName = null;
-
-                if (!rdr.IsDBNull(8))
-                    obj.image.imageType = rdr.GetString(8);
-                else
-                    obj.image.imageType = null;
-
-                if (!rdr.IsDBNull(9))
-                    obj.image.imageContent = (byte[])rdr.GetValue(9);
-                else
-                    obj.image.imageContent = null;
-
-                if (!rdr.IsDBNull(10))
-                    obj.image.imageSize = rdr.GetInt32(10);
-                else
-                    obj.image.imageSize = 0;
-
-                model.managementDetails.Add(obj);                
-
-            }
-            HttpContext.Current.Session["managementLst"] = model.managementDetails;
-            rdr.Close();
-        }
-
-
-        public void getDistrictAdvisoryDetailsFromDB(string institutionId, SqlConnection con, AssetViewModels model)
-        {
-            String select_sql = null;
-            SqlDataReader rdr;
-            SqlCommand cmd = null;
-            int count = 1;
-            select_sql = "select institutionId, designation, name, mobile, emailID,  appointmentDate, imageName,imageType,imageContent,imageSize from AdvisoryCommitteeDetails  where institutionId=@institutionId";
-            cmd = new SqlCommand(select_sql, con);
-            cmd.CommandType = CommandType.Text;
-            cmd.Parameters.Add("@institutionId", SqlDbType.VarChar);
-            cmd.Parameters["@institutionId"].Value = institutionId;
-
-            rdr = cmd.ExecuteReader();
-
-            while (rdr.Read())
-            {
-                CommitteeDetails obj = new CommitteeDetails();
-                obj.id = count.ToString();
-                count++;
-                if (!rdr.IsDBNull(1))
-                    obj.designation = rdr.GetString(1);
-                else
-                    obj.designation = null;
-
-                if (!rdr.IsDBNull(2))
-                    obj.name = rdr.GetString(2);
-                else
-                    obj.name = null;
-
-                if (!rdr.IsDBNull(3))
-                    obj.mobile = rdr.GetInt32(3);
+                    obj.mobile = rdr.GetString(3);
 
                 if (!rdr.IsDBNull(4))
                     obj.emailID = rdr.GetString(4);
                 else
                     obj.emailID = null;
-                
+
+                //if (!rdr.IsDBNull(5))
+                //    obj.appointmentDate = rdr.GetString(5);
+                //else
+                //    obj.appointmentDate = null;
+
                 if (!rdr.IsDBNull(5))
-                    obj.appointmentDate = rdr.GetString(5);
+                    model.selectedManagementType = rdr.GetString(5);
                 else
-                    obj.appointmentDate = null;
+                    model.selectedManagementType = null;
 
                 if (!rdr.IsDBNull(6))
                     obj.imageName = rdr.GetString(6);
@@ -1991,6 +2034,81 @@ namespace AssetManagement.DAL
                 else
                     obj.image.imageSize = 0;
 
+                model.managementDetails.Add(obj);
+
+            }
+            HttpContext.Current.Session["managementLst"] = model.managementDetails;
+            rdr.Close();
+        }
+
+
+        public void getDistrictAdvisoryDetailsFromDB(string institutionId, SqlConnection con, AssetViewModels model)
+        {
+            String select_sql = null;
+            SqlDataReader rdr;
+            SqlCommand cmd = null;
+            int count = 1;
+            select_sql = "select institutionId, designation, name, mobile, emailID, imageName,imageType,imageContent,imageSize from AdvisoryCommitteeDetails  where institutionId=@institutionId";
+            cmd = new SqlCommand(select_sql, con);
+            cmd.CommandType = CommandType.Text;
+            cmd.Parameters.Add("@institutionId", SqlDbType.VarChar);
+            cmd.Parameters["@institutionId"].Value = institutionId;
+
+            rdr = cmd.ExecuteReader();
+
+            while (rdr.Read())
+            {
+                CommitteeDetails obj = new CommitteeDetails();
+                obj.id = count.ToString();
+                count++;
+                if (!rdr.IsDBNull(1))
+                    obj.designation = rdr.GetString(1);
+                else
+                    obj.designation = null;
+
+                if (!rdr.IsDBNull(2))
+                    obj.name = rdr.GetString(2);
+                else
+                    obj.name = null;
+
+                if (!rdr.IsDBNull(3))
+                    obj.mobile = rdr.GetString(3);
+
+                if (!rdr.IsDBNull(4))
+                    obj.emailID = rdr.GetString(4);
+                else
+                    obj.emailID = null;
+
+                //if (!rdr.IsDBNull(5))
+                //    obj.appointmentDate = rdr.GetString(5);
+                //else
+                //    obj.appointmentDate = null;
+
+                if (!rdr.IsDBNull(5))
+                    obj.imageName = rdr.GetString(5);
+                else
+                    obj.imageName = null;
+
+                if (!rdr.IsDBNull(5))
+                    obj.image.fileName = rdr.GetString(5);
+                else
+                    obj.image.fileName = null;
+
+                if (!rdr.IsDBNull(6))
+                    obj.image.imageType = rdr.GetString(6);
+                else
+                    obj.image.imageType = null;
+
+                if (!rdr.IsDBNull(7))
+                    obj.image.imageContent = (byte[])rdr.GetValue(7);
+                else
+                    obj.image.imageContent = null;
+
+                if (!rdr.IsDBNull(8))
+                    obj.image.imageSize = rdr.GetInt32(8);
+                else
+                    obj.image.imageSize = 0;
+
                 model.advisoryDetails.Add(obj);
             }
 
@@ -1998,7 +2116,7 @@ namespace AssetManagement.DAL
             rdr.Close();
         }
 
-        public  void saveImageDetails(SqlConnection con, List<ImageDetails> lst,AssetViewModels model)
+        public void saveImageDetails(SqlConnection con, List<ImageDetails> lst, AssetViewModels model)
         {
             SqlCommand cmd;
             String insert_sql;
@@ -2076,7 +2194,7 @@ namespace AssetManagement.DAL
             SqlDataReader rdr;
             SqlCommand cmd = null;
 
-            
+
             select_sql = "select institutionId, fileName, imageType, imageSize, imageContent from ImageDetails where institutionId=@institutionId";
             cmd = new SqlCommand(select_sql, con);
             cmd.CommandType = CommandType.Text;
@@ -2187,7 +2305,7 @@ namespace AssetManagement.DAL
             HttpContext.Current.Session["litigationManagementImageLst"] = model.litigationManagementImages;
             HttpContext.Current.Session["litigationAssetImageLst"] = model.litigationAssetImages;
             HttpContext.Current.Session["geoStampedImageLst"] = model.geoStampedImages;
-       
+
             rdr.Close();
         }
 
@@ -2201,11 +2319,11 @@ namespace AssetManagement.DAL
                 SqlCommand cmd;
                 SqlDataReader rdr;
 
-                
+
                 sql = "Select max(id) from Institution";
                 cmd = new SqlCommand(sql, con);
                 cmd.CommandType = CommandType.Text;
-                
+
                 rdr = cmd.ExecuteReader();
                 if (rdr.HasRows)
                 {
@@ -2221,9 +2339,9 @@ namespace AssetManagement.DAL
                 string assetID = "KAMYS";
                 string value = String.Format("{0:D5}", institutionId);
 
-                return assetID+value;
+                return assetID + value;
 
-                
+
             }
             catch (Exception e)
             {
@@ -2233,9 +2351,9 @@ namespace AssetManagement.DAL
 
         public void setSessionToNull()
         {
-           
+
             HttpContext.Current.Session["managementLst"] = null;
-            HttpContext.Current.Session["advisoryLst"] = null; 
+            HttpContext.Current.Session["advisoryLst"] = null;
             HttpContext.Current.Session["managementImageLst"] = null;
             HttpContext.Current.Session["advisoryImageLst"] = null;
 
@@ -2254,7 +2372,7 @@ namespace AssetManagement.DAL
             HttpContext.Current.Session["litigationManagementImageLst"] = null;
             HttpContext.Current.Session["litigationAssetImageLst"] = null;
             HttpContext.Current.Session["geoStampedImageLst"] = null;
-    
+
         }
 
 
@@ -2416,6 +2534,86 @@ namespace AssetManagement.DAL
                 throw (e);
             }
         }
+
+
+        public JArray getMarkersFromDB(string institutionId = null, string institutionName = null)
+        {
+            try
+            {
+                String sql;
+                SqlCommand cmd;
+                SqlDataReader rdr;
+                using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["InstitutionConnection"].ToString()))
+                {
+                    con.Open();
+
+                    if(institutionId == null && institutionName != null)
+                    {
+                        sql = "Select longitude,latitude,institutionName,institutionId,urban,rural from Institution where institutionName=@institutionName";
+                        cmd = new SqlCommand(sql, con);
+                        cmd.CommandType = CommandType.Text;
+                        cmd.Parameters.Add("@institutionName", SqlDbType.VarChar);
+                        cmd.Parameters["@institutionName"].Value = institutionName;
+                    }
+                    else if(institutionId != null && institutionName == null)
+                    {
+                        sql = "Select longitude,latitude,institutionName,institutionId,urban,rural from Institution where institutionId=@institutionId";
+                        cmd = new SqlCommand(sql, con);
+                        cmd.CommandType = CommandType.Text;
+                        cmd.Parameters.Add("@institutionId", SqlDbType.VarChar);
+                        cmd.Parameters["@institutionId"].Value = institutionId;
+                    }
+                    else
+                    {
+                        sql = "Select longitude,latitude,institutionName,institutionId,urban,rural from Institution";
+                        cmd = new SqlCommand(sql, con);
+                        cmd.CommandType = CommandType.Text;
+                    }
+
+                    rdr = cmd.ExecuteReader();
+
+                    JArray jarray = new JArray();
+                    while (rdr.Read())
+                    {
+                        if (rdr.GetDouble(0) != 0 && rdr.GetDouble(1) != 0)
+                        {
+                            JArray jarr = new JArray();
+                            
+                            jarr.Add(rdr.GetDouble(0));
+                            jarr.Add(rdr.GetDouble(1));
+
+                            JObject jobj = new JObject();
+                            jobj.Add("co_ordinates", jarr);
+                            jobj.Add("name", rdr.GetString(2));
+                            jobj.Add("icon", "/leaflet/img/marker.gif");                           
+                            jobj.Add("institutionId", rdr.GetString(3));
+
+                            if((!rdr.IsDBNull(4)) && rdr.GetString(4).Trim() == "urban")
+                            {
+                                jobj.Add("type", rdr.GetString(4));
+                            }
+                            else
+                            {
+                                jobj.Add("type", rdr.GetString(5));
+                            }
+
+                            jarray.Add(jobj);
+                        }
+
+                        
+                    }
+                    rdr.Close();
+
+                    return jarray;
+                }
+
+            }
+            catch (Exception e)
+            {
+                throw (e);
+            }
+        }
+
 
 
 

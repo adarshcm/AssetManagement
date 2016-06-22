@@ -57,6 +57,7 @@
         if (assetStatusImageArray != null) {
             for (var i in assetStatusImageArray) {
                 myDropzone.emit("addedfile", assetStatusImageArray[i]);
+                myDropzone.createThumbnailFromUrl(assetStatusImageArray[i], '/InstitutionImage/assetStatus/' + assetStatusImageArray[i].name + '');
                 $(".dz-progress").css("background-color", 'initial');
             }
         }

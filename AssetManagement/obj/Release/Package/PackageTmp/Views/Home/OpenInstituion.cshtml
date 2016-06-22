@@ -1,0 +1,55 @@
+﻿@{
+    Layout = "~/Views/Shared/_WebLayout.cshtml";
+}
+
+@{
+    ViewBag.Title = "OpenInstituion";
+}
+<style>
+
+    .bs-callout {
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px solid #eee;
+    border-left-width: 5px;
+    border-radius: 3px;
+}
+.bs-callout h4 {
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+.bs-callout p:last-child {
+    margin-bottom: 0;
+}
+.bs-callout code {
+    border-radius: 3px;
+}
+.bs-callout+.bs-callout {
+    margin-top: -5px;
+}
+.bs-callout-info {
+    border-left-color: #5bc0de;
+}
+.bs-callout-info h4 {
+    color: #5bc0de;
+}
+</style>
+
+    <br/>
+    
+    <br/>
+    <div class="form-group">
+    <div class="bs-callout bs-callout-info">
+        <h4>Migrating from v2.x to v3.x</h4>
+        <p>
+            Looking to migrate from an older version of Bootstrap to v3.x? Check out
+        </p>
+
+    </div>
+    </div>
+
+    <script>
+        $(function () {
+            $('#institutionBtn').addClass("active");
+        })
+    </script>

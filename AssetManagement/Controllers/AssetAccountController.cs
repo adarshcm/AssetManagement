@@ -77,8 +77,22 @@ namespace AssetManagement.Controllers
             {
                 foreach (var i in model.selectedAssetTypeList)
                 {
-
                     model.selectedAssetType += i + "|";
+                }
+
+                if (model.assetTypeOthers != "" && model.assetTypeOthers != null)
+                {
+                    model.selectedAssetType += model.assetTypeOthers;
+                }
+
+                foreach (var i in model.selectedAssetStatusList)
+                {
+                    model.selectedAssetStatus += i + "|";
+                }
+
+                if (model.assetStatusOthers != "" && model.assetStatusOthers != null)
+                {
+                    model.selectedAssetStatus += model.assetStatusOthers;
                 }
                 ViewBag.login = "Logout";
 
@@ -148,7 +162,7 @@ namespace AssetManagement.Controllers
 
             model = assetDetailsDal.getAssetDetailsForEditFLow(institutionId, model);
 
-            if(model.selectedDivision != null)
+            if (model.selectedDivision != null)
             {
                 List<string> distLst = assetDetailsDal.getDistrict(model.selectedDivision);
                 model.district = (from item in distLst
@@ -158,8 +172,8 @@ namespace AssetManagement.Controllers
                                       Value = item
                                   }).ToList();
             }
-            
-            if(model.selectedDistrict != null)
+
+            if (model.selectedDistrict != null)
             {
                 List<string> talukLst = assetDetailsDal.getTaluk(model.selectedDistrict);
                 model.taluk = (from item in talukLst
@@ -172,19 +186,19 @@ namespace AssetManagement.Controllers
 
                 List<string> mpLst = assetDetailsDal.getMPList(model.selectedDistrict);
                 model.MPConstituency = (from item in mpLst
-                               select new SelectListItem
-                               {
-                                   Text = item,
-                                   Value = item
-                               }).ToList();
-
-                List<string> mlaLst = assetDetailsDal.getMLAList(model.selectedDistrict);
-                model.MLAConstituency = (from item in mlaLst
                                         select new SelectListItem
                                         {
                                             Text = item,
                                             Value = item
                                         }).ToList();
+
+                List<string> mlaLst = assetDetailsDal.getMLAList(model.selectedDistrict);
+                model.MLAConstituency = (from item in mlaLst
+                                         select new SelectListItem
+                                         {
+                                             Text = item,
+                                             Value = item
+                                         }).ToList();
 
 
 
@@ -192,8 +206,8 @@ namespace AssetManagement.Controllers
 
 
             }
-            
-            if(model.selectedTalukPanchayat != null)
+
+            if (model.selectedTalukPanchayat != null)
             {
                 List<string> tempLst = new List<string>();
                 tempLst.Add(model.selectedTalukPanchayat);
@@ -207,7 +221,8 @@ namespace AssetManagement.Controllers
             }
 
 
-            if (model.selectedTalukPanchayat != null) {
+            if (model.selectedTalukPanchayat != null)
+            {
                 List<string> villagePanchayathLst = assetDetailsDal.getVillagePanchayath(model.selectedTalukPanchayat);
                 model.gramaPamchayat = (from item in villagePanchayathLst
                                         select new SelectListItem
@@ -217,7 +232,7 @@ namespace AssetManagement.Controllers
                                         }).ToList();
             }
 
-            if(model.selectedGramaPanchayat != null)
+            if (model.selectedGramaPanchayat != null)
             {
                 List<string> villageLst = assetDetailsDal.getVillage(model.selectedGramaPanchayat);
                 model.village = (from item in villageLst
@@ -233,7 +248,6 @@ namespace AssetManagement.Controllers
 
             if (model.selectedAssetType != null)
             {
-
                 String[] words = model.selectedAssetType.Split(delimiter);
 
                 foreach (var i in words)
@@ -245,11 +259,27 @@ namespace AssetManagement.Controllers
                 }
             }
 
+
+            if (model.selectedAssetStatus != null)
+            {
+                String[] words = model.selectedAssetStatus.Split(delimiter);
+
+                foreach (var i in words)
+                {
+                    if (i != "")
+                    {
+                        model.selectedAssetStatusList.Add(i);
+                    }
+                }
+            }
+
+
             List<string> assetStatusImageLst = new List<string>();
             foreach (var i in model.assetStatusImages)
             {
                 assetStatusImageLst.Add(i.fileName + "|" + i.imageSize);
             }
+            createDirAndImage(model.assetStatusImages);
             ViewBag.assetStatusImageLst = assetStatusImageLst;
 
             List<string> gnNumberImageLst = new List<string>();
@@ -257,6 +287,7 @@ namespace AssetManagement.Controllers
             {
                 gnNumberImageLst.Add(i.fileName + "|" + i.imageSize);
             }
+            createDirAndImage(model.gnNumberImages);
             ViewBag.gnNumberImageLst = gnNumberImageLst;
 
             List<string> crNumberImageLst = new List<string>();
@@ -264,6 +295,7 @@ namespace AssetManagement.Controllers
             {
                 crNumberImageLst.Add(i.fileName + "|" + i.imageSize);
             }
+            createDirAndImage(model.crNumberImages);
             ViewBag.crNumberImageLst = crNumberImageLst;
 
             List<string> courtOrderImageLst = new List<string>();
@@ -271,6 +303,7 @@ namespace AssetManagement.Controllers
             {
                 courtOrderImageLst.Add(i.fileName + "|" + i.imageSize);
             }
+            createDirAndImage(model.courtOrderImages);
             ViewBag.courtOrderImageLst = courtOrderImageLst;
 
             List<string> surveyNoImageLst = new List<string>();
@@ -278,6 +311,7 @@ namespace AssetManagement.Controllers
             {
                 surveyNoImageLst.Add(i.fileName + "|" + i.imageSize);
             }
+            createDirAndImage(model.surveyNoImages);
             ViewBag.surveyNoImageLst = surveyNoImageLst;
 
             List<string> khathaNoImageLst = new List<string>();
@@ -285,6 +319,7 @@ namespace AssetManagement.Controllers
             {
                 khathaNoImageLst.Add(i.fileName + "|" + i.imageSize);
             }
+            createDirAndImage(model.khathaNoImages);
             ViewBag.khathaNoImageLst = khathaNoImageLst;
 
             List<string> municipalNoImageLst = new List<string>();
@@ -292,6 +327,7 @@ namespace AssetManagement.Controllers
             {
                 municipalNoImageLst.Add(i.fileName + "|" + i.imageSize);
             }
+            createDirAndImage(model.municipalNoImages);
             ViewBag.municipalNoImageLst = municipalNoImageLst;
 
             List<string> northImageLst = new List<string>();
@@ -299,6 +335,7 @@ namespace AssetManagement.Controllers
             {
                 northImageLst.Add(i.fileName + "|" + i.imageSize);
             }
+            createDirAndImage(model.northImages);
             ViewBag.northImageLst = northImageLst;
 
             List<string> eastImageLst = new List<string>();
@@ -306,6 +343,7 @@ namespace AssetManagement.Controllers
             {
                 eastImageLst.Add(i.fileName + "|" + i.imageSize);
             }
+            createDirAndImage(model.eastImages);
             ViewBag.eastImageLst = eastImageLst;
 
             List<string> southImageLst = new List<string>();
@@ -313,6 +351,7 @@ namespace AssetManagement.Controllers
             {
                 southImageLst.Add(i.fileName + "|" + i.imageSize);
             }
+            createDirAndImage(model.southImages);
             ViewBag.southImageLst = southImageLst;
 
             List<string> westImageLst = new List<string>();
@@ -320,6 +359,7 @@ namespace AssetManagement.Controllers
             {
                 westImageLst.Add(i.fileName + "|" + i.imageSize);
             }
+            createDirAndImage(model.westImages);
             ViewBag.westImageLst = westImageLst;
 
             List<string> estimatedValueImageLst = new List<string>();
@@ -327,6 +367,7 @@ namespace AssetManagement.Controllers
             {
                 estimatedValueImageLst.Add(i.fileName + "|" + i.imageSize);
             }
+            createDirAndImage(model.estimatedValueImages);
             ViewBag.estimatedValueImageLst = estimatedValueImageLst;
 
             List<string> litigationManagementImageLst = new List<string>();
@@ -334,6 +375,7 @@ namespace AssetManagement.Controllers
             {
                 litigationManagementImageLst.Add(i.fileName + "|" + i.imageSize);
             }
+            createDirAndImage(model.litigationManagementImages);
             ViewBag.litigationManagementImageLst = litigationManagementImageLst;
 
             List<string> litigationAssetImageLst = new List<string>();
@@ -341,6 +383,7 @@ namespace AssetManagement.Controllers
             {
                 litigationAssetImageLst.Add(i.fileName + "|" + i.imageSize);
             }
+            createDirAndImage(model.litigationAssetImages);
             ViewBag.litigationAssetImageLst = litigationAssetImageLst;
 
             List<string> geoStampedImageLst = new List<string>();
@@ -348,15 +391,23 @@ namespace AssetManagement.Controllers
             {
                 geoStampedImageLst.Add(i.fileName + "|" + i.imageSize);
             }
+            createDirAndImage(model.geoStampedImages);
             ViewBag.geoStampedImageLst = geoStampedImageLst;
 
 
             if (model.assetTypeFlow == "MainAsset")
             {
 
-
                 if (model.managementDetails != null)
                 {
+                    string dirPath = Path.Combine(@"~/InstitutionImage/ManagementImages/");
+                    dirPath = HttpContext.Server.MapPath(dirPath);
+                    if (Directory.Exists(dirPath))
+                    {
+                        Directory.Delete(dirPath, true);
+                    }
+                    DirectoryInfo di = Directory.CreateDirectory(dirPath);
+
                     int count = 1;
                     JArray jarray = new JArray();
                     foreach (var i in model.managementDetails)
@@ -367,14 +418,21 @@ namespace AssetManagement.Controllers
                         jobj.Add("Name", i.name);
                         jobj.Add("Mobile No", i.mobile);
                         jobj.Add("E-mail Id", i.emailID);
-                        DateTime dt = DateTime.ParseExact(i.appointmentDate, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-                        jobj.Add("Appointment Date", dt);
+                        // DateTime dt = DateTime.ParseExact(i.appointmentDate, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                        //jobj.Add("Appointment Date", dt);
                         jobj.Add("Image", i.imageName);
 
                         jarray.Add(jobj);
                         count++;
+
+                        if (i.imageName != "" && i.imageName != null && i.imageName != "null")
+                        {
+                            createDirAndImage(i.image, "ManagementImages");
+
+                        }
                     }
 
+                   
                     ViewBag.managementDetails = jarray;
                 }
                 else
@@ -385,6 +443,14 @@ namespace AssetManagement.Controllers
 
                 if (model.advisoryDetails != null)
                 {
+                    string dirPath = Path.Combine(@"~/InstitutionImage/AdvisoryImages/");
+                    dirPath = HttpContext.Server.MapPath(dirPath);
+                    if (Directory.Exists(dirPath))
+                    {
+                        Directory.Delete(dirPath, true);
+                    }
+                    DirectoryInfo di = Directory.CreateDirectory(dirPath);
+
                     int count = 1;
                     JArray jarray = new JArray();
                     foreach (var i in model.advisoryDetails)
@@ -395,12 +461,18 @@ namespace AssetManagement.Controllers
                         jobj.Add("Name", i.name);
                         jobj.Add("Mobile No", i.mobile);
                         jobj.Add("E-mail Id", i.emailID);
-                        DateTime dt = DateTime.ParseExact(i.appointmentDate, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-                        jobj.Add("Appointment Date", dt);
+                        // DateTime dt = DateTime.ParseExact(i.appointmentDate, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                        //jobj.Add("Appointment Date", dt);
                         jobj.Add("Image", i.imageName);
 
                         jarray.Add(jobj);
                         count++;
+
+                        if (i.imageName != "" && i.imageName != null && i.imageName != "null")
+                        {
+                            createDirAndImage(i.image, "AdvisoryImages");
+
+                        }
                     }
 
                     ViewBag.advisoryDetails = jarray;
@@ -421,14 +493,14 @@ namespace AssetManagement.Controllers
 
         }
 
-        public ActionResult AddManagementDetailsToModel(string id, string desgination, string name, int mobile, string email, string appointmentDate, string image)
+        public ActionResult AddManagementDetailsToModel(string id, string desgination, string name, string mobile, string email, string image)
         {
 
             CommitteeDetails obj = new CommitteeDetails();
             obj.id = id;
             obj.designation = desgination;
             obj.emailID = email;
-            obj.appointmentDate = appointmentDate;
+            // obj.appointmentDate = appointmentDate;
             obj.mobile = mobile;
             obj.image = (ImageDetails)HttpContext.Session["managementImageLst"];
             obj.name = name;
@@ -444,11 +516,28 @@ namespace AssetManagement.Controllers
                 managementLst.Add(obj);
             }
 
+            string dirPath = Path.Combine(@"~/InstitutionImage/ManagementImages/");
+            dirPath = HttpContext.Server.MapPath(dirPath);
+            if (Directory.Exists(dirPath))
+            {
+                Directory.Delete(dirPath, true);
+            }
+            DirectoryInfo di = Directory.CreateDirectory(dirPath);
+
+            foreach (var i in managementLst)
+            {
+                if(i.imageName != "" && i.imageName != null && i.imageName != "null")
+                {
+                    createDirAndImage(i.image, "ManagementImages");
+
+                }
+            }
+            
             HttpContext.Session["managementLst"] = managementLst;
             return View();
         }
 
-        public ActionResult EditManagementDetailsToModel(string id, string desgination, string name, int mobile, string email, string appointmentDate, string image)
+        public ActionResult EditManagementDetailsToModel(string id, string desgination, string name, string mobile, string email, string image)
         {
 
             managementLst = (List<CommitteeDetails>)HttpContext.Session["managementLst"];
@@ -459,12 +548,12 @@ namespace AssetManagement.Controllers
                     i.id = id;
                     i.designation = desgination;
                     i.emailID = email;
-                    i.appointmentDate = appointmentDate;
+                    //i.appointmentDate = appointmentDate;
                     i.mobile = mobile;
                     i.name = name;
                     i.imageName = image;
 
-                    if(i.image != null)
+                    if (i.image != null)
                     {
                         if (image == i.image.fileName)
                         {
@@ -475,15 +564,34 @@ namespace AssetManagement.Controllers
                             i.image = (ImageDetails)HttpContext.Session["managementImageLst"];
                         }
                     }
-                    
+
                 }
             }
+
+
+            string dirPath = Path.Combine(@"~/InstitutionImage/ManagementImages/");
+            dirPath = HttpContext.Server.MapPath(dirPath);
+            if (Directory.Exists(dirPath))
+            {
+                Directory.Delete(dirPath, true);
+            }
+            DirectoryInfo di = Directory.CreateDirectory(dirPath);
+
+            foreach (var i in managementLst)
+            {
+                if (i.imageName != "" && i.imageName != null && i.imageName != "null")
+                {
+                    createDirAndImage(i.image, "ManagementImages");
+
+                }
+            }
+
             HttpContext.Session["managementLst"] = managementLst;
 
             return View();
         }
 
-        public ActionResult DeleteManagementDetailsToModel(string id, string desgination, string name, int mobile, string email, string appointmentDate, string image)
+        public ActionResult DeleteManagementDetailsToModel(string id, string desgination, string name, string mobile, string email, string image)
         {
             managementLst = (List<CommitteeDetails>)HttpContext.Session["managementLst"];
             foreach (var i in managementLst)
@@ -494,19 +602,38 @@ namespace AssetManagement.Controllers
                     break;
                 }
             }
+
+            
+            string dirPath = Path.Combine(@"~/InstitutionImage/ManagementImages/");
+            dirPath = HttpContext.Server.MapPath(dirPath);
+            if (Directory.Exists(dirPath))
+            {
+                Directory.Delete(dirPath, true);
+            }
+            DirectoryInfo di = Directory.CreateDirectory(dirPath);
+
+            foreach (var i in managementLst)
+            {
+                if (i.imageName != "" && i.imageName != null && i.imageName != "null")
+                {
+                    createDirAndImage(i.image, "ManagementImages");
+
+                }
+            }
+
             HttpContext.Session["managementLst"] = managementLst;
             return View();
         }
 
 
-        public ActionResult AddAdvisoryDetailsToModel(string id, string desgination, string name, int mobile, string email, string appointmentDate, string image)
+        public ActionResult AddAdvisoryDetailsToModel(string id, string desgination, string name, string mobile, string email, string image)
         {
 
             CommitteeDetails obj = new CommitteeDetails();
             obj.id = id;
             obj.designation = desgination;
             obj.emailID = email;
-            obj.appointmentDate = appointmentDate;
+            //obj.appointmentDate = appointmentDate;
             obj.mobile = mobile;
             obj.image = (ImageDetails)HttpContext.Session["advisoryImageLst"];
             obj.imageName = image;
@@ -522,11 +649,28 @@ namespace AssetManagement.Controllers
                 advisoryLst.Add(obj);
             }
 
+            string dirPath = Path.Combine(@"~/InstitutionImage/AdvisoryImages/");
+            dirPath = HttpContext.Server.MapPath(dirPath);
+            if (Directory.Exists(dirPath))
+            {
+                Directory.Delete(dirPath, true);
+            }
+            DirectoryInfo di = Directory.CreateDirectory(dirPath);
+
+            foreach (var i in advisoryLst)
+            {
+                if (i.imageName != "" && i.imageName != null && i.imageName != "null")
+                {
+                    createDirAndImage(i.image, "AdvisoryImages");
+
+                }
+            }
+
             HttpContext.Session["advisoryLst"] = advisoryLst;
             return View();
         }
 
-        public ActionResult EditAdvisoryDetailsToModel(string id, string desgination, string name, int mobile, string email, string appointmentDate, string image)
+        public ActionResult EditAdvisoryDetailsToModel(string id, string desgination, string name, string mobile, string email, string image)
         {
 
             advisoryLst = (List<CommitteeDetails>)HttpContext.Session["advisoryLst"];
@@ -537,11 +681,11 @@ namespace AssetManagement.Controllers
                     i.id = id;
                     i.designation = desgination;
                     i.emailID = email;
-                    i.appointmentDate = appointmentDate;
+                    //i.appointmentDate = appointmentDate;
                     i.mobile = mobile;
                     i.imageName = image;
                     i.name = name;
-                    if(i.image != null)
+                    if (i.image != null)
                     {
                         if (image == i.image.fileName)
                         {
@@ -552,7 +696,24 @@ namespace AssetManagement.Controllers
                             i.image = (ImageDetails)HttpContext.Session["advisoryImageLst"];
                         }
                     }
-                    
+
+
+                }
+            }
+
+            string dirPath = Path.Combine(@"~/InstitutionImage/AdvisoryImages/");
+            dirPath = HttpContext.Server.MapPath(dirPath);
+            if (Directory.Exists(dirPath))
+            {
+                Directory.Delete(dirPath, true);
+            }
+            DirectoryInfo di = Directory.CreateDirectory(dirPath);
+
+            foreach (var i in advisoryLst)
+            {
+                if (i.imageName != "" && i.imageName != null && i.imageName != "null")
+                {
+                    createDirAndImage(i.image, "AdvisoryImages");
 
                 }
             }
@@ -561,7 +722,7 @@ namespace AssetManagement.Controllers
             return View();
         }
 
-        public ActionResult DeleteAdvisoryDetailsToModel(string id, string desgination, string name, int mobile, string email, string appointmentDate, string image)
+        public ActionResult DeleteAdvisoryDetailsToModel(string id, string desgination, string name, string mobile, string email, string image)
         {
             advisoryLst = (List<CommitteeDetails>)HttpContext.Session["advisoryLst"];
             foreach (var i in advisoryLst)
@@ -572,6 +733,24 @@ namespace AssetManagement.Controllers
                     break;
                 }
             }
+
+            string dirPath = Path.Combine(@"~/InstitutionImage/AdvisoryImages/");
+            dirPath = HttpContext.Server.MapPath(dirPath);
+            if (Directory.Exists(dirPath))
+            {
+                Directory.Delete(dirPath, true);
+            }
+            DirectoryInfo di = Directory.CreateDirectory(dirPath);
+
+            foreach (var i in advisoryLst)
+            {
+                if (i.imageName != "" && i.imageName != null && i.imageName != "null")
+                {
+                    createDirAndImage(i.image, "AdvisoryImages");
+
+                }
+            }
+
             HttpContext.Session["advisoryLst"] = advisoryLst;
             return View();
         }
@@ -664,12 +843,32 @@ namespace AssetManagement.Controllers
             {
                 string filePath = Path.Combine(@"~/InstitutionImage/" + i.imageType, i.fileName);
                 filePath = HttpContext.Server.MapPath(filePath);
+                if (!System.IO.File.Exists(filePath))
+                {
+                    FileStream fs = new FileStream(filePath, FileMode.CreateNew, FileAccess.Write);
+                    fs.Write(i.imageContent, 0, i.imageContent.Length);
+                    fs.Flush();
+                    fs.Close();
+                }
+            }
+        }
 
+
+        public void createDirAndImage(ImageDetails imgList,string folderName)
+        {
+            
+
+            string filePath = Path.Combine(@"~/InstitutionImage/" + folderName, imgList.fileName);
+            filePath = HttpContext.Server.MapPath(filePath);
+
+            if (!System.IO.File.Exists(filePath))
+            {
                 FileStream fs = new FileStream(filePath, FileMode.CreateNew, FileAccess.Write);
-                fs.Write(i.imageContent, 0, i.imageContent.Length);
+                fs.Write(imgList.imageContent, 0, imgList.imageContent.Length);
                 fs.Flush();
                 fs.Close();
             }
+                                 
         }
 
     }

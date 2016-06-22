@@ -61,6 +61,7 @@
             for (var i in municipalNoImageArray) {
 
                 myDropzone.emit("addedfile", municipalNoImageArray[i]);
+                myDropzone.createThumbnailFromUrl(municipalNoImageArray[i], '/InstitutionImage/municipalNo/' + municipalNoImageArray[i].name + '');
                 $(".dz-progress").css("background-color", 'initial');
             }
         }

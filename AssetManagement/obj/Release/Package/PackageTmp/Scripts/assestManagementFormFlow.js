@@ -34,155 +34,155 @@
                             }
                         }
                     }
-                   /* address: {
-                        validators: {
-                            notEmpty: {
-                                message: 'The address is required'
-                            }
-                        }
-                    },
-                    gnNumber: {
-                        validators: {
-                            notEmpty: {
-                                message: 'The G.N. number is required'
-                            }
-                        }
-                    },
-                    gnDate: {
-                        validators: {
-                            notEmpty: {
-                                message: 'The G.N. date is required'
-                            }
-                        }
-                    },
-                    crNumber: {
-                        validators: {
-                            notEmpty: {
-                                message: 'The C.R. number is required'
-                            }
-                        }
-                    },
-                    crDate: {
-                        validators: {
-                            notEmpty: {
-                                message: 'The C.R. date is required'
-                            }
-                        }
-                    },
-                    advisorySocietyName: {
-                        validators: {
-                            notEmpty: {
-                                message: 'The Advisory Society name is required'
-                            }
-                        }
-                    },
-                    advisoryApprovalNumber: {
-                        validators: {
-                            notEmpty: {
-                                message: 'The Advisory Approval number is required'
-                            }
-                        }
-                    },
-                    advisoryRegNumber: {
-                        validators: {
-                            notEmpty: {
-                                message: 'The Advisory Registration number is required'
-                            }
-                        }
-                    },
-                    surveyNo: {
-                        validators: {
-                            notEmpty: {
-                                message: 'The Survey number is required'
-                            }
-                        }
-                    },
-                    khathaNo: {
-                        validators: {
-                            notEmpty: {
-                                message: 'The Khatha number is required'
-                            }
-                        }
-                    },
-                    muncipalNo: {
-                        validators: {
-                            notEmpty: {
-                                message: 'The Muncipal number is required'
-                            }
-                        }
-                    },
-                    estimatedValue: {
-                        validators: {
-                            notEmpty: {
-                                message: 'The Estimated value  is required'
-                            }
-                        }
-                    },
-                    litigationManagement: {
-                        validators: {
-                            notEmpty: {
-                                message: 'The Litigation Management is required'
-                            }
-                        }
-                    },
-                    litigationAsset: {
-                        validators: {
-                            notEmpty: {
-                                message: 'The Litigation asset is required'
-                            }
-                        }
-                    },
-                    extentLand: {
-                        validators: {
-                            notEmpty: {
-                                message: 'The Extent land is required'
-                            }
-                        }
-                    },
-                    advisoryRegDate: {
-                        validators: {
-                            notEmpty: {
-                                message: 'The Advisory registration date is required'
-                            },
-                            date: {
-                                format: 'DD/MM/YYYY',
-                                message: 'The date is not a valid'
-                            }
-                        }
-                    },
-                    advisoryExpDate: {
-                        validators: {
-                            notEmpty: {
-                                message: 'The Advisory expiry date is required'
-                            },
-                            date: {
-                                format: 'DD/MM/YYYY',
-                                message: 'The date is not a valid'
-                            }
-                        }
-                    },
-                    gnDate: {
-                        validators: {
-                            notEmpty: {
-                                message: 'The G.N. date is required'
-                            },
-                            date: {
-                                format: 'DD/MM/YYYY',
-                                message: 'The date is not a valid'
-                            }
-                        }
-                    },
-                    crDate: {
-                        validators: {
-                            notEmpty: {
-                                message: 'The C.R. date is required'
-                            },
-                            date: {
-                                format: 'DD/MM/YYYY',
-                                message: 'The date is not a valid'
-                            }
-                        }
-                    }*/
+                    /* address: {
+                         validators: {
+                             notEmpty: {
+                                 message: 'The address is required'
+                             }
+                         }
+                     },
+                     gnNumber: {
+                         validators: {
+                             notEmpty: {
+                                 message: 'The G.N. number is required'
+                             }
+                         }
+                     },
+                     gnDate: {
+                         validators: {
+                             notEmpty: {
+                                 message: 'The G.N. date is required'
+                             }
+                         }
+                     },
+                     crNumber: {
+                         validators: {
+                             notEmpty: {
+                                 message: 'The C.R. number is required'
+                             }
+                         }
+                     },
+                     crDate: {
+                         validators: {
+                             notEmpty: {
+                                 message: 'The C.R. date is required'
+                             }
+                         }
+                     },
+                     advisorySocietyName: {
+                         validators: {
+                             notEmpty: {
+                                 message: 'The Advisory Society name is required'
+                             }
+                         }
+                     },
+                     advisoryApprovalNumber: {
+                         validators: {
+                             notEmpty: {
+                                 message: 'The Advisory Approval number is required'
+                             }
+                         }
+                     },
+                     advisoryRegNumber: {
+                         validators: {
+                             notEmpty: {
+                                 message: 'The Advisory Registration number is required'
+                             }
+                         }
+                     },
+                     surveyNo: {
+                         validators: {
+                             notEmpty: {
+                                 message: 'The Survey number is required'
+                             }
+                         }
+                     },
+                     khathaNo: {
+                         validators: {
+                             notEmpty: {
+                                 message: 'The Khatha number is required'
+                             }
+                         }
+                     },
+                     muncipalNo: {
+                         validators: {
+                             notEmpty: {
+                                 message: 'The Muncipal number is required'
+                             }
+                         }
+                     },
+                     estimatedValue: {
+                         validators: {
+                             notEmpty: {
+                                 message: 'The Estimated value  is required'
+                             }
+                         }
+                     },
+                     litigationManagement: {
+                         validators: {
+                             notEmpty: {
+                                 message: 'The Litigation Management is required'
+                             }
+                         }
+                     },
+                     litigationAsset: {
+                         validators: {
+                             notEmpty: {
+                                 message: 'The Litigation asset is required'
+                             }
+                         }
+                     },
+                     extentLand: {
+                         validators: {
+                             notEmpty: {
+                                 message: 'The Extent land is required'
+                             }
+                         }
+                     },
+                     advisoryRegDate: {
+                         validators: {
+                             notEmpty: {
+                                 message: 'The Advisory registration date is required'
+                             },
+                             date: {
+                                 format: 'DD/MM/YYYY',
+                                 message: 'The date is not a valid'
+                             }
+                         }
+                     },
+                     advisoryExpDate: {
+                         validators: {
+                             notEmpty: {
+                                 message: 'The Advisory expiry date is required'
+                             },
+                             date: {
+                                 format: 'DD/MM/YYYY',
+                                 message: 'The date is not a valid'
+                             }
+                         }
+                     },
+                     gnDate: {
+                         validators: {
+                             notEmpty: {
+                                 message: 'The G.N. date is required'
+                             },
+                             date: {
+                                 format: 'DD/MM/YYYY',
+                                 message: 'The date is not a valid'
+                             }
+                         }
+                     },
+                     crDate: {
+                         validators: {
+                             notEmpty: {
+                                 message: 'The C.R. date is required'
+                             },
+                             date: {
+                                 format: 'DD/MM/YYYY',
+                                 message: 'The date is not a valid'
+                             }
+                         }
+                     }*/
 
 
                 }
@@ -191,21 +191,21 @@
             .bootstrapWizard({
                 tabClass: 'nav nav-pills',
                 onTabClick: function (tab, navigation, index) {
-                    console.log(tab);
+
                     if (assetFlowStatus != "EditAsset") {
-                        //if (index == 3) {
+                        if (index == 0) {
                             createInstitutionId();
-                        //}
+                        }
                     }
                     return validateTab(index);
                 },
                 onNext: function (tab, navigation, index) {
-                    
-                   
-                    if (assetFlowStatus != "EditAsset"){ 
-                        if (index == 2) {
+
+
+                    if (assetFlowStatus != "EditAsset") {
+                        if (index == 1) {
                             createInstitutionId();
-                        }                      
+                        }
                     }
 
                     $(window).scrollTop(0);
@@ -217,12 +217,12 @@
 
                     if (index === numTabs) {
                         // We are at the last tab
-                        
+
                         $('#installationForm').formValidation('defaultSubmit');
                         clearAllGlobalObjects();
 
                     }
-                    
+
 
                     return true;
                 },
@@ -237,9 +237,9 @@
                             .removeClass('disabled')    // Enable the Next button
                             .find('a')
                             .html(index === numTabs - 1 ? 'Save' : 'Next');
-  
+
                 }
-    });
+            });
 
     function validateTab(index) {
         var fv = $('#installationForm').data('formValidation'), // FormValidation instance
@@ -298,7 +298,7 @@
         })
         .on('changeDate', function (e) {
             // Revalidate the date field
-           // $('#installationForm').formValidation('revalidateField', 'advisoryRegDate');
+            // $('#installationForm').formValidation('revalidateField', 'advisoryRegDate');
         });
 
     $('#pickAdvisoryExpDate')
@@ -328,6 +328,16 @@
         //$('#installationForm').formValidation('revalidateField', 'crDate');
     });
 
+
+    $('#estimatedDate')
+    .datepicker({
+        format: 'dd/mm/yyyy'
+    })
+    .on('changeDate', function (e) {
+        // Revalidate the date field
+        //$('#installationForm').formValidation('revalidateField', 'advisoryExpDate');
+    });
+
     $('#pickManagementAdvisoryRegDate')
     .datepicker({
         format: 'dd/mm/yyyy'
@@ -353,7 +363,7 @@
      })
      .on('changeDate', function (e) {
          // Revalidate the date field
-        // $('#installationForm').formValidation('revalidateField', 'managementTenure');
+         // $('#installationForm').formValidation('revalidateField', 'managementTenure');
      });
 
 
@@ -363,12 +373,31 @@
     })
     .on('changeDate', function (e) {
         // Revalidate the date field
-       // $('#installationForm').formValidation('revalidateField', 'advisoryTenure');
+        // $('#installationForm').formValidation('revalidateField', 'advisoryTenure');
+    });
+
+    $('#pickAdvisoryAppointmentDate')
+    .datepicker({
+        format: 'dd/mm/yyyy'
+    })
+    .on('changeDate', function (e) {
+        // Revalidate the date field
+        // $('#installationForm').formValidation('revalidateField', 'managementTenure');
+    });
+
+    $('#pickManagementAppointmentDate')
+    .datepicker({
+        format: 'dd/mm/yyyy'
+    })
+    .on('changeDate', function (e) {
+        // Revalidate the date field
+        // $('#installationForm').formValidation('revalidateField', 'managementTenure');
     });
 
 
+
     $('#addAsset').click(function () {
-        
+
         var divs = $('body').find('div[id="divAddAsset"]');
 
         $.each(divs, function (index, divItem) {
@@ -382,7 +411,7 @@
             type: 'Post',
             url: '/AssetAccount/OpenAddAsset',
             success: function (data) {
-                
+
                 $('#divAddAsset').html(data);
 
             }
@@ -410,13 +439,13 @@
         });
 
         $('#divAddAsset').dialog('open');
-        
+
 
     })
 
 
     //$('#selectedManagementType').change(function () {
-       
+
 
     //    $.ajax({
     //        type: 'Post',
@@ -435,7 +464,7 @@
 
 
     $('#removeAsset').click(function () {
-        
+
         window.location.href = '/AssetAccount/RemoveAsset';
     })
 
@@ -446,17 +475,17 @@
     })
 
 
-    
-    function popUpForImageUpload(divID,url){
-        
-        var divs = $('body').find('div[id="'+divID+'"]');
+
+    function popUpForImageUpload(divID, url) {
+
+        var divs = $('body').find('div[id="' + divID + '"]');
 
         $.each(divs, function (index, divItem) {
             $(divItem).remove();
         });
 
         //add new div
-        $('body').append('<div id="'+ divID +'"></div>');
+        $('body').append('<div id="' + divID + '"></div>');
 
         $.ajax({
             type: 'Post',
@@ -498,7 +527,7 @@
     $('#crNumberUpload').click(function () {
         popUpForImageUpload('divcrNumberUpload', '/Image/OpenCrNumberUpload');
     })
-    
+
     $('#courtOrderUpload').click(function () {
         popUpForImageUpload('divcourtOrderUpload', '/Image/OpenCourtOrderUpload');
     })
@@ -548,7 +577,7 @@
     })
 
     function clearAllGlobalObjects() {
-       
+
         assetStatusImageArray = [];
         gnNumberImageArray = [];
         crNumberImageArray = [];
@@ -588,7 +617,7 @@
                 }
 
                 $('#selectedDistrict').trigger('change');
-                
+
             }
         });
     })
@@ -631,7 +660,7 @@
                         dd1.options[dd1.length] = new Option(data.result[i], data.result[i]);
                     }
                 }
-                
+
             }
         });
 
@@ -664,8 +693,8 @@
         var dd1 = document.getElementById("selectedTalukPanchayat");
         dd1.innerHTML = '';
         dd1.options[dd1.length] = new Option(selVal, selVal);
-       
-       $('#selectedTalukPanchayat').trigger('change');
+
+        $('#selectedTalukPanchayat').trigger('change');
 
     })
 
@@ -716,7 +745,7 @@
         });
     })
 
-    
+
 
     $('#selectedDistrict').change(function () {
 
@@ -727,7 +756,7 @@
 
 
 
-    
+
 
     $('#homeBtn').click(function () {
         var status = confirm("Are you sure you want to navigate away from this page?\n\nPress OK to continue, or Cancel to stay on the current page");
@@ -742,7 +771,7 @@
 
 
     $('#editMasterBtn1').click(function () {
-       
+
         var divs = $('body').find('div[id="divAddAsset"]');
 
         $.each(divs, function (index, divItem) {
@@ -787,6 +816,48 @@
     })
 
 
+    $('#selectedAssetTypeList').change(function () {
+        var arr = $(this).val();
+        if (arr != null) {
+            if (arr.indexOf("Others") != -1) {
+                $("#showAssetTypeOthers").show();
+            }
+            else {
+                $("#showAssetTypeOthers").hide();
+            }
+        }
+        else {
+            $("#showAssetTypeOthers").hide();
+        }
+    })
+
+
+    $('#selectedAssetStatusList').change(function () {
+        var arr = $(this).val();
+        if (arr != null) {
+            if (arr.indexOf("Others") != -1) {
+                $("#showAssetStatusOthers").show();
+            }
+            else {
+                $("#showAssetStatusOthers").hide();
+            }
+        }
+        else {
+            $("#showAssetStatusOthers").hide();
+        }
+    })
+
+    $('#northToSouth').change(function () {
+        var ns = Number($(this).val());
+        var ew = Number($('#eastToWest').val());
+        $('#total').val(ns * ew);
+    })
+
+    $('#eastToWest').change(function () {
+        var ew = Number($(this).val());
+        var ns = Number($('#northToSouth').val());
+        $('#total').val(ns * ew);
+    })
 
 
 }); // end of main function

@@ -60,6 +60,7 @@
             for (var i in estimatedValueImageArray) {
 
                 myDropzone.emit("addedfile", estimatedValueImageArray[i]);
+                myDropzone.createThumbnailFromUrl(estimatedValueImageArray[i], '/InstitutionImage/estimatedValue/' + estimatedValueImageArray[i].name + '');
                 $(".dz-progress").css("background-color", 'initial');
             }
         }

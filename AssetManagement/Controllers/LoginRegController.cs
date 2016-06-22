@@ -5,12 +5,13 @@ using System.Web;
 using System.Web.Mvc;
 using AssetManagement.Models;
 using AssetManagement.DAL;
+using Newtonsoft.Json.Linq;
 
 namespace AssetManagement.Controllers
 {
     public class LoginRegController : Controller
     {
-        // GET: LoginReg
+        AssetDetailsDAL assetDetailsDal = new AssetDetailsDAL();
         public ActionResult OpenLogin()
         {
             ViewBag.login = "Login";
@@ -49,6 +50,8 @@ namespace AssetManagement.Controllers
         {
             ViewBag.login = "Login";
             Session["isAdmin"] = null;
+            JArray jarray = assetDetailsDal.getMarkersFromDB();
+            ViewBag.getMarkers = jarray;
             return View("~/Views/Home/Index.cshtml");
         }
     }

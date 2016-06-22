@@ -60,6 +60,7 @@
             for (var i in litigationManagementUploadImageArray) {
 
                 myDropzone.emit("addedfile", litigationManagementUploadImageArray[i]);
+                myDropzone.createThumbnailFromUrl(litigationManagementUploadImageArray[i], '/InstitutionImage/litigationManagement/' + litigationManagementUploadImageArray[i].name + '');
                 $(".dz-progress").css("background-color", 'initial');
             }
         }

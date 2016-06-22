@@ -4,72 +4,157 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>My ASP.NET Application</title>
+    <title>Asset management System</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
     <link href="~/Content/jquery-ui.min.css" rel="stylesheet" />
-    <link href="~/Map/css/map.css" rel="stylesheet" />
+    @*<link href="~/Map/css/map.css" rel="stylesheet" />*@
+    <link href="~/leaflet/css/leaflet.css" rel="stylesheet" />
+    <link href="~/leaflet/css/leaflet.extra-markers.min.css" rel="stylesheet" />
+    <link href="~/font-awesome-4.5.0/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/pwgSlideShow/pgwslideshow.min.css" rel="stylesheet" />
+    <link href="~/leaflet/mousePointer/Control.Coordinates.css" rel="stylesheet" />
+    <link href="~/leaflet/measurement/leaflet-measure.css" rel="stylesheet" />
+    <link href="~/leaflet/measurePath/Leaflet.draw/leaflet.draw.css" rel="stylesheet" />
+    <link href="~/leaflet/measurePath/leaflet.measurecontrol.css" rel="stylesheet" />
+
+
     <style>
         
      body{
-         padding-top: 0px !important;
+         padding: 0px !important;
      }
     
     /* Remove the jumbotron's default bottom margin */ 
-     .jumbotron {
-      padding:0px !important;
-      margin-bottom: 0;
-      /*background-image: url('../../Images/test.jpg');
-      background-size: 100%;*/
-
-      background: no-repeat url('../../Images/daria.jpeg') 50% / 100%;
+    .jumbotron {
+        padding:3px 0 3px 0 !important;
+        margin-bottom: 0;
+        background-color: #86A3FF !important;
+    /*background: no-repeat url('../../Images/daria.jpeg') 50% / 100%;*/
     }
    
     /* Add a gray background color and some padding to the footer */
     footer {
-    background-color: #f2f2f2;
-      padding: 25px;
+        background-color: #f2f2f2;
+        padding: 25px;
     }
 
-    .sidebar-nav .navbar .navbar-collapse {
-    padding: 0;
-    max-height: none;
-  }
-  .sidebar-nav .navbar ul {
-    float: none;
-    display: block;
-  }
-  .sidebar-nav .navbar li {
-    float: none;
-    display: block;
-  }
-  .sidebar-nav .navbar li a {
-    padding-top: 12px;
-    padding-bottom: 12px;
-  }
-  .container {
-     padding-right: 0px; 
-     padding-left: 0px; 
-  }
+    .container {    
+        max-width:100%;
+        padding-right:130px !important;
+        padding-left:130px !important;
+    }
 
-  /* On small screens, set height to 'auto' for sidenav and grid */
-   .sidenav {
-        height: auto;
-        padding: 15px;
+    .customBg{
+        background: #e1ffff; /* Old browsers */
+        background: -moz-linear-gradient(-45deg,  #e1ffff 0%, #e1ffff 7%, #e1ffff 12%, #fdffff 12%, #e6f8fd 30%, #c8eefb 54%, #bee4f8 75%, #b1d8f5 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(-45deg,  #e1ffff 0%,#e1ffff 7%,#e1ffff 12%,#fdffff 12%,#e6f8fd 30%,#c8eefb 54%,#bee4f8 75%,#b1d8f5 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(135deg,  #e1ffff 0%,#e1ffff 7%,#e1ffff 12%,#fdffff 12%,#e6f8fd 30%,#c8eefb 54%,#bee4f8 75%,#b1d8f5 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e1ffff', endColorstr='#b1d8f5',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+    }
+
+    .navBgCusotm{
+        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#d64228+5,d45b48+30,d45b48+59,b93523+82,b83928+93,b63b30+100 */
+        background: rgb(214,66,40); /* Old browsers */
+        background: -moz-linear-gradient(-45deg,  rgba(214,66,40,1) 5%, rgba(212,91,72,1) 30%, rgba(212,91,72,1) 59%, rgba(185,53,35,1) 82%, rgba(184,57,40,1) 93%, rgba(182,59,48,1) 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(-45deg,  rgba(214,66,40,1) 5%,rgba(212,91,72,1) 30%,rgba(212,91,72,1) 59%,rgba(185,53,35,1) 82%,rgba(184,57,40,1) 93%,rgba(182,59,48,1) 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(135deg,  rgba(214,66,40,1) 5%,rgba(212,91,72,1) 30%,rgba(212,91,72,1) 59%,rgba(185,53,35,1) 82%,rgba(184,57,40,1) 93%,rgba(182,59,48,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d64228', endColorstr='#b63b30',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+    }
+
+    .footerBgCustom{
+        color:white;
+        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#606c88+0,3f4c6b+100;Grey+3D+%232 */
+        background: rgb(96,108,136); /* Old browsers */
+        background: -moz-linear-gradient(-45deg,  rgba(96,108,136,1) 0%, rgba(63,76,107,1) 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(-45deg,  rgba(96,108,136,1) 0%,rgba(63,76,107,1) 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(135deg,  rgba(96,108,136,1) 0%,rgba(63,76,107,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#606c88', endColorstr='#3f4c6b',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+    }
+
+    .footerBgCustom p {
+        margin:0px !important;
+    }
+
+    #headerCustom {
+        background-image: url('../../Images/bg3.jpg');
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        
+    }
+
+    .nav-pills > li > a {
+        border-radius: 0px !important;
+    } 
+
+    .nav-stacked > li {
+        float: none;
+        border: 1px solid #428BCA !important;
+        margin-bottom: 7px;
+    }
+   
+    .nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+        box-shadow:5px 5px 5px gray;
+    }
+    
+    #horizontalNavCustom{
+        float:none !important;
     }
 
 
+    div.itemImage {
+    display: inline-block;   
+    }
+
+    .caption {
+        display: block;
+    }
+
+    div.polaroid {      
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.99), 0 6px 20px 0 rgba(0, 0, 0,0.99);      
+      padding:5px;
+    }
+
+    div.polaroidOnMap {      
+      padding:5px;
+      border-radius:4px;
+      box-shadow: 0 1px 5px rgba(0,0,0,0.65);
+    }
+
+    .navbar {
+        z-index:0 !important;
+        margin-bottom:10px;
+        min-height:30px !important;
+        height:35px !important;
+    }
+
+    .navbar-default .navbar-nav > li > a {
+        color: #ffffff;
+        font-weight: bold;
+        font-size: 16px;        
+    }
+
+    .navbar-nav > li > a {
+        line-height: 5px;
+    }
     .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
         color: #ffffff;
-        background-color:#82898F
+        background-color:#124ca0;
+        line-height: 3px;
     }
 
-    .sidebar-nav .navbar li a {
-        color:#82898F;
+   
+    #headerContainerCustom{
+        padding-right:0px !important;
+        padding-left:0px !important;
+        padding : 0px !important;
     }
         
-    </style>
+</style>
 </head>
 <body>
     @Scripts.Render("~/bundles/jquery")
@@ -78,64 +163,75 @@
 
     <!-- Include Bootstrap Wizard -->
     <script src="~/Scripts/jquery-ui.min.js"></script>
-    <script src="~/Map/js/lib/d3.v3.min.js"></script>
+    @*<script src="~/Map/js/lib/d3.v3.min.js"></script>
     <script src="~/Map/js/lib/topojson.v1.min.js"></script>
-    <script src="~/Map/js/map.js"></script>
+    <script src="~/Map/js/map.js"></script>*@
+    <script src="~/leaflet/mapData/geojson/Karnataka_District.js"></script>
+    <script src="~/leaflet/mapData/geojson/Karnataka_Mandya.js"></script>
+    <script src="~/leaflet/js/leaflet.js"></script>
+    <script src="~/leaflet/js/leaflet.extra-markers.min.js"></script>
+    <script src="~/leaflet/mousePointer/util/NumberFormatter.js"></script>
+    <script src="~/leaflet/mousePointer/Control.Coordinates.js"></script>
+    <script src="~/leaflet/measurement/leaflet-measure.min.js"></script>
+    <script src="~/leaflet/measurePath/Leaflet.draw/leaflet.draw.js"></script>
+    <script src="~/leaflet/measurePath/leaflet.measurecontrol.js"></script>
+    <script src="~/leaflet/js/leafletmap.js"></script>
+    <script src="~/pwgSlideShow/pgwslideshow.min.js"></script>
 
-    
 
-    <div class="container">
-        <div class="jumbotron">
-            <div class="container text-center">
-                <h1>Online Store</h1>
-                <p>Mission, Vission & Values</p>
+    <div class="jumbotron" id="headerCustom">
+        <div class="container" id="headerContainerCustom">
+            <div class="col-sm-3 itemImage" style="text-align:left">
+                <img src="~/Images/kreis_logo.png" height="130" width="130" />
+                @*<span class="caption" style="margin-left:4%;color:white;font-size:12px">Govt. Of Karnataka</span>*@
             </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-sm-2" style="padding:15px">
-                <div class="sidebar-nav">
-                    <div class="navbar navbar-default" role="navigation">
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
-                                <span class="sr-only">Toggle navigation</span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                            <span class="visible-xs navbar-brand">Sidebar menu</span>
-                        </div>
-                        <div class="navbar-collapse collapse sidebar-navbar-collapse">
-                            <ul class="nav navbar-nav">
-                                <li id="homeNavBtn">@Html.ActionLink("Home", "Index", "Home")</li>
-                                <li id="institutionNavBtn">@Html.ActionLink("Instituion Details", "ViewInstituionDetails", "Home")</li>
-                                <li id="reportNavBtn">@Html.ActionLink("Report", "OpenReport", "Home")</li>
-                                <li><a href="#">Menu Item 3</a></li>
-                                <li><a href="#">Menu Item 4</a></li>
-                                <li><a href="#">Reviews <span class="badge">1,118</span></a></li>
-                            </ul>
-                        </div><!--/.nav-collapse -->
-                    </div>
-                </div>
+            <div class="col-sm-6" style="text-align:center">
+                <h2 style="margin-top: 0px;color:white;font-weight: bold;font-size:42px">Asset Management System </h2>
+                <h3 style="margin-top: 0px;color:white">Hazrath Tippu Sultan Shaheed Wakf Estate </h3>
+                <h3 style="margin-top: 0px;color:white">حضرت ٹیپو سلطان شہید وقف اسٹیٹ</h3>
             </div>
-            <div class="col-sm-8" style="padding:15px">
-                
-                @RenderBody()
+            <div class="col-sm-3 itemImage" style="text-align:right">
+                <img src="~/Images/tippu.png" height="130" width="150" />
+                @*<span class="caption" style="margin-right:15%;color:white;font-size:12px">Tippu Sultan</span>*@
             </div>
-
-            <div class="col-sm-2 sidenav">
-                <div class="well">
-                    <p>ADS</p>
-                </div>
-                <div class="well">
-                    <p>ADS</p>
-                </div>
-            </div>
-
-
         </div>
     </div>
 
+    <div class="container customBg">
+        
+        <div class="polaroid">
+            <nav class="navbar navbar-default navBgCusotm">
+                <div class="container-fluid ">
+
+                    <ul id="horizontalNavCustom" class="nav navbar-nav ">
+                        <li id="homeNavBtn">@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li><a>About</a></li>
+                        <li id="dataVerifyBtn">@Html.ActionLink("Data Verify Form", "OpenDataVerifyPage", "Home")</li>
+                        <li><a>Downloads</a></li>
+                        <li><a>RTI</a></li>
+                        <li><a>Contact Us</a></li>
+                        <li><a>Report</a></li>
+                        <li id="mapNavBtn">@Html.ActionLink("Map", "Index", "Home")</li>
+
+
+                        <li id="loginNavBtn" style="float:right;">@Html.ActionLink("Log In", "OpenLogin", "LoginReg")</li>
+                    </ul>
+                </div>
+            </nav>
+
+            <div class="row">
+                   @RenderBody()
+            </div>
+            
+        </div>
+    </div>
+
+    <footer class="footerBgCustom" style="max-height:80px;text-align:center;font-size:12px;padding:0px">
+        <p>Copyright (c) 2016 | Designed & Hosted By : Microline Electronics (P) Ltd, Bengaluru</p>
+        <p>DISCLAIMER</p>
+        <p> Content Owned, Maintained and Updated by Hazrath Tippu Sultan Shahees Wakf Estate, Srirangapatna</p>
+        <p> Questions regarding content or presentation may be mail to: hazrathtipusultan.wakfestate@gmail.com  </p>
+    </footer>
 
 </body>
 </html>

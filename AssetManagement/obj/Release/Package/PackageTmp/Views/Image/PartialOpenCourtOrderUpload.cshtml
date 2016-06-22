@@ -59,6 +59,7 @@
             for (var i in courtOrderImageArray) {
 
                 myDropzone.emit("addedfile", courtOrderImageArray[i]);
+                myDropzone.createThumbnailFromUrl(courtOrderImageArray[i], '/InstitutionImage/courtOrder/' + courtOrderImageArray[i].name + '');
                 $(".dz-progress").css("background-color", 'initial');
             }
         }

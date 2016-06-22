@@ -1,0 +1,1180 @@
+﻿@{
+    Layout = "~/Views/Shared/_WebLayout.cshtml";
+}
+@{
+    ViewBag.Title = "ViewInstituionDetails";
+}
+@using AssetManagement.Models
+@model AssetViewModels
+
+
+<script src="~/JSSOR/js/jssor.slider.mini.js"></script>
+
+<script>
+
+    function showDocOnClick(location,name){
+
+        var data ='<embed src="'+location+'" type="application/pdf" style="width:100%;height:500px">';
+        var widthAppWindow = $(window).width();
+        var heightAppWindow = $(window).height();
+        widthAppWindow = parseInt(widthAppWindow) - parseInt(200);
+        heightAppWindow = parseInt(heightAppWindow) - parseInt(100);
+
+
+        var divs = $('#appendDocPopUp').find('div[id="div_ShowDoc"]');
+        $.each(divs, function (index, divItem) {
+            $(divItem).remove();
+        });
+
+        $('#appendDocPopUp').append('<div id="div_ShowDoc"></div>');
+        
+        $('#div_ShowDoc').dialog({
+
+            draggable: true,
+            modal: true,
+            resizable: false,
+            width: widthAppWindow,
+            height: heightAppWindow,
+            autoOpen: false,
+            title:name,
+
+        });
+
+        $('#div_ShowDoc').css('z-index', '9999');
+        $('#div_ShowDoc').html(data);
+        $('#div_ShowDoc').dialog('open');
+
+    }
+
+</script>
+
+<style>
+    /*.ui-dialog .ui-dialog-content{
+        overflow:hidden !important;
+    }*/
+
+    .table-bordered-custom > thead > tr > th, .table-bordered-custom > tbody > tr > th, .table-bordered-custom > tfoot > tr > th, .table-bordered-custom > thead > tr > td, .table-bordered-custom > tbody > tr > td, .table-bordered-custom > tfoot > tr > td {
+        border: 1px solid #428BCA !important;
+    }
+
+    .table-bordered > thead > tr > th, .table-bordered > tbody > tr > th, .table-bordered > tfoot > tr > th, .table-bordered > thead > tr > td, .table-bordered > tbody > tr > td, .table-bordered > tfoot > tr > td {
+        border: 1px solid #9E0A2E !important;
+    }
+    .borderless td .borderless th {
+        border: none !important;
+    
+    }
+
+    .borderless{
+        width:100% !important;
+    }
+
+    .pgwSlideshow{
+        background:none !important;
+    }
+
+    .ps-list{
+        background:none !important;
+        box-shadow:none !important;
+        border:none !important;
+    }
+
+/* jssor slider arrow navigator skin 02 css */
+        /*
+        .jssora02l                  (normal)
+        .jssora02r                  (normal)
+        .jssora02l:hover            (normal mouseover)
+        .jssora02r:hover            (normal mouseover)
+        .jssora02l.jssora02ldn      (mousedown)
+        .jssora02r.jssora02rdn      (mousedown)
+        */
+        .jssora02l, .jssora02r {
+            position: absolute;
+            /* size of arrow element */
+            width: 55px;
+            height: 55px;
+            cursor: pointer;
+            background: url('/JSSOR/img/a02.png') no-repeat;
+            overflow: hidden;
+        }
+        .jssora02l { background-position: -3px -33px; }
+        .jssora02r { background-position: -63px -33px; }
+        /*.jssora02l:hover { background-position: -123px -33px; }
+        .jssora02r:hover { background-position: -183px -33px; }
+        .jssora02l.jssora02ldn { background-position: -3px -33px; }
+        .jssora02r.jssora02rdn { background-position: -63px -33px; }*/
+
+        /* jssor slider thumbnail navigator skin 03 css */
+        /*
+        .jssort07 .p            (normal)
+        .jssort07 .p:hover      (normal mouseover)
+        .jssort07 .pav          (active)
+        .jssort07 .pdn          (mousedown)
+        */
+        
+        .jssort07 .p {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 62px;
+            height: 32px;
+        }
+        
+        .jssort07 .t {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .jssort07 .w, .jssort07 .pav:hover .w {
+            position: absolute;
+            width: 60px;
+            height: 30px;
+            border: white 1px dashed;
+            box-sizing: content-box;
+        }
+        
+        .jssort07 .pdn .w, .jssort07 .pav .w {
+            border-style: solid;
+        }
+        
+        .jssort07 .c {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 62px;
+            height: 32px;
+            background-color: #000;
+        
+            filter: alpha(opacity=45);
+            opacity: .45;
+            transition: opacity .6s;
+            -moz-transition: opacity .6s;
+            -webkit-transition: opacity .6s;
+            -o-transition: opacity .6s;
+        }
+        
+        .jssort07 .p:hover .c, .jssort07 .pav .c {
+            filter: alpha(opacity=0);
+            opacity: 0;
+        }
+        
+        .jssort07 .p:hover .c {
+            transition: none;
+            -moz-transition: none;
+            -webkit-transition: none;
+            -o-transition: none;
+        }
+        
+        * html .jssort07 .w {
+            width /**/: 62px;
+            height /**/: 32px;
+        }
+
+        #jssor_1 span, #jssor_2 span{
+            display:none !important;
+        }
+
+        #jssor_1:hover span, #jssor_2:hover span{
+            display:block !important;
+        }
+
+
+
+</style>
+
+<div id="appendDocPopUp"></div>
+<div class="col-sm-2">
+    
+    <ul class="nav nav-pills nav-stacked">
+        <li class="active"><a data-toggle="pill" href="#galleryDiv">Gallery</a></li>
+        <li><a data-toggle="pill" href="#institutionDiv">Institution Abstract</a></li>  
+        <li><a data-toggle="pill" href="#propertyDiv">Property Details</a></li>
+        <li id="documentLi"><a data-toggle="pill" href="#documentDiv">Documents</a></li>
+        <li class="customHide"><a data-toggle="pill" href="#managementDiv">Management Details</a></li>
+        <li class="customHide"><a data-toggle="pill" href="#districtDiv">District Details</a></li>          
+    </ul>
+         
+    
+</div>
+
+<div class="col-sm-7" style="padding:0">
+    
+    <div class="tab-content">
+        <h4>Institution Name : @Model.institutionName</h4>
+
+        <div id="galleryDiv" class="tab-pane fade in active">
+            @*<ul id="imageGallery" class="pgwSlideshow"></ul>*@
+
+            <div id="jssor_1" style="position: relative; margin: 0 auto; top: 0px; left: 0px; width: 800px; height: 450px; overflow: hidden; visibility: hidden;">
+                <!-- Loading Screen -->
+
+                <div id="jssorContainer1" data-u="slides" style="cursor: default; position: relative; top: 0px; left: 0px; width: 800px; height: 450px; overflow: hidden;">
+                    
+                </div>
+                <!-- Thumbnail Navigator -->
+                <div u="thumbnavigator" class="jssort07" style="position:absolute;left:0px;bottom:0px;width:800px;height:60px;" data-autocenter="1">
+                    <div style="position: absolute; top: 0; left: 0; width: 100%; height:100%; background-color: #000; filter:alpha(opacity=30.0); opacity:0.3;"></div>
+                    <!-- Thumbnail Item Skin Begin -->
+                    <div u="slides" style="cursor: default;">
+                        <div u="prototype" class="p">
+                            <div class="w">
+                                <div u="thumbnailtemplate" class="t"></div>
+                            </div>
+                            <div class="c"></div>
+                        </div>
+                    </div>
+                    <!-- Thumbnail Item Skin End -->
+                </div>
+                <!-- Arrow Navigator -->
+                <span data-u="arrowleft" class="jssora02l" style="top:0px;left:8px;width:55px;height:55px;" data-autocenter="2"></span>
+                <span data-u="arrowright" class="jssora02r" style="top:0px;right:8px;width:55px;height:55px;" data-autocenter="2"></span>
+            </div>
+
+        </div>
+
+        <div id="institutionDiv" class="tab-pane fade">
+            <div  class="btn btn-info" data-toggle="collapse" data-target="#institutionDivSummary" style="width:100%">Institution</div><br/><br />
+            <div id="institutionDivSummary" class="collapse in">
+                
+                <table class="table table-hover table-condensed table-bordered">
+                    <tr>
+                        <td class="col-lg-5 col-md-5 col-sm-5">
+                            Institution Name 
+                        </td>
+                        <td>
+                            @Model.institutionName
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Institution ID 
+                        </td>
+                        <td>
+                            @Model.assetID
+                        </td>
+                    </tr>                   
+                    <tr>
+                        <td>
+                            Gazette Notification No.
+                        </td>
+                        <td>
+                            @Model.gnNumber
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Gazette Notification Date
+                        </td>
+                        <td>
+                            @Model.gnDate
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Corrigendum Notification No.
+                        </td>
+                        <td>
+                            @Model.crNumber
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Corrigendum Notification Date
+                        </td>
+                        <td>
+                            @Model.crDate
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Court Judgement Order
+                        </td>
+                        <td>
+                            @Model.courtJudgementOrder
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Wqqf ID
+                        </td>
+                        <td>
+                            @Model.waqfID
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Institution Type
+                        </td>
+                        <td>
+                            @Model.selectedInstitutionType
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Classification
+                        </td>
+                        <td>
+                            @Model.selectedClassificationType
+                        </td>
+                    </tr>
+                </table>
+
+            </div>
+
+           
+            <div class="btn btn-info" data-toggle="collapse" data-target="#managementCommDivSummary" style="width:100%">Committee</div><br /><br />
+            <div id="managementCommDivSummary" class="collapse">
+
+                <table class="table table-hover table-condensed table-bordered">
+                    <tr>
+                        <td class="col-lg-5 col-md-5 col-sm-5">
+                            Management Type
+                        </td>
+                        <td>
+                            @Model.selectedManagementType
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Trust/Society/Name
+                        </td>
+                        <td>
+                            @Model.managementSocietyName
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Approval No.
+                        </td>
+                        <td>
+                            @Model.managementApprovalNumber
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Registration/Order No.
+                        </td>
+                        <td>
+                            @Model.managementRegNumber
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Date of Registration
+                        </td>
+                        <td>
+                            @Model.managementRegDate
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Appointment Type
+                        </td>
+                        <td>
+                            @Model.selectedManagementAppointmentType
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Appointment Date
+                        </td>
+                        <td>
+                            @Model.managementAppointmentDate
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Tenure
+                        </td>
+                        <td>
+                            @Model.managementTenure
+                        </td>
+                    </tr>
+
+                </table>
+
+            </div>
+
+
+            <div class="btn btn-info" data-toggle="collapse" data-target="#locationDivSummary" style="width:100%">Location</div><br/><br />
+            <div id="locationDivSummary" class="collapse">
+
+                <table class="table table-hover table-condensed table-bordered">
+                    <tr>
+                        <td class="col-lg-5 col-md-5 col-sm-5">
+                            State
+                        </td>
+                        <td>
+                            @Model.selectedState
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Division
+                        </td>
+                        <td>
+                            @Model.selectedDivision
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            MP Constituency
+                        </td>
+                        <td>
+                            @Model.selectedMPConstituency
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            District
+                        </td>
+                        <td>
+                            @Model.selectedDistrict
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            MLA Constituency
+                        </td>
+                        <td>
+                            @Model.selectedMLAConstituency
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Taluk
+                        </td>
+                        <td>
+                            @Model.selectedTalukPanchayat
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Property falls under
+                        </td>
+                        <td>
+                            @{
+                                if(Model.rural == "rural")
+                                {
+                                    @Model.rural;
+                                }else
+                                {
+                                    @Model.urban;
+                                }
+                            } 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Municipal Ward No.
+                        </td>
+                        <td>
+                            @Model.selectedMunicipalWardNo
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Latitude
+                        </td>
+                        <td>
+                            @Model.latitude
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Longitude
+                        </td>
+                        <td>
+                            @Model.longitude
+                        </td>
+                    </tr>
+                </table>
+
+            </div>
+
+
+            <div class="btn btn-info" data-toggle="collapse" data-target="#propertyDivSummary" style="width:100%">Property Information</div><br /><br />
+            <div id="propertyDivSummary" class="collapse">
+
+                <table class="table table-hover table-condensed table-bordered">
+                    <tr>
+                        <td class="col-lg-5 col-md-5 col-sm-5">
+                            Asset Type
+                        </td>
+                        <td>
+                            @Model.selectedAssetType
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Asset Status
+                        </td>
+                        <td>
+                            @Model.selectedAssetStatus
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Property Details
+                        </td>
+                        <td>
+                            <table class="borderless">
+                                <tr>
+                                    <td>
+                                        Survey Number
+                                    </td>
+                                    <td>
+                                        @Model.surveyNo
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Khatha/Assessment Number
+                                    </td>
+                                    <td>
+                                        @Model.khathaNo
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Property ID
+                                    </td>
+                                    <td>
+                                        @Model.propertyID
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        M.R. No
+                                    </td>
+                                    <td>
+                                        @Model.municipalNo
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Boundaries
+                        </td>
+                        <td>
+                            <table class="borderless">
+                                <tr>
+                                    <td>
+                                        North
+                                    </td>
+                                    <td>
+                                        @Model.north
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        South
+                                    </td>
+                                    <td>
+                                        @Model.south
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        East
+                                    </td>
+                                    <td>
+                                        @Model.east
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        West
+                                    </td>
+                                    <td>
+                                        @Model.west
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Extent of Land in @Model.selectedExtentLandUnit
+                        </td>
+                        <td>
+                            <table class="borderless">
+                                <tr>
+                                    <td>
+                                        North to South
+                                    </td>
+                                    <td>
+                                        @Model.northToSouth
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        East to West
+                                    </td>
+                                    <td>
+                                        @Model.eastToWest
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Total
+                                    </td>
+                                    <td>
+                                        @Model.total
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Estimated value in INR
+                        </td>
+                        <td>
+                            @Model.estimatedValue
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Date of Estimation
+                        </td>
+                        <td>
+                            @Model.estimatedDate
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Litigation related to Management
+                        </td>
+                        <td>
+                            @Model.litigationManagement
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Litigation related to Assets
+                        </td>
+                        <td>
+                            @Model.litigationAsset
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Address
+                        </td>
+                        <td>
+                            @Model.address
+                        </td>
+                    </tr>
+
+                </table>
+
+            </div>
+           
+
+            <div class="btn btn-info" data-toggle="collapse" data-target="#advisoryCommDivSummary" style="width:100%">District Details</div><br /><br />
+            <div id="advisoryCommDivSummary" class="collapse">
+
+                <table class="table table-hover table-condensed table-bordered">
+
+                    <tr>
+                        <td class="col-lg-5 col-md-5 col-sm-5">
+                            Trust/Society/Name
+                        </td>
+                        <td>
+                            @Model.advisorySocietyName
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Approval No.
+                        </td>
+                        <td>
+                            @Model.advisoryApprovalNumber
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Registration/Order No.
+                        </td>
+                        <td>
+                            @Model.advisoryRegNumber
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Date of Registration
+                        </td>
+                        <td>
+                            @Model.advisoryRegDate
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Appointment Type
+                        </td>
+                        <td>
+                            @Model.selectedAdvisoryAppointmentType
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Appointment Date
+                        </td>
+                        <td>
+                            @Model.advisoryAppointmentDate
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Tenure
+                        </td>
+                        <td>
+                            @Model.advisoryTenure
+                        </td>
+                    </tr>
+
+                </table>
+
+            </div>
+
+
+        </div>
+
+        <div id="propertyDiv" class="tab-pane fade">
+            <table class="table table-hover table-condensed table-bordered">
+                <tr>
+                    <td>
+                        Asset Type 
+                    </td>
+                    <td>
+                        @Model.selectedAssetType
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Asset Status 
+                    </td>
+                    <td>
+                        @Model.selectedAssetStatus
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Property Details
+                    </td>
+                    <td>
+                            <table class="borderless" >
+                                <tr>
+                                    <td>
+                                        Survey Number
+                                    </td>
+                                    <td>
+                                        @Model.surveyNo
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Khatha/Assessment Number
+                                    </td>
+                                    <td>
+                                        @Model.khathaNo
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Property ID
+                                    </td>
+                                    <td>
+                                        @Model.propertyID
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        M.R. No
+                                    </td>
+                                    <td>
+                                        @Model.municipalNo
+                                    </td>
+                                </tr>
+                            </table>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Boundaries
+                    </td>
+                    <td>
+                        <table class="borderless" >
+                            <tr>
+                                <td>
+                                    North
+                                </td>
+                                <td>
+                                    @Model.north
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    South
+                                </td>
+                                <td>
+                                    @Model.south
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    East
+                                </td>
+                                <td>
+                                    @Model.east
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    West
+                                </td>
+                                <td>
+                                    @Model.west
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Extent of Land in @Model.selectedExtentLandUnit
+                    </td>
+                    <td>
+                        <table class="borderless" >
+                            <tr>
+                                <td>
+                                    North to South
+                                </td>
+                                <td>
+                                    @Model.northToSouth
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    East to West
+                                </td>
+                                <td>
+                                    @Model.eastToWest
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Total
+                                </td>
+                                <td>
+                                    @Model.total
+                                </td>
+                            </tr>                            
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Estimated value in INR
+                    </td>
+                    <td>
+                        @Model.estimatedValue
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Date of Estimation
+                    </td>
+                    <td>
+                        @Model.estimatedDate
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Litigation related to Management
+                    </td>
+                    <td>
+                        @Model.litigationManagement
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Litigation related to Assets
+                    </td>
+                    <td>
+                        @Model.litigationAsset
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Address
+                    </td>
+                    <td>
+                        @Model.address
+                    </td>
+                </tr>
+
+            </table>
+        </div>
+
+        <div id="managementDiv" class="tab-pane fade">
+            <div id="tblManagementDetails">
+            </div>
+        </div>
+
+        <div id="districtDiv" class="tab-pane fade">
+            <div id="tblAdvisoryDetails">
+            </div>
+        </div>
+
+        <div id="documentDiv" class="tab-pane fade ">
+            
+            <div id="jssorContainer2">
+
+            </div>
+        </div>
+
+        
+
+    </div>
+</div>
+
+<div class="col-sm-3">
+        <div style="text-align:center;background-color: #428BCA;color: white;font-size:16px;font-weight:bold">
+            Institution Information
+        </div>
+        <div>
+            <table class="table table-hover table-condensed table-bordered-custom">
+                <tr>
+                    <td>
+                        Institution ID
+                    </td>
+                    <td>
+                        @Model.assetID
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        G.N. No
+                    </td>
+                    <td>
+                        @Model.gnNumber
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        C.N. Date
+                    </td>
+                    <td>
+                        @Model.crDate
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Waqf ID
+                    </td>
+                    <td>
+                        @Model.waqfID
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Property ID
+                    </td>
+                    <td>
+                        @Model.propertyID
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Committee Type
+                    </td>
+                    <td>
+                        @Model.selectedManagementType
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Latitude
+                    </td>
+                    <td>
+                        @Model.latitude
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Longitude
+                    </td>
+                    <td>
+                        @Model.longitude
+                    </td>
+                </tr>
+            </table>
+    </div>
+        <div>
+            <img style="cursor:pointer" id="showOnGoogle" src="~/Images/GoogleEarth.png" height="35" width="140"/>            
+        </div>
+</div>
+
+<script>
+
+    $(function(){
+
+        if("@Model.assetTypeFlow" != 'MainAsset'){
+            $('.customHide').hide();
+        }
+
+        genericGrid("tblManagementDetails", "managementStamped", @Html.Raw(ViewBag.managementDetailsList));
+        genericGrid("tblAdvisoryDetails", "advisoryStamped", @Html.Raw(ViewBag.advisoryDetailsList));
+
+        
+        createGenericGallery("jssorContainer2",@Html.Raw(Json.Encode(ViewBag.assetStatusImage)));
+        createGenericGallery("jssorContainer2",@Html.Raw(Json.Encode(ViewBag.gnNumberImage)));
+        createGenericGallery("jssorContainer2",@Html.Raw(Json.Encode(ViewBag.crNumberImage)));
+        createGenericGallery("jssorContainer2",@Html.Raw(Json.Encode(ViewBag.courtOrderImage)));
+        createGenericGallery("jssorContainer2",@Html.Raw(Json.Encode(ViewBag.surveyNoImage)));
+        createGenericGallery("jssorContainer2",@Html.Raw(Json.Encode(ViewBag.khathaNoImage)));
+        createGenericGallery("jssorContainer2",@Html.Raw(Json.Encode(ViewBag.municipalNoImage)));
+        createGenericGallery("jssorContainer2",@Html.Raw(Json.Encode(ViewBag.northImage)));
+        createGenericGallery("jssorContainer2",@Html.Raw(Json.Encode(ViewBag.eastImage)));
+        createGenericGallery("jssorContainer2",@Html.Raw(Json.Encode(ViewBag.southImage)));
+        createGenericGallery("jssorContainer2",@Html.Raw(Json.Encode(ViewBag.westImage)));
+        createGenericGallery("jssorContainer2",@Html.Raw(Json.Encode(ViewBag.estimatedValueImage)));
+        createGenericGallery("jssorContainer2",@Html.Raw(Json.Encode(ViewBag.litigationManagementImage)));
+        createGenericGallery("jssorContainer2",@Html.Raw(Json.Encode(ViewBag.litigationAssetImage)));
+        createGenericGallery("jssorContainer1",@Html.Raw(Json.Encode(ViewBag.geoStampedImage)));
+
+
+        
+
+        function createGenericGallery(container,data){
+            var html,arr,ext,fileExtArray = ['jpeg', 'jpg', 'png'];
+            data.forEach(function(d){
+                arr = d.split('|');
+                ext = arr[0].split('.').pop().toLowerCase();
+
+                if($.inArray(ext, fileExtArray) == -1){
+
+                    var tempLoc = '/InstitutionImage/'+arr[1]+'/' + arr[0] +'';
+                    
+                    html='<div class="itemImage" style="margin-right:30px"><embed src="/InstitutionImage/'+arr[1]+'/' + arr[0] + '" type="application/pdf" style="width:150px;height:150px";>';
+                    html += '<span style="cursor:pointer"class="caption" onclick="showDocOnClick(\''+tempLoc+'\',\''+arr[0]+'\')"><a>'+arr[0]+'</a></span></div>';
+                
+                }else{
+                    html = '<div data-p="112.50" style="display: none;"><img data-u="image" src="/InstitutionImage/'+arr[1]+'/' + arr[0] + '" /><img data-u="thumb" src="/InstitutionImage/'+arr[1]+'/' + arr[0] + '" /></div>';
+                }
+                $("#"+container).append(html);
+            })
+        }
+
+        function genericGrid(container,folderName,data) {
+
+            var key,
+            html = "<table id='" + container + "_Table' class='table table-condensed table-bordered'><tr><th>Designation</th><th>Name</th><th>Mobile No</th><th>E-mail Id</th><th>Image</th></tr>";
+
+            data.forEach(function (d) {
+                html += '<tr><td>' + d.Designation + '</td>';
+                html += '<td>' + d.Name + '</td>';
+                html += '<td>' + d["Mobile No"] + '</td>';
+                html += '<td>' + d["E-mail Id"] + '</td>';
+                html += '<td><img width="100" height="100" src="/InstitutionImage/'+folderName+'/' + d.Image + '"/></td>';
+                html += '</tr>';
+
+            });
+
+            html += "</table>";
+            document.getElementById(container).innerHTML = html;
+
+        }
+
+
+        var jssor_1_options = {
+            $AutoPlay: false,
+            $ArrowNavigatorOptions: {
+                $Class: $JssorArrowNavigator$
+            },
+            $ThumbnailNavigatorOptions: {
+                $Class: $JssorThumbnailNavigator$,
+                $Cols: 9,
+                $SpacingX: 3,
+                $SpacingY: 3,
+                $Align: 260
+            }
+        };
+            
+        var jssor_1_slider = new $JssorSlider$("jssor_1", jssor_1_options);
+
+
+        //var jssor_2_options = {
+        //    $AutoPlay: false,
+        //    $ArrowNavigatorOptions: {
+        //        $Class: $JssorArrowNavigator$
+        //    },
+        //    $ThumbnailNavigatorOptions: {
+        //        $Class: $JssorThumbnailNavigator$,
+        //        $Cols: 9,
+        //        $SpacingX: 3,
+        //        $SpacingY: 3,
+        //        $Align: 260
+        //    }
+        //};
+            
+        //var jssor_2_slider = new $JssorSlider$("jssor_2", jssor_2_options);
+            
+        //responsive code begin
+        //you can remove responsive code if you don't want the slider scales while window resizing
+        function ScaleSlider() {
+            var refSize = jssor_1_slider.$Elmt.parentNode.clientWidth;
+            if (refSize) {
+                refSize = Math.min(refSize, 800);
+                jssor_1_slider.$ScaleWidth(refSize);
+            }
+            else {
+                window.setTimeout(ScaleSlider, 30);
+            }
+        }
+
+        ScaleSlider();
+        
+        $(window).bind("load", ScaleSlider);
+        $(window).bind("resize", ScaleSlider);
+        $(window).bind("orientationchange", ScaleSlider);
+        //responsive code end
+
+
+        function generateKMZFile(){
+            
+            var longitude = "@Model.longitude";
+            var latitude = "@Model.latitude";
+            var institutionName = "@Model.institutionName";
+
+            var data = '<?xml version="1.0" encoding="UTF-8"?><kml xmlns="http://www.opengis.net/kml/2.2"><Placemark><name>'+institutionName+'</name><Point><coordinates>'+longitude+','+latitude+',0</coordinates></Point></Placemark></kml>'
+            var fileName = institutionName;
+            var uri = 'data:application/vnd.google-earth.kml+xml;charset=utf-8,' + data;
+            var link = document.createElement("a");
+            link.href = uri;
+            link.style = "visibility:hidden";
+            link.download = fileName + ".kml";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+        }
+        
+        $('#showOnGoogle').click(function(){
+            generateKMZFile();
+        })
+
+        
+
+    });
+</script>

@@ -34,8 +34,9 @@
                     alert("File limit 512");
                 });
                 this.on("complete", function (file) {
+                    file.customImagePath = '<img src="/InstitutionImage/ManagementImages/'+file.name+'" height="60px" width="60px">';
                     managementImageArray.push(file);
-                    console.log(file.name)
+                    console.log(file.customImagePath);
                 });
                 this.on("removedfile",function(file){
 

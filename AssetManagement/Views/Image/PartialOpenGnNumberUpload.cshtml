@@ -57,6 +57,7 @@
             for (var i in gnNumberImageArray) {
 
                 myDropzone.emit("addedfile", gnNumberImageArray[i]);
+                myDropzone.createThumbnailFromUrl(gnNumberImageArray[i], '/InstitutionImage/gnNumber/' + gnNumberImageArray[i].name + '');
                 $(".dz-progress").css("background-color", 'initial');
             }
         }
