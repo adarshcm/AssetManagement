@@ -1,17 +1,37 @@
 ﻿@{
+    Layout = "~/Views/Shared/_WebLayout.cshtml";
+}
+
+@{
     ViewBag.Title = "Contact";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+<div class="col-sm-12" style="padding:0px 25px;">
+
+    <h2>Contact us:</h2>
+    <h3>Hazrath Tipu Sultan Shaheed Wakf Estate</h3>
+
+    <address>
+        Gumbad-e- shahi ganjam<br />
+        Srirangapatna, Mandya district<br />
+        <abbr>Phone:</abbr>
+        08236-252786
+    </address>
+
+    <address>
+        <strong>Email:</strong>   <a>info@tiputigerofmysore.com</a><br />
+        <strong>Web:</strong> <a href="http://www.tiputigerofmysore.com/" target="_blank">www.tiputigerofmysore.com</a>
+    </address>
+
+
+
+</div>
+
+
+<script>
+    $(function () {
+        $('#contactUsBtn').addClass("active");
+    })
+</script>
+

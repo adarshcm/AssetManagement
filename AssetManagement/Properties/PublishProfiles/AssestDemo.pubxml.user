@@ -19,7 +19,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/25/2016 19:30:10</publishTime>
     </File>
     <File Include="bin/AssetManagement.dll">
-      <publishTime>06/21/2016 21:51:08</publishTime>
+      <publishTime>07/01/2016 22:52:02</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>03/25/2016 19:29:51</publishTime>
@@ -364,6 +364,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/10/2016 22:37:46</publishTime>
     </File>
     <File Include="Images/bg3.jpg">
+      <publishTime>06/22/2016 19:02:10</publishTime>
+    </File>
+    <File Include="Images/bg31.jpg">
       <publishTime>06/10/2016 22:53:17</publishTime>
     </File>
     <File Include="Images/daria.jpeg">
@@ -378,6 +381,12 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Images/editMaster.png">
       <publishTime>04/02/2016 16:35:19</publishTime>
     </File>
+    <File Include="Images/facebook.png">
+      <publishTime>06/30/2016 21:11:02</publishTime>
+    </File>
+    <File Include="Images/fshare.png">
+      <publishTime>06/22/2016 20:25:28</publishTime>
+    </File>
     <File Include="Images/GoogleEarth.png">
       <publishTime>06/12/2016 00:08:52</publishTime>
     </File>
@@ -386,6 +395,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Images/kreis_logo.png">
       <publishTime>06/09/2016 20:15:56</publishTime>
+    </File>
+    <File Include="Images/pdf.png">
+      <publishTime>06/23/2016 19:55:26</publishTime>
     </File>
     <File Include="Images/removeAsset.png">
       <publishTime>04/02/2016 16:02:25</publishTime>
@@ -396,8 +408,23 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Images/tippu.png">
       <publishTime>06/13/2016 20:13:26</publishTime>
     </File>
+    <File Include="Images/tshare.png">
+      <publishTime>06/22/2016 20:25:48</publishTime>
+    </File>
+    <File Include="Images/twitter.png">
+      <publishTime>06/30/2016 21:16:21</publishTime>
+    </File>
     <File Include="Images/Underconstruction.png">
       <publishTime>04/19/2016 22:01:11</publishTime>
+    </File>
+    <File Include="Images/youtube.jpg">
+      <publishTime>06/22/2016 20:46:06</publishTime>
+    </File>
+    <File Include="Images/youtube.png">
+      <publishTime>06/30/2016 21:11:52</publishTime>
+    </File>
+    <File Include="Images/youtubeshare.jpg">
+      <publishTime>06/22/2016 20:46:06</publishTime>
     </File>
     <File Include="JSSOR/img/a02.png">
       <publishTime>05/29/2016 15:27:38</publishTime>
@@ -429,11 +456,17 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="leaflet/css/L.Control.MousePosition.css">
       <publishTime>06/19/2013 08:34:03</publishTime>
     </File>
+    <File Include="leaflet/css/leaflet-search.min.css">
+      <publishTime>06/23/2016 21:55:18</publishTime>
+    </File>
     <File Include="leaflet/css/leaflet.css">
       <publishTime>06/09/2016 22:57:14</publishTime>
     </File>
     <File Include="leaflet/css/leaflet.extra-markers.min.css">
       <publishTime>06/02/2016 21:48:30</publishTime>
+    </File>
+    <File Include="leaflet/img/loader.gif">
+      <publishTime>06/23/2016 21:55:10</publishTime>
     </File>
     <File Include="leaflet/img/marker.gif">
       <publishTime>06/10/2016 12:28:55</publishTime>
@@ -453,6 +486,15 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="leaflet/img/markers_shadow.png">
       <publishTime>06/02/2016 21:48:30</publishTime>
     </File>
+    <File Include="leaflet/img/search-icon-mobile.png">
+      <publishTime>06/23/2016 21:55:16</publishTime>
+    </File>
+    <File Include="leaflet/img/search-icon.png">
+      <publishTime>06/23/2016 21:55:14</publishTime>
+    </File>
+    <File Include="leaflet/js/easy-button.js">
+      <publishTime>07/01/2016 00:42:00</publishTime>
+    </File>
     <File Include="leaflet/js/images/marker-icon.png">
       <publishTime>10/26/2015 15:26:05</publishTime>
     </File>
@@ -462,6 +504,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="leaflet/js/L.Control.MousePosition.js">
       <publishTime>06/19/2013 08:34:03</publishTime>
     </File>
+    <File Include="leaflet/js/leaflet-search.min.js">
+      <publishTime>06/23/2016 21:55:20</publishTime>
+    </File>
     <File Include="leaflet/js/leaflet.extra-markers.min.js">
       <publishTime>06/02/2016 21:48:30</publishTime>
     </File>
@@ -469,7 +514,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/09/2016 23:14:14</publishTime>
     </File>
     <File Include="leaflet/js/leafletmap.js">
-      <publishTime>06/21/2016 20:32:06</publishTime>
+      <publishTime>07/01/2016 21:18:22</publishTime>
+    </File>
+    <File Include="leaflet/magnifyingGlass/Control.MagnifyingGlass.css">
+      <publishTime>04/30/2016 18:59:21</publishTime>
+    </File>
+    <File Include="leaflet/magnifyingGlass/leaflet.magnifyingglass.css">
+      <publishTime>04/30/2016 18:59:21</publishTime>
+    </File>
+    <File Include="leaflet/magnifyingGlass/leaflet.magnifyingglass.js">
+      <publishTime>04/30/2016 18:59:21</publishTime>
+    </File>
+    <File Include="leaflet/magnifyingGlass/magnifying-glass-icon.png">
+      <publishTime>04/30/2016 18:59:21</publishTime>
     </File>
     <File Include="leaflet/mapData/geojson/Karnataka_District.js">
       <publishTime>06/04/2016 19:46:56</publishTime>
@@ -691,7 +748,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/25/2016 19:29:48</publishTime>
     </File>
     <File Include="Scripts/_references.js">
-      <publishTime>06/20/2016 23:16:17</publishTime>
+      <publishTime>07/01/2016 19:47:07</publishTime>
     </File>
     <File Include="Views/Account/ConfirmEmail.cshtml">
       <publishTime>03/25/2016 19:29:51</publishTime>
@@ -754,10 +811,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/05/2016 20:45:40</publishTime>
     </File>
     <File Include="Views/Home/Contact.cshtml">
-      <publishTime>03/25/2016 19:29:31</publishTime>
+      <publishTime>06/23/2016 23:33:06</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>06/21/2016 19:43:22</publishTime>
+      <publishTime>07/01/2016 21:06:10</publishTime>
     </File>
     <File Include="Views/Home/OpenDataVerifyPage.cshtml">
       <publishTime>06/10/2016 22:14:12</publishTime>
@@ -769,7 +826,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/22/2016 23:29:41</publishTime>
     </File>
     <File Include="Views/Home/ViewInstituionDetails.cshtml">
-      <publishTime>06/20/2016 22:16:44</publishTime>
+      <publishTime>07/01/2016 22:47:58</publishTime>
     </File>
     <File Include="Views/Image/PartialOpenAdvisoryUploadFileSave.cshtml">
       <publishTime>06/05/2016 21:36:57</publishTime>
@@ -859,7 +916,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/30/2016 21:20:53</publishTime>
     </File>
     <File Include="Views/Shared/_WebLayout.cshtml">
-      <publishTime>06/21/2016 20:33:24</publishTime>
+      <publishTime>07/01/2016 19:47:27</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>03/25/2016 19:29:31</publishTime>

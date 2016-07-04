@@ -64,14 +64,14 @@ namespace AssetManagement.Controllers
             {
                 lstMan.Add(i.image);
             }
-            createDirAndImage(lstMan);
+            //createDirAndImage(lstMan);
 
             List<ImageDetails> lstAdv = new List<ImageDetails>();
             foreach (var i in model.advisoryDetails)
             {
                 lstAdv.Add(i.image);
             }
-            createDirAndImage(lstAdv);
+            //createDirAndImage(lstAdv);
 
             if (model.managementDetails != null)
             {
@@ -229,8 +229,13 @@ namespace AssetManagement.Controllers
             foreach (var i in model.geoStampedImages)
             {
                 geoStampedImageLst.Add(i.fileName + "|" + i.imageType);
+
+                //string imageBase64Data = Convert.ToBase64String(i.imageContent);
+                //string imageDataURL = string.Format("data:image/png;base64,{0}", imageBase64Data);
+                //geoStampedImageLst.Add(imageDataURL);
             }
             createDirAndImage(model.geoStampedImages);
+
             ViewBag.geoStampedImage = geoStampedImageLst;
 
             return View(model);
@@ -247,10 +252,22 @@ namespace AssetManagement.Controllers
 
         public void createDirAndImage(List<ImageDetails> imgList)
         {
+            FileStream fs = null;
             foreach (var i in imgList)
             {
                 string dirPath = Path.Combine(@"~/InstitutionImage/" + i.imageType);
                 dirPath = HttpContext.Server.MapPath(dirPath);
+
+                string filePath = Path.Combine(@"~/InstitutionImage/" + i.imageType, i.fileName);
+                filePath = HttpContext.Server.MapPath(filePath);
+
+                if(System.IO.File.Exists(filePath))
+                {
+                    fs = new FileStream(filePath, FileMode.Open);
+                    fs.Flush();
+                    fs.Dispose();
+                    fs.Close();
+                }
                 if (Directory.Exists(dirPath))
                 {
                     Directory.Delete(dirPath, true);
@@ -265,10 +282,12 @@ namespace AssetManagement.Controllers
 
                 if (!System.IO.File.Exists(filePath))
                 {
-                    FileStream fs = new FileStream(filePath, FileMode.CreateNew, FileAccess.Write);
+                    fs = new FileStream(filePath, FileMode.CreateNew, FileAccess.Write);
                     fs.Write(i.imageContent, 0, i.imageContent.Length);
                     fs.Flush();
+                    fs.Dispose();
                     fs.Close();
+
                 }
             }
         }
@@ -283,6 +302,9 @@ namespace AssetManagement.Controllers
         {
             return View();
         }
+
+
+
 
     }
 }

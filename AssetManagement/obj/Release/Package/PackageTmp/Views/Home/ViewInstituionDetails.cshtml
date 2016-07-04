@@ -11,48 +11,86 @@
 <script src="~/JSSOR/js/jssor.slider.mini.js"></script>
 
 <script>
+    function showDocOnClick1(){
+
+        @foreach(ImageDetails i in Model.gnNumberImages)
+        {
+            String base64EncodedPdf = System.Convert.ToBase64String(i.imageContent);
+            string imageDataURL = string.Format("data:application/pdf;base64,{0}", base64EncodedPdf);
+
+            <text>
+                var pdfData = "@imageDataURL";
+                var win = window.open();
+                win.document.write('<embed src="data:application/pdf;base64,"'+pdfData+'" type="application/pdf" />');
+            </text>
+        }
+
+    }
+
 
     function showDocOnClick(location,name){
 
         var data ='<embed src="'+location+'" type="application/pdf" style="width:100%;height:500px">';
-        var widthAppWindow = $(window).width();
-        var heightAppWindow = $(window).height();
-        widthAppWindow = parseInt(widthAppWindow) - parseInt(200);
-        heightAppWindow = parseInt(heightAppWindow) - parseInt(100);
+
+        var downloadLink = document.createElement("a");
+        downloadLink.href = location;
+        window.open(downloadLink.href,'_blank');
 
 
-        var divs = $('#appendDocPopUp').find('div[id="div_ShowDoc"]');
-        $.each(divs, function (index, divItem) {
-            $(divItem).remove();
-        });
+        //var widthAppWindow = $(window).width();
+        //var heightAppWindow = $(window).height();
+        //widthAppWindow = parseInt(widthAppWindow) - parseInt(200);
+        //heightAppWindow = parseInt(heightAppWindow) - parseInt(100);
 
-        $('#appendDocPopUp').append('<div id="div_ShowDoc"></div>');
-        
-        $('#div_ShowDoc').dialog({
 
-            draggable: true,
-            modal: true,
-            resizable: false,
-            width: widthAppWindow,
-            height: heightAppWindow,
-            autoOpen: false,
-            title:name,
+        //var divs = $('#appendDocPopUp').find('div[id="div_ShowDoc"]');
+        //$.each(divs, function (index, divItem) {
+        //    $(divItem).remove();
+        //});
 
-        });
+        //$('#appendDocPopUp').append('<div id="div_ShowDoc"></div>');
 
-        $('#div_ShowDoc').css('z-index', '9999');
-        $('#div_ShowDoc').html(data);
-        $('#div_ShowDoc').dialog('open');
+        //$('#div_ShowDoc').dialog({
+
+        //    draggable: true,
+        //    modal: true,
+        //    resizable: false,
+        //    width: widthAppWindow,
+        //    height: heightAppWindow,
+        //    autoOpen: false,
+        //    title:name,
+
+        //});
+
+        //$('#div_ShowDoc').css('z-index', '9999');
+        //$('#div_ShowDoc').html(data);
+        //$('#div_ShowDoc').dialog('open');
 
     }
 
 </script>
 
 <style>
-    /*.ui-dialog .ui-dialog-content{
-        overflow:hidden !important;
-    }*/
 
+
+
+    .legendCellWrapper {
+        width: 25% !important;
+        float: left !important;
+        text-align:center !important;
+        min-height:275px !important;
+    
+    }
+
+    .legendContainer{
+	    margin: 12px !important;
+        cursor:pointer !important;
+    }
+
+
+    
+
+    
     .table-bordered-custom > thead > tr > th, .table-bordered-custom > tbody > tr > th, .table-bordered-custom > tfoot > tr > th, .table-bordered-custom > thead > tr > td, .table-bordered-custom > tbody > tr > td, .table-bordered-custom > tfoot > tr > td {
         border: 1px solid #428BCA !important;
     }
@@ -60,6 +98,11 @@
     .table-bordered > thead > tr > th, .table-bordered > tbody > tr > th, .table-bordered > tfoot > tr > th, .table-bordered > thead > tr > td, .table-bordered > tbody > tr > td, .table-bordered > tfoot > tr > td {
         border: 1px solid #9E0A2E !important;
     }
+
+    th{
+        text-align:center !important;
+    }
+
     .borderless td .borderless th {
         border: none !important;
     
@@ -182,11 +225,30 @@
             display:block !important;
         }
 
+        .shareDiv{
+            padding-bottom:5px;
+            cursor:pointer;
+        }
+
+    #spinnerDiv{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -50px;
+        margin-left: -50px;
+        width: 100px;
+        height: 100px;
+    }​
 
 
 </style>
 
 <div id="appendDocPopUp"></div>
+
+<div id="spinnerDiv" style="display:none">
+    <i class="fa fa-spinner fa-spin" style="font-size:54px;color:#C2422F"></i>
+</div>
+
 <div class="col-sm-2">
     
     <ul class="nav nav-pills nav-stacked">
@@ -197,14 +259,13 @@
         <li class="customHide"><a data-toggle="pill" href="#managementDiv">Management Details</a></li>
         <li class="customHide"><a data-toggle="pill" href="#districtDiv">District Details</a></li>          
     </ul>
-         
-    
+   
 </div>
 
 <div class="col-sm-7" style="padding:0">
     
     <div class="tab-content">
-        <h4>Institution Name : @Model.institutionName</h4>
+        <h4>@Model.institutionName</h4>
 
         <div id="galleryDiv" class="tab-pane fade in active">
             @*<ul id="imageGallery" class="pgwSlideshow"></ul>*@
@@ -1023,6 +1084,12 @@
         <div>
             <img style="cursor:pointer" id="showOnGoogle" src="~/Images/GoogleEarth.png" height="35" width="140"/>            
         </div>
+        <br/>
+        <div>
+            <a href="https://web.facebook.com/Tiputigerofmysore-1639544349630638/timeline/?_rdr" target="_blank"><img src="~/Images/facebook.png"  /></a>
+            <a href="https://twitter.com/hazrathtipu" target="_blank"><img src="~/Images/twitter.png"  /></a>
+            <a href="https://www.youtube.com/channel/UCCz1ov6elXBSdB7Jl8UwrcQ" target="_blank"><img src="~/Images/youtube.png" /></a>
+        </div> 
 </div>
 
 <script>
@@ -1036,7 +1103,7 @@
         genericGrid("tblManagementDetails", "managementStamped", @Html.Raw(ViewBag.managementDetailsList));
         genericGrid("tblAdvisoryDetails", "advisoryStamped", @Html.Raw(ViewBag.advisoryDetailsList));
 
-        
+
         createGenericGallery("jssorContainer2",@Html.Raw(Json.Encode(ViewBag.assetStatusImage)));
         createGenericGallery("jssorContainer2",@Html.Raw(Json.Encode(ViewBag.gnNumberImage)));
         createGenericGallery("jssorContainer2",@Html.Raw(Json.Encode(ViewBag.crNumberImage)));
@@ -1052,12 +1119,46 @@
         createGenericGallery("jssorContainer2",@Html.Raw(Json.Encode(ViewBag.litigationManagementImage)));
         createGenericGallery("jssorContainer2",@Html.Raw(Json.Encode(ViewBag.litigationAssetImage)));
         createGenericGallery("jssorContainer1",@Html.Raw(Json.Encode(ViewBag.geoStampedImage)));
+        //createGenericGalleryNew("jssorContainer1");
+        //createGenericGalleryNewDoc("jssorContainer2");
+
+        function createGenericGalleryNew(container,data){
+            $('#spinnerDiv').show();
+            @foreach (ImageDetails i in Model.geoStampedImages)
+            {
+
+                string imageBase64Data = Convert.ToBase64String(i.imageContent);
+                string imageDataURL = string.Format("data:image/png;base64,{0}", imageBase64Data);
+
+                <text>
+            html = '<div data-p="112.50" style="display: none;"><img data-u="image" src="' + @Html.Raw(Json.Encode(imageDataURL)) + '" /><img data-u="thumb" src="' + @Html.Raw(Json.Encode(imageDataURL)) + '" /></div>';
+            $("#" + container).append(html);
+            </text>
+            }
+
+            $('#spinnerDiv').hide();
+
+        }
 
 
-        
+        function createGenericGalleryNewDoc(container){
+
+            @foreach (ImageDetails i in Model.gnNumberImages)
+            {
+                <text>
+            var arr = "@i.fileName";
+            html = '<div class="legendCellWrapper"><div class="legendContainer" onclick="showDocOnClick1()"><img src="/Images/pdf.png"  style="width:150px;height:150px";><a>'+arr+'</a></div></div> ';
+            $("#" + container).append(html);
+            </text>
+            }
+
+        }
+
+
 
         function createGenericGallery(container,data){
             var html,arr,ext,fileExtArray = ['jpeg', 'jpg', 'png'];
+
             data.forEach(function(d){
                 arr = d.split('|');
                 ext = arr[0].split('.').pop().toLowerCase();
@@ -1065,10 +1166,10 @@
                 if($.inArray(ext, fileExtArray) == -1){
 
                     var tempLoc = '/InstitutionImage/'+arr[1]+'/' + arr[0] +'';
-                    
-                    html='<div class="itemImage" style="margin-right:30px"><embed src="/InstitutionImage/'+arr[1]+'/' + arr[0] + '" type="application/pdf" style="width:150px;height:150px";>';
-                    html += '<span style="cursor:pointer"class="caption" onclick="showDocOnClick(\''+tempLoc+'\',\''+arr[0]+'\')"><a>'+arr[0]+'</a></span></div>';
-                
+
+                    //html='<div onclick="showDocOnClick(\''+tempLoc+'\',\''+arr[0]+'\')" class="col-md-3" style="text-align:center;cursor:pointer;"><img src="/Images/pdf.png"  style="width:150px;height:150px";><a>'+arr[0]+'</a></div>';
+                    html = '<div class="legendCellWrapper"><div class="legendContainer" onclick="showDocOnClick(\''+tempLoc+'\',\''+arr[0]+'\')"><img src="/Images/pdf.png"  style="width:150px;height:150px";><a>'+arr[0]+'</a></div></div> ';
+
                 }else{
                     html = '<div data-p="112.50" style="display: none;"><img data-u="image" src="/InstitutionImage/'+arr[1]+'/' + arr[0] + '" /><img data-u="thumb" src="/InstitutionImage/'+arr[1]+'/' + arr[0] + '" /></div>';
                 }
@@ -1076,21 +1177,79 @@
             })
         }
 
+
+
         function genericGrid(container,folderName,data) {
 
             var key,
             html = "<table id='" + container + "_Table' class='table table-condensed table-bordered'><tr><th>Designation</th><th>Name</th><th>Mobile No</th><th>E-mail Id</th><th>Image</th></tr>";
 
-            data.forEach(function (d) {
-                html += '<tr><td>' + d.Designation + '</td>';
-                html += '<td>' + d.Name + '</td>';
-                html += '<td>' + d["Mobile No"] + '</td>';
-                html += '<td>' + d["E-mail Id"] + '</td>';
-                html += '<td><img width="100" height="100" src="/InstitutionImage/'+folderName+'/' + d.Image + '"/></td>';
-                html += '</tr>';
+            //data.forEach(function (d) {
 
-            });
+            //    if(d["E-mail Id"] == null){
+            //        d["E-mail Id"] = '';
+            //    }
+            //    if(d["Mobile No"] == null){
+            //        d["Mobile No"] = '';
+            //    }
 
+            //    html += '<tr><td>' + d.Designation + '</td>';
+            //    html += '<td>' + d.Name + '</td>';
+            //    html += '<td>' + d["Mobile No"] + '</td>';
+            //    html += '<td>' + d["E-mail Id"] + '</td>';
+            //    html += '<td><img width="100" height="100" src="/InstitutionImage/'+folderName+'/' + d.Image + '"/></td>';
+            //    html += '</tr>';
+
+            //});
+
+            if(folderName == 'managementStamped'){
+
+            
+                @foreach (CommitteeDetails d in Model.managementDetails)
+                {
+                    string imageBase64Data = Convert.ToBase64String(d.image.imageContent);
+                    string imageDataURL = string.Format("data:image/png;base64,{0}", imageBase64Data);
+
+                    <text>
+                    var desg = "@d.designation";
+                    var name = "@d.name";
+                    var mob = "@d.mobile";
+                    var em = "@d.emailID";
+            
+                    html += '<tr><td>' + desg + '</td>';
+                    html += '<td>' + name + '</td>';
+                    html += '<td>' +mob + '</td>';
+                    html += '<td>' + em + '</td>';
+                    html += '<td><img width="100" height="100" src="' + @Html.Raw(Json.Encode(imageDataURL)) + '"/></td>';
+                    html += '</tr>';
+
+                    </text>
+
+                }
+            }
+            else{
+                @foreach (CommitteeDetails d in Model.advisoryDetails)
+                {
+                    string imageBase64Data = Convert.ToBase64String(d.image.imageContent);
+                    string imageDataURL = string.Format("data:image/png;base64,{0}", imageBase64Data);
+
+                    <text>
+                    var desg = "@d.designation";
+                    var name = "@d.name";
+                    var mob = "@d.mobile";
+                    var em = "@d.emailID";
+            
+                    html += '<tr><td>' + desg + '</td>';
+                    html += '<td>' + name + '</td>';
+                    html += '<td>' +mob + '</td>';
+                    html += '<td>' + em + '</td>';
+                    html += '<td><img width="100" height="100" src="' + @Html.Raw(Json.Encode(imageDataURL)) + '"/></td>';
+                    html += '</tr>';
+
+                    </text>
+
+                }
+            }
             html += "</table>";
             document.getElementById(container).innerHTML = html;
 
@@ -1110,7 +1269,7 @@
                 $Align: 260
             }
         };
-            
+
         var jssor_1_slider = new $JssorSlider$("jssor_1", jssor_1_options);
 
 
@@ -1127,9 +1286,9 @@
         //        $Align: 260
         //    }
         //};
-            
+
         //var jssor_2_slider = new $JssorSlider$("jssor_2", jssor_2_options);
-            
+
         //responsive code begin
         //you can remove responsive code if you don't want the slider scales while window resizing
         function ScaleSlider() {
@@ -1144,7 +1303,7 @@
         }
 
         ScaleSlider();
-        
+
         $(window).bind("load", ScaleSlider);
         $(window).bind("resize", ScaleSlider);
         $(window).bind("orientationchange", ScaleSlider);
@@ -1152,7 +1311,7 @@
 
 
         function generateKMZFile(){
-            
+
             var longitude = "@Model.longitude";
             var latitude = "@Model.latitude";
             var institutionName = "@Model.institutionName";
@@ -1169,12 +1328,12 @@
             document.body.removeChild(link);
 
         }
-        
+
         $('#showOnGoogle').click(function(){
             generateKMZFile();
         })
 
-        
+
 
     });
 </script>

@@ -2565,7 +2565,7 @@ namespace AssetManagement.DAL
                     }
                     else
                     {
-                        sql = "Select longitude,latitude,institutionName,institutionId,urban,rural from Institution";
+                        sql = "Select longitude,latitude,institutionName,institutionId,urban,rural,gnNumber,gnDate,crNumber,crDate,waqfID,classificationType,assetStatus,assetType,total,extentLandUnit from Institution";
                         cmd = new SqlCommand(sql, con);
                         cmd.CommandType = CommandType.Text;
                     }
@@ -2596,6 +2596,97 @@ namespace AssetManagement.DAL
                             {
                                 jobj.Add("type", rdr.GetString(5));
                             }
+
+                            if (rdr.IsDBNull(6)){
+                                jobj.Add("gnNumber", "");
+                            }
+                            else
+                            {
+                                jobj.Add("gnNumber", rdr.GetString(6));
+                            }
+
+                            if (rdr.IsDBNull(7))
+                            {
+                                jobj.Add("gnDate", "");
+                            }
+                            else
+                            {
+                                jobj.Add("gnDate", rdr.GetString(7));
+                            }
+
+                            if (rdr.IsDBNull(8))
+                            {
+                                jobj.Add("crNumber", "");
+                            }
+                            else
+                            {
+                                jobj.Add("crNumber", rdr.GetString(8));
+                            }
+
+                            if (rdr.IsDBNull(9))
+                            {
+                                jobj.Add("crDate", "");
+                            }
+                            else
+                            {
+                                jobj.Add("crDate", rdr.GetString(9));
+                            }
+
+                            if (rdr.IsDBNull(10))
+                            {
+                                jobj.Add("waqfID", "");
+                            }
+                            else
+                            {
+                                jobj.Add("waqfID", rdr.GetString(10));
+                            }
+
+                            if (rdr.IsDBNull(11))
+                            {
+                                jobj.Add("classificationType", "");
+                            }
+                            else
+                            {
+                                jobj.Add("classificationType", rdr.GetString(11));
+                            }
+
+                            if (rdr.IsDBNull(12))
+                            {
+                                jobj.Add("assetStatus", "");
+                            }
+                            else
+                            {
+                                jobj.Add("assetStatus", rdr.GetString(12));
+                            }
+
+                            if (rdr.IsDBNull(13))
+                            {
+                                jobj.Add("assetType", "");
+                            }
+                            else
+                            {
+                                jobj.Add("assetType", rdr.GetString(13));
+                            }
+
+                            if (rdr.IsDBNull(14))
+                            {
+                                jobj.Add("total", "");
+                            }
+                            else
+                            {
+                                jobj.Add("total", rdr.GetString(14));
+                            }
+
+                            if (rdr.IsDBNull(14))
+                            {
+                                jobj.Add("extentLandUnit", "");
+                            }
+                            else
+                            {
+                                jobj.Add("extentLandUnit", rdr.GetString(15));
+                            }
+
+                            
 
                             jarray.Add(jobj);
                         }

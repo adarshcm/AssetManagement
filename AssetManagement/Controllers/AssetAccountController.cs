@@ -390,6 +390,7 @@ namespace AssetManagement.Controllers
             foreach (var i in model.geoStampedImages)
             {
                 geoStampedImageLst.Add(i.fileName + "|" + i.imageSize);
+                
             }
             createDirAndImage(model.geoStampedImages);
             ViewBag.geoStampedImageLst = geoStampedImageLst;

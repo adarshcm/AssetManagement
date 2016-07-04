@@ -10,46 +10,68 @@
     <img src="~/Images/Underconstruction.png" /><br/>  
 </div>*@
 <style type="text/css">
+
+
+    .easy-button-button, .leaflet-bar-part{
+        width: 36px;
+        height: 36px;
+        border: 0px;
+        background: #fff;
+        padding: 0px;
+        border-radius: 5px;
+    }
+
+    .table-bordered-custom > thead > tr > th, .table-bordered-custom > tbody > tr > th, .table-bordered-custom > tfoot > tr > th, .table-bordered-custom > thead > tr > td, .table-bordered-custom > tbody > tr > td, .table-bordered-custom > tfoot > tr > td {
+        border: 1px solid #428BCA !important;
+    }
+
+    .table-bordered > thead > tr > th, .table-bordered > tbody > tr > th, .table-bordered > tfoot > tr > th, .table-bordered > thead > tr > td, .table-bordered > tbody > tr > td, .table-bordered > tfoot > tr > td {
+        border: 1px solid #9E0A2E !important;
+    }
+    th{
+        text-align:center !important;
+    }
+
     #mapDiv {         
         height:650px;
         width:auto;          
     }
-    .leaflet-interactive{
-        stroke:#000 !important;
-    }
+    
     .leaflet-control.enabled a {
             background-color: yellow;
-        }
-        .help {
-            font-size: 1.5em;
-            position: absolute;
-            top:0;
-            left: 0;
-            right: 0;
-            height: 30px;
-            z-index: 10;
-            background-color: rgba(0,0,0,0.5);
-            color: white;
-            padding: 10px;
-            margin: 0px;
-            text-align: center;
-        }
-        .help a.sources {
-            float: left;
-            margin-left: 50px;
-            color: white;
-        }
-        .help a.logo {
-            float: right;
-        }
-        .help a.logo img {
-            height: 30px;
-        }
+    }
+    .help {
+        font-size: 1.5em;
+        position: absolute;
+        top:0;
+        left: 0;
+        right: 0;
+        height: 30px;
+        z-index: 10;
+        background-color: rgba(0,0,0,0.5);
+        color: white;
+        padding: 10px;
+        margin: 0px;
+        text-align: center;
+    }
+    .help a.sources {
+        float: left;
+        margin-left: 50px;
+        color: white;
+    }
+    .help a.logo {
+        float: right;
+    }
+    .help a.logo img {
+        height: 30px;
+    }
 
-        .leaflet-control-draw-measure{
-            width:36px !important;
-            height:36px !important;
-        }
+    .leaflet-control-draw-measure{
+        width:36px !important;
+        height:36px !important;
+    }
+
+    
 
 </style>
 
@@ -61,6 +83,12 @@
 
 
     </div>
+    <br/>
+
+    <div class="btn btn-info" data-toggle="collapse" data-target="#institutionDetailsDivForMarkers" style="width:100%;font-size:24px">List of Institutions Mapped</div><br /><br />
+    <div id="institutionDetailsDivForMarkers"  class="collapse" style="max-height:400px;overflow:auto">
+
+    </div>
     
 </div>
 
@@ -68,6 +96,8 @@
 
 <script>
     $(function () {
+
+        
         var ruralMarkerData = [];
         var urbanMarkerData = [];
 
@@ -78,6 +108,8 @@
         $('#mapNavBtn').addClass("active");
         var markerData = @Html.Raw(ViewBag.getMarkers);
         
+        //console.log(markerData);
+
         markerData.forEach(function(d){
             if(d['type'] == 'urban'){
                 urbanMarkerData.push(d);
@@ -105,6 +137,40 @@
             "name": "Rural"
         }
         mapRender.renderMarker(data, onClickInstitutionDetails);
+        
+        genericGridForInstitutions('institutionDetailsDivForMarkers',markerData);
+
+        function genericGridForInstitutions(container,data) {
+
+            var key,
+            html = "<table id='" + container + "_Table' class='table table-condensed table-bordered'><tr><th>Sl. No.</th><th>Institution Name</th><th>Institution Id</th><th>Urban/Rural</th>";
+            html +="<th>G.N. No</th><th>G.N. Date</th><th>Corrigendum to Notification</th><th>Corrigendum to Notification Date</th>";
+            html +="<th>Waqf id</th><th>Classification type</th><th>Asset status</th><th>Asset type</th><th>Total Area</th></tr>";
+
+            data.forEach(function (d,i) {
+                i++;
+                html += '<tr><td>' + i + '</td>';
+                html += '<td>' + d.institutionId + '</td>';
+                html += '<td>' + d.name + '</td>';
+                html += '<td>' + d.type + '</td>';
+                html += '<td>' + d.gnNumber + '</td>';
+                html += '<td>' + d.gnDate + '</td>';
+                html += '<td>' + d.crNumber + '</td>';
+                html += '<td>' + d.crDate + '</td>';
+                html += '<td>' + d.waqfID + '</td>';
+                html += '<td>' + d.classificationType + '</td>';
+                html += '<td>' + d.assetStatus + '</td>';
+                html += '<td>' + d.assetType + '</td>';
+                html += '<td>' + d.total +' '+d.extentLandUnit+ '</td>';
+                
+                html += '</tr>';
+
+            });
+
+            html += "</table>";
+            document.getElementById(container).innerHTML = html;
+
+        }
 
     })
 </script>
